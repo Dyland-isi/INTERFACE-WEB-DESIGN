@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Quote — Interface, Web Design &amp; Marketing</title>
+<meta name="description" content="Request a project quote from Interface. Cardiff-based web design, brand identity, garment design and marketing services. Two-day reply." />
+<meta name="keywords" content="Cardiff web design, Cardiff marketing, web designer Cardiff, marketing consultant Cardiff, brand identity Cardiff, freelance designer Cardiff, web design Wales, marketing Wales" />
+<meta name="author" content="Interface" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://www.dylandriscoll.design/" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Quote — Interface, Web Design &amp; Marketing" />
+<meta property="og:description" content="Request a project quote from Interface. Cardiff-based web design, brand identity, garment design and marketing services. Two-day reply." />
+<meta property="og:locale" content="en_GB" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Quote — Interface, Web Design &amp; Marketing" />
+<meta name="twitter:description" content="Request a project quote from Interface. Cardiff-based web design, brand identity, garment design and marketing services. Two-day reply." />
+
+<!-- Geo tags -->
+<meta name="geo.region" content="GB-CRF" />
+<meta name="geo.placename" content="Cardiff" />
+<meta name="geo.position" content="51.4816;-3.1791" />
+<meta name="ICBM" content="51.4816, -3.1791" />
+
+<!-- JSON-LD structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Interface Design Studio",
+  "alternateName": "Interface — Web Design + Marketing",
+  "description": "Cardiff-based web design and marketing studio. Conversion-focused websites, brand identity, garment design and marketing campaigns.",
+  "url": "https://www.dylandriscoll.design",
+  "image": "https://www.dylandriscoll.design/assets/img/logo.svg",
+  "telephone": "+447538043294",
+  "email": "info@interfacecardiff.com",
+  "priceRange": "££",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Cardiff",
+    "addressRegion": "Wales",
+    "addressCountry": "GB"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 51.4816,
+    "longitude": -3.1791
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Cardiff" },
+    { "@type": "AdministrativeArea", "name": "Wales" },
+    { "@type": "Country", "name": "United Kingdom" }
+  ],
+  "knowsAbout": [
+    "Web Design",
+    "Web Development",
+    "Brand Identity",
+    "Marketing Strategy",
+    "E-commerce",
+    "Garment Design",
+    "Graphic Design"
+  ],
+  "sameAs": [
+    "https://www.instagram.com/dylan_drisc011",
+    "https://www.linkedin.com/in/dylan-driscoll"
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="style.css" />
+</head>
+<body class="loading page-quote">
+
+<div class="loader" id="siteLoader" aria-hidden="true">
+  <div class="loader-floor"></div>
+  <div class="loader-stage">
+    <div class="loader-spin">
+      <img class="loader-logo" src="assets/img/logo.svg" alt="" />
+    </div>
+  </div>
+  <div class="loader-text">Loading</div>
+  <div class="loader-progress"><div class="loader-progress-bar" id="loaderBar"></div></div>
+</div>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<header class="site-head">
+  <div class="name">
+    <a href="index.html" class="logo-link" aria-label="Interface — home">
+      <img src="assets/img/logo.svg" alt="Interface" class="site-logo" />
+    </a>
+  </div>
+  <nav>
+    <a id="nav-work" href="index.html">WEB</a>
+    <a id="nav-about" href="about.html">ABOUT</a>
+    <a id="nav-quote" href="quote.html" class="active">QUOTE</a>
+    <a id="nav-contact" href="index.html#contact">CONTACT</a>
+  </nav>
+</header>
+
+<main class="page-content">
+  <section class="intro">
+    <h1>Start a project.<br><em>Tell us about it.</em></h1>
+    <p>Brief responses get a brief reply within two business days. The more you give us up front, the sharper the first proposal.</p>
+  </section>
+
+  <article class="project-card">
+    <header class="card-head">
+      <div class="proj-title"><div class="name">New Project Brief</div><div class="client">Quote Request</div></div>
+      <div class="meta"><div class="label">Response time</div><div class="value">≤ 2 days</div></div>
+      <div class="meta"><div class="label">Format</div><div class="value">Email reply</div></div>
+      <div class="meta"><div class="label">Cost</div><div class="value">Free, no obligation</div></div>
+    </header>
+
+    <form class="quote-form" id="quoteForm" action="https://formspree.io/f/mnjwqevo" method="POST" onsubmit="handleSubmit(event)">
+
+      <input type="hidden" name="_subject" value="New project brief — Interface" />
+      <input type="hidden" name="_replyto" id="q-replyto" />
+
+      <div class="form-row split">
+        <div>
+          <label class="form-label" for="q-name">Full name *</label>
+          <input class="form-input" id="q-name" name="name" type="text" placeholder="Jane Doe" required />
+        </div>
+        <div>
+          <label class="form-label" for="q-email">Email *</label>
+          <input class="form-input" id="q-email" name="email" type="email" placeholder="jane@company.com" required />
+        </div>
+      </div>
+
+      <div class="form-row split">
+        <div>
+          <label class="form-label" for="q-company">Company / brand</label>
+          <input class="form-input" id="q-company" name="company" type="text" placeholder="Optional" />
+        </div>
+        <div>
+          <label class="form-label" for="q-project-type">Project type *</label>
+          <select class="form-select" id="q-project-type" name="project_type" required>
+            <option value="">Select one…</option>
+            <option value="Website">Website</option>
+            <option value="Brand identity">Brand identity</option>
+            <option value="Graphic design">Graphic design</option>
+            <option value="Garment design">Garment design</option>
+            <option value="Marketing campaign">Marketing campaign</option>
+            <option value="E-commerce">E-commerce</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row split">
+        <div>
+          <label class="form-label" for="q-budget">Budget range *</label>
+          <select class="form-select" id="q-budget" name="budget" required>
+            <option value="">Select one…</option>
+            <option value="Under £2k">Under £2,000</option>
+            <option value="£2k–5k">£2,000 – £5,000</option>
+            <option value="£5k–10k">£5,000 – £10,000</option>
+            <option value="£10k–25k">£10,000 – £25,000</option>
+            <option value="£25k+">£25,000+</option>
+            <option value="Not sure yet">Not sure yet</option>
+          </select>
+        </div>
+        <div>
+          <label class="form-label" for="q-timeline">Timeline *</label>
+          <select class="form-select" id="q-timeline" name="timeline" required>
+            <option value="">Select one…</option>
+            <option value="ASAP">ASAP — within 2 weeks</option>
+            <option value="1 month">Within 1 month</option>
+            <option value="2-3 months">2 – 3 months</option>
+            <option value="3+ months">3+ months</option>
+            <option value="Flexible">Flexible</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="q-message">Project details *</label>
+        <textarea class="form-textarea" id="q-message" name="message" placeholder="What are you trying to make? Who's it for? Any references, links, or context that would help us understand the brief." required></textarea>
+      </div>
+
+      <div class="form-submit-row">
+        <p class="form-disclaimer">Submitting sends your brief straight to the studio. We read every one personally and reply within two business days.</p>
+        <button class="form-submit" type="submit">
+          Send brief
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+      </div>
+    </form>
+
+    <div class="form-success" id="quoteSuccess">
+      <h3>Brief received.</h3>
+      <p>Thanks — we'll be in touch within two business days.</p>
+    </div>
+  </article>
+
+  <div class="nav-controls">
+    <a class="nav-btn" href="index.html" aria-label="Back to work">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </a>
+  </div>
+
+  <section class="contact">
+    <h2>Prefer email?<br><em>That works too.</em></h2>
+    <div class="links">
+      <span class="label">EMAIL</span><a href="mailto:info@interfacecardiff.com">info@interfacecardiff.com</a>
+      <span class="label">PHONE</span><a href="tel:+447538043294">07538 043294</a>
+      <span class="label">SOCIAL</span><a href="https://www.instagram.com/dylan_drisc011" target="_blank" rel="noopener">Instagram ↗︎</a><a href="https://www.linkedin.com/in/dylan-driscoll" target="_blank" rel="noopener">LinkedIn ↗︎</a>
+    </div>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
