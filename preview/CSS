@@ -1,0 +1,311 @@
+/* ============================================================
+   INTERFACE — /preview page styles
+   Layered on top of the main ../style.css. Only contains the
+   bits specific to the mocked website preview frame.
+   ============================================================ */
+
+/* Slightly tighter card-head meta layout for the preview */
+.preview-card .card-head {
+  grid-template-columns: 1.5fr 0.6fr 0.6fr 0.7fr;
+}
+
+/* The browser-chrome frame containing the mocked website */
+.preview-frame {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.4) inset,
+    0 24px 48px -16px rgba(20,20,30,0.35),
+    0 4px 12px rgba(20,20,30,0.12);
+  position: relative;
+}
+
+.preview-chrome {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 20px;
+  background: #ededeb;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  font-family: var(--font-outside);
+}
+.preview-chrome__dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: #d8d8d6;
+}
+.preview-chrome__url {
+  margin-left: 16px;
+  font-size: 12px;
+  color: #6a6a70;
+  letter-spacing: 0.01em;
+  font-weight: 500;
+}
+
+/* ===== MOCK WEBSITE INSIDE THE FRAME =====
+   This is a static visual mock, not an interactive site. Everything
+   inside .preview-stage uses neutral type and the brown coffee palette. */
+
+.preview-stage {
+  --mock-ink: #1a1a1f;
+  --mock-soft: rgba(26,26,31,0.6);
+  --mock-line: rgba(26,26,31,0.1);
+  --mock-bg: #fafaf9;
+  --mock-accent: #6b3a1f;
+  --mock-accent-ink: #ffffff;
+
+  background: var(--mock-bg);
+  color: var(--mock-ink);
+  font-family: "Inter Tight", "Helvetica Neue", Helvetica, sans-serif;
+  padding: 32px;
+}
+
+/* Mock typography primitives */
+.mock-eyebrow {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mock-soft);
+}
+.mock-h1 {
+  font-size: clamp(28px, 4vw, 56px);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  margin-top: 12px;
+  font-family: inherit;
+  color: var(--mock-ink);
+}
+.mock-h2 {
+  font-size: clamp(20px, 2vw + 0.5rem, 32px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-top: 8px;
+  font-family: inherit;
+  color: var(--mock-ink);
+}
+
+/* Mock header */
+.mock-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--mock-line);
+  font-size: 13px;
+}
+.mock-head__name { font-weight: 500; letter-spacing: -0.01em; }
+.mock-head__nav {
+  display: flex;
+  gap: 20px;
+  color: var(--mock-soft);
+  font-size: 13px;
+}
+.mock-head__call {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--mock-ink);
+  color: var(--mock-bg);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.mock-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #6BCB77;
+}
+@media (max-width: 720px) {
+  .mock-head__nav { display: none; }
+}
+
+/* Hero */
+.mock-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-bottom: 56px;
+}
+.mock-hero__media {
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: #ddd;
+}
+.mock-hero__media svg { width: 100%; height: 100%; display: block; }
+.mock-hero__copy { display: flex; flex-direction: column; gap: 12px; }
+.mock-lede {
+  font-size: 15px;
+  color: var(--mock-soft);
+  line-height: 1.5;
+  max-width: 42ch;
+  margin-top: 4px;
+}
+.mock-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+.mock-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.mock-btn--primary {
+  background: var(--mock-accent);
+  color: var(--mock-accent-ink);
+}
+.mock-btn--ghost {
+  background: transparent;
+  color: var(--mock-ink);
+  border: 1px solid var(--mock-ink);
+}
+
+@media (min-width: 720px) {
+  .mock-hero {
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+}
+
+/* Section spacing */
+.mock-section {
+  margin-bottom: 56px;
+}
+.mock-section .mock-eyebrow + .mock-h2 { margin-bottom: 24px; }
+
+/* Services */
+.mock-services {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background: var(--mock-line);
+  border: 1px solid var(--mock-line);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+.mock-services li {
+  background: var(--mock-bg);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 140px;
+}
+.mock-services h5 { font-size: 16px; font-weight: 500; }
+.mock-services p { font-size: 13px; color: var(--mock-soft); line-height: 1.45; }
+.mock-services .mock-price {
+  margin-top: auto;
+  font-size: 12px;
+  color: var(--mock-ink);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+@media (min-width: 600px) { .mock-services { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 960px) { .mock-services { grid-template-columns: repeat(4, 1fr); } }
+
+/* Gallery */
+.mock-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.mock-gallery > div {
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+}
+@media (min-width: 720px) {
+  .mock-gallery { gap: 12px; }
+  .mock-gallery > div:first-child {
+    grid-column: span 2;
+    grid-row: span 2;
+    aspect-ratio: auto;
+  }
+}
+
+/* Reviews */
+.mock-reviews {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+.mock-review {
+  background: #f0ebe5;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.mock-stars { color: var(--mock-accent); font-size: 14px; letter-spacing: 0.18em; }
+.mock-review p { font-size: 14px; line-height: 1.5; }
+.mock-cite { font-size: 12px; color: var(--mock-soft); margin-top: 4px; }
+@media (min-width: 720px) { .mock-reviews { grid-template-columns: repeat(3, 1fr); } }
+
+/* Contact details */
+.mock-details {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 12px 24px;
+  align-items: baseline;
+}
+.mock-details dt {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mock-soft);
+  font-weight: 500;
+}
+.mock-details dd { font-size: 14px; }
+
+/* Mock footer */
+.mock-foot {
+  border-top: 1px solid var(--mock-line);
+  padding-top: 20px;
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: var(--mock-soft);
+}
+.mock-credit {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+}
+
+/* Tighter padding on small screens for the mock stage */
+@media (max-width: 640px) {
+  .preview-card { padding: 24px; }
+  .preview-stage { padding: 20px; }
+  .mock-section { margin-bottom: 40px; }
+  .mock-hero { margin-bottom: 40px; }
+  .preview-chrome { padding: 10px 14px; }
+  .preview-chrome__dot { width: 8px; height: 8px; }
+  .preview-chrome__url { font-size: 11px; margin-left: 8px; }
+}
+
+/* The card-head grid collapses cleanly on mobile, matching the
+   other project cards. */
+@media (max-width: 720px) {
+  .preview-card .card-head {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 24px;
+  }
+}
