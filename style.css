@@ -192,81 +192,9 @@
   }
   .project-card > * { position: relative; z-index: 1; }
 
-  .card-head {
-    display: grid; grid-template-columns: 1.1fr 0.9fr 1fr 1fr;
-    gap: 24px; margin-bottom: 32px; align-items: start;
-  }
-  .proj-title { display: flex; flex-direction: column; }
-  .proj-title .name { font-size: 20px; color: var(--text-white); letter-spacing: -0.01em; }
-  .proj-title .client { font-size: 20px; color: var(--text-white-dim); letter-spacing: -0.01em; }
-  .meta { display: flex; flex-direction: column; gap: 2px; }
-  .meta .label { font-size: 11px; color: var(--text-white-dim); font-weight: bold; letter-spacing: 0.02em; }
-  .meta .value { font-size: 14px; color: var(--text-white); font-weight: bold; }
-  .meta .value a {
-    color: var(--text-white); text-decoration: none;
-    border-bottom: 1px solid rgba(255,255,255,0.4); padding-bottom: 1px; transition: border-color 0.2s;
-    cursor: none;
-  }
-  .meta .value a:hover { border-bottom-color: var(--text-white); }
 
-  .thumb-single {
-    width: 100%; border-radius: 16px;
-    position: relative; overflow: hidden;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: none;
-  }
-  .thumb-single.aspect-bluff { aspect-ratio: 1440 / 782; background: #ffffff; }
-  .thumb-single.aspect-pub { aspect-ratio: 1280 / 696; background: #0a1f0a; }
-  .thumb-single.aspect-tyglas { aspect-ratio: 16 / 9; background: #ededeb; }
-  .thumb-single.aspect-richards { aspect-ratio: 1440 / 834; background: #f3efe7; }
-  .thumb-single:hover {
-    transform: translateY(-2px);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 12px 24px -8px rgba(60,60,70,0.3);
-  }
-  .thumb-single video {
-    position: absolute; inset: 0; width: 100%; height: 100%;
-    object-fit: contain; pointer-events: none; display: block;
-  }
 
-  .thumb-grid-mere {
-    display: grid; gap: 16px;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    aspect-ratio: 3 / 1.55;
-  }
-  .thumb-grid-tyglas {
-    display: grid; gap: 16px;
-    grid-template-columns: 2.2fr 1fr;
-    aspect-ratio: 3.2 / 1.7;
-  }
-  .thumb {
-    border-radius: 16px; position: relative; overflow: hidden;
-    background: #ffffff;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: none;
-  }
-  .thumb:hover {
-    transform: translateY(-2px);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 12px 24px -8px rgba(60,60,70,0.3);
-  }
-  .thumb video, .thumb img {
-    position: absolute; inset: 0; width: 100%; height: 100%;
-    object-fit: contain; pointer-events: none; display: block;
-  }
-  .thumb.thumb-mobile img {
-    object-fit: cover; object-position: top center;
-  }
-  .thumb.thumb-mobile { background: #ededeb; }
 
-  .thumb-link, .thumb-single .thumb-link {
-    position: absolute; inset: 0; z-index: 2;
-    display: flex; align-items: flex-end; padding: 20px;
-    text-decoration: none; color: var(--text-white);
-    background: linear-gradient(180deg, rgba(0,0,0,0) 65%, rgba(0,0,0,0.3) 100%);
-    opacity: 0; transition: opacity 0.3s; cursor: none;
-  }
-  .thumb:hover .thumb-link, .thumb-single:hover .thumb-link { opacity: 1; }
-  .thumb-label { font-size: 11px; letter-spacing: 0.04em; }
 
   .nav-controls {
     width: 100%; max-width: 100%;
@@ -407,29 +335,12 @@
   @media (max-width: 820px) {
     body { padding: 24px 16px 64px; }
     .project-card { padding: 24px; border-radius: 24px; }
-    .card-head { grid-template-columns: 1fr 1fr; gap: 20px; }
-    .intro { padding: 32px 0 8px; }
+      .intro { padding: 32px 0 8px; }
     .form-row.split { grid-template-columns: 1fr; }
     .about-card { grid-template-columns: 1fr; gap: 40px; padding: 28px; }
   }
   @media (max-width: 480px) {
-    .card-head { grid-template-columns: 1fr; }
-    .thumb-grid-mere {
-      grid-template-columns: 1fr !important;
-      grid-template-rows: auto !important;
-      aspect-ratio: auto !important;
-    }
-    .thumb-grid-mere > * {
-      grid-column: span 1 !important; grid-row: span 1 !important;
-      aspect-ratio: 1440 / 742;
-    }
-    .thumb-grid-tyglas {
-      grid-template-columns: 1fr !important;
-      aspect-ratio: auto !important;
-    }
-    .thumb-grid-tyglas > .thumb { aspect-ratio: 16 / 9; }
-    .thumb-grid-tyglas > .thumb.thumb-mobile { aspect-ratio: 9 / 14; }
-  }
+        }
 
   /* ===== LOADING SCREEN ===== */
   .loader {
