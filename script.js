@@ -80,7 +80,7 @@
 
 function showPage(name, scrollTo) {
   // Multi-page navigation: route to the correct page.
-  const pageMap = { 'home': 'index.html', 'about': 'about.html', 'quote': 'quote.html' };
+  const pageMap = { 'home': 'index.html', 'about': 'about.html', 'quote': 'quote.html', 'software': 'software.html' };
   const target = pageMap[name] || 'index.html';
   if (scrollTo) {
     window.location.href = target + '#' + scrollTo;
@@ -137,6 +137,68 @@ async function handleSubmit(e) {
   }
 
   // Real Formspree submission
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST', body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (response.ok) {
+      form.style.display = 'none';
+      success.classList.add('shown');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      form.reset();
+    } else {
+      const data = await response.json().catch(() => ({}));
+      const msg = (data.errors && data.errors.map(e => e.message).join(', ')) || 'Something went wrong. Please email us directly at info@interfacecardiff.com';
+      alert(msg);
+      submitBtn.disabled = false; submitBtn.style.opacity = '1'; submitBtn.innerHTML = originalLabel;
+    }
+  } catch (err) {
+    alert('Network error. Please email us directly at info@interfacecardiff.com');
+    submitBtn.disabled = false; submitBtn.style.opacity = '1'; submitBtn.innerHTML = originalLabel;
+  }
+}
+
+async function handleWaitlistSubmit(e) {
+  e.preventDefault();
+  const form = document.getElementById('waitlistForm');
+  const success = document.getElementById('waitlistSuccess');
+  const submitBtn = form.querySelector('.form-submit');
+  const emailField = document.getElementById('w-email');
+  const replyto = document.getElementById('w-replyto');
+  if (emailField && replyto) replyto.value = emailField.value;
+
+  const originalLabel = submitBtn.innerHTML;
+  submitBtn.disabled = true;
+  submitBtn.style.opacity = '0.6';
+  submitBtn.innerHTML = 'Joining…';
+
+  // If Formspree endpoint hasn't been configured, fall back to mailto
+  const formActionUrl = form.action || '';
+  const isPlaceholder = !formActionUrl.includes('formspree.io');
+
+  if (isPlaceholder) {
+    const data = new FormData(form);
+    const subject = encodeURIComponent('Interface OS waitlist signup');
+    const body = encodeURIComponent(
+      `Name: ${data.get('name') || ''}\n` +
+      `Email: ${data.get('email') || ''}\n` +
+      `Brand / company: ${data.get('company') || '—'}\n`
+    );
+    window.location.href = `mailto:info@interfacecardiff.com?subject=${subject}&body=${body}`;
+
+    setTimeout(() => {
+      form.style.display = 'none';
+      success.classList.add('shown');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      form.reset();
+      submitBtn.disabled = false;
+      submitBtn.style.opacity = '1';
+      submitBtn.innerHTML = originalLabel;
+    }, 800);
+    return;
+  }
+
   try {
     const response = await fetch(form.action, {
       method: 'POST', body: new FormData(form),
