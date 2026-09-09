@@ -223,71 +223,58 @@ async function handleWaitlistSubmit(e) {
 
 
 // ===== LOADING SCREEN =====
-(function() {
-  const loader = document.getElementById('siteLoader');
-  const bar = document.getElementById('loaderBar');
-  if (!loader) return;
+// The actual JARVIS app's own loading screen (see
+// intro-screen-export/README.md): a percentage counter, 0% to 100% over
+// 1.6s with an ease-out cubic curve — no progress bar, the number itself is
+// the loading beat. Clicking anywhere skips straight to the end, same as
+// the original. Adapted from the export only to keep this site's existing
+// fade-out (.hidden + delayed remove()) and body.loading/cursor handling,
+// both unrelated to the loader's own visuals.
+(function () {
+  const wake = document.getElementById('wake');
+  const pctEl = document.getElementById('wakePct');
+  if (!wake || !pctEl) return;
 
-  let progress = 0;
-  let videosLoaded = 0;
-  const videos = document.querySelectorAll('video');
-  const totalVideos = videos.length;
-  let videoProgress = 0;
+  // This is a plain multi-page site, not a single-page app — every internal
+  // link is a full page load, which would otherwise replay the full 1.6s
+  // intro on every click. sessionStorage marks it as already seen for this
+  // browser tab, so it's the very first page of a visit that gets the
+  // intro; clicking around after that skips straight through with no
+  // flash, no delay. A fresh tab (or the flag being unreadable — private
+  // browsing in some browsers throws on sessionStorage access) plays it
+  // again, which is the correct fallback: better to show it once too often
+  // than never.
+  let alreadySeen = false;
+  try { alreadySeen = sessionStorage.getItem('interfaceIntroShown') === '1'; } catch (e) {}
 
-  // Track video loading
-  videos.forEach(v => {
-    if (v.readyState >= 3) {
-      videosLoaded++;
-    } else {
-      const onReady = () => {
-        videosLoaded++;
-        videoProgress = totalVideos > 0 ? (videosLoaded / totalVideos) * 50 : 50;
-        v.removeEventListener('canplaythrough', onReady);
-        v.removeEventListener('loadeddata', onReady);
-      };
-      v.addEventListener('canplaythrough', onReady);
-      v.addEventListener('loadeddata', onReady);
-    }
-  });
+  if (alreadySeen) {
+    wake.remove();
+    document.body.classList.remove('loading');
+    return;
+  }
 
-  // Smooth fake progress that catches up to real progress
-  const startTime = Date.now();
-  const minDuration = 1400; // minimum loader display time in ms
-  const tickProgress = () => {
-    const elapsed = Date.now() - startTime;
-    const timeProgress = Math.min((elapsed / minDuration) * 50, 50);
-    videoProgress = totalVideos > 0
-      ? (videosLoaded / totalVideos) * 50
-      : 50;
-    const target = Math.min(timeProgress + videoProgress, 100);
-    progress += (target - progress) * 0.15;
-    bar.style.width = progress + '%';
+  const DURATION_MS = 1600;
+  let done = false;
 
-    const documentReady = document.readyState === 'complete';
-    const allVideosLoaded = videosLoaded >= totalVideos || totalVideos === 0;
-    const minTimeMet = elapsed >= minDuration;
+  function finish() {
+    if (done) return;
+    done = true;
+    try { sessionStorage.setItem('interfaceIntroShown', '1'); } catch (e) {}
+    wake.classList.add('hidden');
+    document.body.classList.remove('loading');
+    setTimeout(() => wake.remove(), 900);
+  }
 
-    if (progress >= 99 && documentReady && allVideosLoaded && minTimeMet) {
-      bar.style.width = '100%';
-      setTimeout(() => {
-        loader.classList.add('hidden');
-        document.body.classList.remove('loading');
-        // Cleanup after fade
-        setTimeout(() => loader.remove(), 900);
-      }, 200);
-      return;
-    }
-    requestAnimationFrame(tickProgress);
-  };
+  wake.addEventListener('click', finish, { once: true });
 
-  requestAnimationFrame(tickProgress);
-
-  // Safety: hide loader after 8s no matter what
-  setTimeout(() => {
-    if (!loader.classList.contains('hidden')) {
-      loader.classList.add('hidden');
-      document.body.classList.remove('loading');
-      setTimeout(() => loader.remove(), 900);
-    }
-  }, 8000);
+  const start = performance.now();
+  function tick(now) {
+    if (done) return;
+    const t = Math.min(1, (now - start) / DURATION_MS);
+    const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic — settles rather than snapping
+    pctEl.textContent = Math.round(eased * 100) + '%';
+    if (t < 1) { requestAnimationFrame(tick); return; }
+    finish();
+  }
+  requestAnimationFrame(tick);
 })();
