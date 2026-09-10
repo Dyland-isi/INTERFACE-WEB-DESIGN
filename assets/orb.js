@@ -58,7 +58,7 @@
     var ctx = canvas.getContext('2d');
     var w = 0, h = 0, cx = 0, cy = 0, R = 0, dpr = 1;
     var t = 0, energy = 0.5, shownEnergy = 0;
-    var ink = [27, 27, 27]; // matches --ink (#1b1b1b)
+    var ink = [236, 236, 236]; // matches --ink-inv (#ececec) — the orb sits on the dark page backdrop, not a light card
 
     var LEVELS = 14;
     var bIdx = []; for (var k = 0; k < LEVELS; k++) bIdx.push(new Int32Array(N));
