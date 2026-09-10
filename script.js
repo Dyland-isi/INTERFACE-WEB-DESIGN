@@ -80,7 +80,7 @@
 
 function showPage(name, scrollTo) {
   // Multi-page navigation: route to the correct page.
-  const pageMap = { 'home': 'index.html', 'about': 'about.html', 'quote': 'quote.html', 'software': 'software.html' };
+  const pageMap = { 'home': 'index.html', 'software': 'index.html', 'design': 'design.html', 'about': 'about.html', 'quote': 'quote.html' };
   const target = pageMap[name] || 'index.html';
   if (scrollTo) {
     window.location.href = target + '#' + scrollTo;
