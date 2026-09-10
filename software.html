@@ -74,6 +74,10 @@
 </script>
 
 
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
 <link rel="stylesheet" href="style.css" />
 </head>
 <body class="loading page-software">
@@ -102,82 +106,116 @@
 </header>
 
 <main class="page-content">
-  <section class="intro">
-    <h1>Interface OS<br><em>— coming soon.</em></h1>
-    <h2 style="font-family: var(--font-outside); font-size: 13px; font-weight: 500; color: #6a6a70; letter-spacing: 0.04em; text-transform: uppercase; margin-top: 24px; margin-bottom: 6px;">Software for independent labels &amp; DTC brands</h2>
-    <p>We're building Interface OS — the operating system for running a brand online. Join the waitlist and be first in line for a free two-week trial when we launch.</p>
-  </section>
-
-  <article class="project-card">
-    <div class="about-card">
-
-      <div class="about-bio">
-        <span class="software-badge"><span class="dot"></span>Coming soon</span>
-        <h3>WHAT IT IS</h3>
-        <p>Interface OS brings your brand's site, orders, content and customer relationships into one place — built by the same studio that designs and builds the websites themselves.</p>
-        <p>Early access members get a free two-week trial and a direct line to the team shaping the product.</p>
-
-        <div class="about-section" style="margin-top: 32px;">
-          <h3>WHAT'S COMING</h3>
-          <div class="about-skills-group">
-            <div class="about-skills-label">SITE &amp; STOREFRONT</div>
-            <div class="about-skills-list">Live page editing · Product &amp; drop management · Order tracking</div>
-          </div>
-          <div class="about-skills-group">
-            <div class="about-skills-label">CUSTOMERS</div>
-            <div class="about-skills-list">Waitlists &amp; sign-ups · Email capture · Customer notes</div>
-          </div>
-          <div class="about-skills-group">
-            <div class="about-skills-label">INSIGHT</div>
-            <div class="about-skills-list">Simple analytics · Campaign performance · Launch checklists</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="about-details">
-        <div class="about-section">
-          <h3>JOIN THE WAITLIST</h3>
-
-          <form class="quote-form" id="waitlistForm" action="https://formspree.io/f/mnjwqevo" method="POST" onsubmit="handleWaitlistSubmit(event)">
-
-            <input type="hidden" name="_subject" value="Interface OS waitlist signup" />
-            <input type="hidden" name="_replyto" id="w-replyto" />
-
-            <div class="form-row">
-              <label class="form-label" for="w-name">Full name *</label>
-              <input class="form-input" id="w-name" name="name" type="text" placeholder="Jane Doe" required />
-            </div>
-
-            <div class="form-row">
-              <label class="form-label" for="w-email">Email *</label>
-              <input class="form-input" id="w-email" name="email" type="email" placeholder="jane@company.com" required />
-            </div>
-
-            <div class="form-row">
-              <label class="form-label" for="w-brand">Brand / company</label>
-              <input class="form-input" id="w-brand" name="company" type="text" placeholder="Optional" />
-            </div>
-
-            <div class="form-submit-row">
-              <p class="form-disclaimer">We'll email you the moment early access opens, plus your free two-week trial code. No spam.</p>
-              <button class="form-submit" type="submit">
-                Join waitlist
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </button>
-            </div>
-          </form>
-
-          <div class="form-success" id="waitlistSuccess">
-            <h3>You're on the list.</h3>
-            <p>We'll be in touch with early access and your free two-week trial as soon as Interface OS launches.</p>
-          </div>
-        </div>
+  <section class="intro has-orb">
+    <div class="intro-copy">
+      <span class="software-badge"><span class="dot"></span>Early access · free 2-week trial</span>
+      <h1>Interface OS<br><em>— coming soon.</em></h1>
+      <h2 style="font-family: var(--font-outside); font-size: 13px; font-weight: 500; color: #6a6a70; letter-spacing: 0.04em; text-transform: uppercase; margin-top: 24px; margin-bottom: 6px;">Software for independent labels &amp; DTC brands</h2>
+      <p>We're building Interface OS — the operating system for running a brand online. Join the waitlist for a free two-week trial, founding pricing, and priority access ahead of public launch.</p>
+      <div class="hero-cta">
+        <a href="#waitlist" class="hero-cta-btn primary">
+          Join the waitlist
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <a href="#preview" class="hero-cta-btn secondary">
+          Explore the app
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </a>
       </div>
     </div>
-  </article>
+    <div class="orb-wrap"><canvas class="orb-canvas"></canvas></div>
+  </section>
+
+  <section class="app-preview" id="preview">
+    <div class="app-window">
+      <div class="app-window-bar">
+        <div class="app-window-dots"><span></span><span></span><span></span></div>
+        <div class="app-window-title">Interface OS</div>
+      </div>
+      <div class="app-window-body">
+        <nav class="app-window-rail">
+          <span class="on"></span><span></span><span></span><span></span><span></span>
+        </nav>
+        <div class="app-window-panel">
+          <div class="app-window-head">
+            <div class="app-window-brand"><b>INTERFACE OS</b><span>AI OPERATING SYSTEM</span></div>
+            <div class="app-window-greet"><strong>Welcome.</strong><span>Your system is online.</span></div>
+          </div>
+          <div class="app-window-grid">
+            <div class="app-window-card"><div class="label">ORDERS TODAY</div><div class="num">18</div><div class="bar"><i style="width:64%"></i></div></div>
+            <div class="app-window-card"><div class="label">SITE TRAFFIC</div><div class="num">2.4k</div><div class="bar"><i style="width:40%"></i></div></div>
+            <div class="app-window-card"><div class="label">WAITLIST</div><div class="num">312</div><div class="bar"><i style="width:80%"></i></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="app-window-command">What would you like me to do?<span class="app-window-voice"></span></div>
+    </div>
+  </section>
+
+  <section class="offer">
+    <h2>Why join now.</h2>
+    <div class="offer-grid">
+      <div class="offer-item">
+        <h3>FREE 2-WEEK TRIAL</h3>
+        <p>Full access from day one when we launch — no card required.</p>
+      </div>
+      <div class="offer-item">
+        <h3>FOUNDING PRICING</h3>
+        <p>Lock in early-access pricing for as long as you stay subscribed.</p>
+      </div>
+      <div class="offer-item">
+        <h3>DIRECT LINE TO THE TEAM</h3>
+        <p>Early members shape the roadmap — talk straight to the people building it.</p>
+      </div>
+      <div class="offer-item">
+        <h3>PRIORITY ACCESS</h3>
+        <p>First cohort in when we open the doors, ahead of the public waitlist.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="waitlist" id="waitlist">
+    <h2>Join the waitlist.</h2>
+    <p>Add your name and email — we'll send early access, your free two-week trial code, and nothing else.</p>
+
+    <form class="waitlist-form" id="waitlistForm" action="https://formspree.io/f/mnjwqevo" method="POST" onsubmit="handleWaitlistSubmit(event)">
+
+      <input type="hidden" name="_subject" value="Interface OS waitlist signup" />
+      <input type="hidden" name="_replyto" id="w-replyto" />
+
+      <div class="form-row split">
+        <div>
+          <label class="form-label" for="w-name">Full name *</label>
+          <input class="form-input" id="w-name" name="name" type="text" placeholder="Jane Doe" required />
+        </div>
+        <div>
+          <label class="form-label" for="w-email">Email *</label>
+          <input class="form-input" id="w-email" name="email" type="email" placeholder="jane@company.com" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="w-brand">Brand / company</label>
+        <input class="form-input" id="w-brand" name="company" type="text" placeholder="Optional" />
+      </div>
+
+      <div class="form-submit-row">
+        <p class="form-disclaimer">We'll email you the moment early access opens, plus your free two-week trial code. No spam.</p>
+        <button class="form-submit" type="submit">
+          Join waitlist
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+      </div>
+    </form>
+
+    <div class="form-success" id="waitlistSuccess">
+      <h3>You're on the list.</h3>
+      <p>We'll be in touch with early access and your free two-week trial as soon as Interface OS launches.</p>
+    </div>
+  </section>
 
   <div class="nav-controls">
     <a class="nav-btn" href="index.html" aria-label="Back">
@@ -194,6 +232,7 @@
   </section>
 </main>
 
+<script src="assets/orb.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
