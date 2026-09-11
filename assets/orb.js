@@ -59,10 +59,10 @@
     var w = 0, h = 0, cx = 0, cy = 0, R = 0, dpr = 1;
     var t = 0, energy = 0.5, shownEnergy = 0;
     // data-ink="dark" for an instance sitting on a light surface (e.g. inside
-    // the app-window mockup's own light panel) — matches --ink (#1b1b1b).
-    // Default is light ink, matching --ink-inv (#ececec), for every other
-    // instance sitting directly on the site's dark backdrop.
-    var ink = canvas.dataset.ink === 'dark' ? [27, 27, 27] : [236, 236, 236];
+    // The whole site sits on a light backdrop, so dark ink (--ink,
+    // #1b1b1b) is the default. data-ink="light" opts an instance out —
+    // for one sitting on a dark surface instead, matching --ink-inv.
+    var ink = canvas.dataset.ink === 'light' ? [236, 236, 236] : [27, 27, 27];
 
     var LEVELS = 14;
     var bIdx = []; for (var k = 0; k < LEVELS; k++) bIdx.push(new Int32Array(N));
