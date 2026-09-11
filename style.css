@@ -78,7 +78,7 @@ body {
   color: var(--ink);
   padding: 128px 24px 80px;
   min-height: 100vh;
-  max-width: 1180px;
+  max-width: 1280px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -137,7 +137,7 @@ main.page-content {
 /* ===== HEADER — floating glass rail ===== */
 header.site-head {
   position: fixed; top: 18px; left: 18px; right: 18px; z-index: 50;
-  max-width: 1180px; margin: 0 auto;
+  max-width: 1280px; margin: 0 auto;
   display: flex; justify-content: space-between; align-items: center;
   padding: 9px 12px 9px 22px;
   /* Dark matte glass, same family as every button — not the light,
@@ -208,12 +208,13 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
 .orb-canvas { width: 100%; height: 100%; display: block; }
 /* the app-window mockup, when it's the hero's visual (the home page) rather
    than a plain orb (the design page) */
-.intro.has-orb .app-preview { flex: 1.15; min-width: 0; max-width: 560px; }
+.intro.has-orb .intro-copy { flex: 0.85; }
+.intro.has-orb .app-preview { flex: 1.7; min-width: 0; max-width: 720px; }
 @media (max-width: 900px) {
   .intro.has-orb { flex-direction: column-reverse; text-align: center; gap: 24px; }
   .intro.has-orb p { max-width: 100%; margin-left: auto; margin-right: auto; }
   .orb-wrap { width: 180px; height: 180px; }
-  .intro.has-orb .app-preview { max-width: 480px; width: 100%; }
+  .intro.has-orb .app-preview { max-width: 560px; width: 100%; }
 }
 
 .hero-cta { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
@@ -390,6 +391,12 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
 
 /* ---- hero signup: the whole pitch, one email field ---- */
 .hero-signup { max-width: 420px; }
+.hero-signup-title {
+  font-family: "Archivo", var(--mono);
+  font-style: italic; font-weight: 800;
+  font-size: clamp(30px, 4vw, 44px); letter-spacing: -0.01em; line-height: 1;
+  color: var(--ink); margin-bottom: 16px;
+}
 .hero-signup-label { font-size: 14px; color: var(--ink); margin-bottom: 14px; }
 .hero-signup-row { display: flex; gap: 10px; }
 .hero-signup-input {
@@ -425,40 +432,45 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
    transparent NSWindow), so this frame exists only because we're
    presenting it as "a window" on a page. Light, matching the app's own
    light theme, with the standard red/yellow/green traffic lights. */
+/* Frame + titlebar + screen backdrop all match the header's own dark
+   matte glass exactly (same fill, blur and border) — the panel/cards
+   below are the light "widgets" floating on top of it, same relationship
+   as the header pill has to the rest of the page. */
 .app-window {
   width: 100%;
   border-radius: 13px; overflow: hidden;
-  background: rgba(255,255,255,0.6);
-  backdrop-filter: blur(20px) saturate(150%);
-  -webkit-backdrop-filter: blur(20px) saturate(150%);
-  border: 1px solid rgba(0,0,0,0.08);
-  box-shadow: 0 1px 2px rgba(0,0,0,0.06), 0 40px 80px -28px rgba(0,0,0,0.35);
+  background: rgba(20,20,22,0.6);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid var(--btn-border);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.25), 0 40px 80px -28px rgba(0,0,0,0.5);
 }
 .app-window-bar {
   display: flex; align-items: center; gap: 8px; padding: 9px 14px;
-  background: rgba(0,0,0,0.02);
-  border-bottom: 1px solid rgba(0,0,0,0.06);
+  background: rgba(255,255,255,0.03);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 .app-window-dots { display: flex; gap: 7px; }
 .app-window-dots span { width: 11px; height: 11px; border-radius: 50%; }
 .app-window-dots span:nth-child(1) { background: #ff5f57; }
 .app-window-dots span:nth-child(2) { background: #febc2e; }
 .app-window-dots span:nth-child(3) { background: #28c840; }
-.app-window-title { flex: 1; text-align: center; font-size: 10px; letter-spacing: 0.1em; color: var(--ink-3); margin-right: 46px; }
+.app-window-title { flex: 1; text-align: center; font-size: 10px; letter-spacing: 0.1em; color: rgba(236,236,236,0.4); margin-right: 46px; }
 
-/* fixed-aspect "screen": the transparent window itself, standing on a
-   light wash the way the app would sit on a light desktop. Every child
+/* fixed-aspect "screen": the transparent window itself. Every child
    below is positioned exactly like the app positions it (src/ui/page.ts)
    against that window — mark centred/top, rail fixed-left/centred, panel
    filling the inset, command floating along the bottom — just scaled to
    this stage instead of a full display. */
 .app-window-body {
   position: relative; aspect-ratio: 16 / 10.2;
-  background: radial-gradient(120% 140% at 50% 0%, #fbfbfb 0%, #ececed 60%, #e2e2e4 100%);
+  background:
+    radial-gradient(120% 140% at 50% 0%, rgba(255,255,255,0.06), transparent 60%),
+    rgba(20,20,22,0.6);
 }
 
 .app-window-mark { position: absolute; top: 11px; left: 0; right: 0; z-index: 2; display: flex; justify-content: center; }
-.app-window-mark img { width: 46px; height: auto; display: block; filter: grayscale(1); opacity: 0.8; }
+.app-window-mark img { width: 46px; height: auto; display: block; filter: grayscale(1) brightness(1.6); opacity: 0.85; }
 
 /* rail: real values (src/ui/page.ts .rail) are a ~1% dark tint relying on
    its icon glyphs' own drop-shadow to read against whatever desktop
@@ -468,10 +480,10 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
 .app-window-rail {
   position: absolute; left: 11px; top: 50%; transform: translateY(-50%); z-index: 2;
   width: 26px; padding: 7px 0;
-  background: rgba(20,20,24,0.5);
+  background: rgba(60,60,66,0.6);
   backdrop-filter: blur(6px) saturate(120%);
   -webkit-backdrop-filter: blur(6px) saturate(120%);
-  border: 1px solid rgba(255,255,255,0.14); border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.22); border-radius: 14px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.08), 0 8px 20px -6px rgba(0,0,0,0.25);
   display: flex; flex-direction: column; align-items: center; gap: 5px;
 }
@@ -551,7 +563,7 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
 }
 
 /* ---- offer ---- */
-.offer { width: 100%; padding: 16px 8px 0; }
+.offer { width: 100%; padding: 96px 8px 0; }
 .offer h2 { font-family: var(--font-display); font-size: clamp(22px, 3vw, 30px); color: var(--ink); font-weight: 500; letter-spacing: -0.01em; margin-bottom: 28px; }
 .offer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
 .offer-item h3 { font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; margin-bottom: 8px; }
