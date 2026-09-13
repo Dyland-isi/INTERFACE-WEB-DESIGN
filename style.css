@@ -25,18 +25,27 @@
   --amber: #e8912d;
   --red: #e5484d;
   --r: 14px;
+  /* Kept only for the app-window recreation now — every var(--mono)
+     reference outside .app-window-* was moved to --font-sans below so the
+     rest of the site can carry its own typeface without touching the
+     app preview's real (mono) one. */
   --mono: "JetBrains Mono", ui-monospace, "SF Mono", SFMono-Regular, Menlo, "Roboto Mono", monospace;
 
-  /* Back to the mono system everywhere — matches the app's own typeface
-     (src/ui/page.ts uses ui-monospace throughout). The one deliberate
-     exception is the Times New Roman accent on headline <em> text below. */
-  --font-display: var(--mono);
-  --font-sans: var(--mono);
+  /* Apple can't be embedded — SF Pro's webfont files are licensed only for
+     use on Apple-platform properties, not arbitrary third-party sites — so
+     this is the honest equivalent: -apple-system/BlinkMacSystemFont are the
+     browser keywords that resolve to actual San Francisco on macOS/iOS,
+     which is literally the same font apple.com itself renders for those
+     visitors. Elsewhere it falls back the same way apple.com's own stack
+     does. */
+  --font-apple: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: var(--font-apple);
+  --font-sans: var(--font-apple);
 
   /* legacy variable name still referenced by a few inline eyebrow-label
-     styles in the HTML — kept on mono for that small-caps technical feel. */
-  --font-outside: var(--mono);
-  --font-inside: var(--mono);
+     styles in the HTML. */
+  --font-outside: var(--font-apple);
+  --font-inside: var(--font-apple);
 
   --surface-rgb: 252,252,253;
   --panel-border: rgba(255,255,255,0.6);
@@ -125,7 +134,7 @@ main.page-content {
 .wake.hidden { opacity: 0; pointer-events: none; }
 .wake-mark img { display: block; width: 132px; height: auto; filter: grayscale(1); opacity: .92; }
 .wake-pct {
-  font-family: var(--mono);
+  font-family: var(--font-sans);
   font-size: 13px; font-weight: 500; letter-spacing: 0.32em; color: #adadad;
   font-variant-numeric: tabular-nums;
 }
@@ -148,7 +157,7 @@ header.site-head {
   border: 1px solid var(--btn-border);
   border-radius: 999px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.25), 0 20px 40px -14px rgba(0,0,0,0.5);
-  font-family: var(--mono); font-size: 11px; letter-spacing: 0.02em;
+  font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.02em;
 }
 header.site-head .name a { display: flex; align-items: center; color: var(--ink-inv); text-decoration: none; transition: opacity 0.2s; cursor: none; }
 header.site-head .name a:hover { opacity: 0.6; }
@@ -221,7 +230,7 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
 @media (max-width: 900px) { .hero-cta { justify-content: center; } }
 .hero-cta-btn {
   display: inline-flex; align-items: center; gap: 9px;
-  font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.04em;
+  font-family: var(--font-sans); font-size: 12px; font-weight: 500; letter-spacing: 0.04em;
   padding: 13px 20px; border-radius: 999px; text-decoration: none; cursor: none;
   transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
 }
@@ -253,7 +262,7 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
   border: 1px solid var(--card-border);
   border-radius: 26px; padding: 40px;
   box-shadow: inset 0 1px 0 var(--card-border), 0 2px 6px rgba(0,0,0,0.05), 0 40px 80px -30px rgba(0,0,0,0.22);
-  font-family: var(--mono); font-weight: 400;
+  font-family: var(--font-sans); font-weight: 400;
   color: var(--ink);
   position: relative;
 }
@@ -289,7 +298,7 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
 .contact {
   width: 100%; max-width: 100%; padding: 44px 8px 0; color: var(--ink);
   display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 32px;
-  font-family: var(--mono);
+  font-family: var(--font-sans);
 }
 .contact h2 {
   font-family: var(--font-display);
@@ -311,7 +320,7 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
 .form-row.split > * { display: flex; flex-direction: column; gap: 8px; }
 .form-label { font-size: 9.5px; color: var(--ink-2); font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; }
 .form-input, .form-textarea, .form-select {
-  font-family: var(--mono); font-size: 13px; color: var(--ink);
+  font-family: var(--font-sans); font-size: 13px; color: var(--ink);
   background: var(--card-hi); border: 1px solid var(--line);
   border-radius: 12px; padding: 12px 14px; outline: 0;
   transition: border-color 0.15s, box-shadow 0.15s;
@@ -327,7 +336,7 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
 .form-disclaimer { font-size: 10.5px; color: var(--ink-3); font-weight: normal; max-width: 400px; line-height: 1.6; }
 .form-submit {
   display: inline-flex; align-items: center; gap: 9px;
-  font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.04em;
+  font-family: var(--font-sans); font-size: 12px; font-weight: 500; letter-spacing: 0.04em;
   background: var(--btn-bg-hover); color: var(--ink-inv);
   border: 1px solid var(--btn-border); cursor: none;
   padding: 13px 22px; border-radius: 999px;
@@ -401,7 +410,7 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
 .hero-signup-row { display: flex; gap: 10px; }
 .hero-signup-input {
   flex: 1; min-width: 0;
-  font-family: var(--mono); font-size: 13px; color: var(--ink);
+  font-family: var(--font-sans); font-size: 13px; color: var(--ink);
   background: var(--card-hi); border: 1px solid var(--line);
   border-radius: 999px; padding: 13px 18px; outline: 0;
   transition: border-color 0.15s, box-shadow 0.15s;
@@ -506,7 +515,7 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
 .app-window-brand b { display: block; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.13em; color: var(--ink); font-weight: 500; }
 .app-window-brand span { display: block; margin-top: 3px; font-family: var(--mono); font-size: 8px; letter-spacing: 0.1em; color: var(--ink-3); }
 .app-window-greet { text-align: right; }
-.app-window-greet strong { display: block; font-family: var(--font-display); font-size: 14px; color: var(--ink); font-weight: 500; }
+.app-window-greet strong { display: block; font-family: var(--mono); font-size: 14px; color: var(--ink); font-weight: 500; }
 .app-window-greet span { display: block; margin-top: 2px; font-family: var(--mono); font-size: 9px; color: var(--ink-3); }
 
 .app-window-grid { flex: 1; min-height: 0; display: grid; grid-template-columns: 74px 1fr 74px; gap: 8px; }
@@ -523,7 +532,7 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
   padding: 7px 8px;
 }
 .app-window-card .label { font-family: var(--mono); font-size: 6.5px; letter-spacing: 0.1em; color: var(--ink-3); text-transform: uppercase; }
-.app-window-card .num { margin-top: 5px; font-family: var(--font-display); font-size: 14px; font-weight: 500; color: var(--ink); letter-spacing: -0.01em; }
+.app-window-card .num { margin-top: 5px; font-family: var(--mono); font-size: 14px; font-weight: 500; color: var(--ink); letter-spacing: -0.01em; }
 .app-window-card .bar { margin-top: 5px; height: 2px; border-radius: 2px; background: rgba(0,0,0,0.08); }
 .app-window-card .bar i { display: block; height: 100%; border-radius: 2px; background: var(--ink-3); }
 .app-window-card .num.ok { color: var(--green); }
