@@ -85,9 +85,9 @@ html, body {
 body {
   font-family: var(--font-sans);
   color: var(--ink);
-  padding: 128px 24px 80px;
+  padding: 128px 10px 80px;
   min-height: 100vh;
-  max-width: 1280px;
+  max-width: 1440px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -145,8 +145,8 @@ main.page-content {
 
 /* ===== HEADER — floating glass rail ===== */
 header.site-head {
-  position: fixed; top: 18px; left: 18px; right: 18px; z-index: 50;
-  max-width: 1280px; margin: 0 auto;
+  position: fixed; top: 18px; left: 10px; right: 10px; z-index: 50;
+  max-width: 1440px; margin: 0 auto;
   display: flex; justify-content: space-between; align-items: center;
   padding: 9px 12px 9px 22px;
   /* Dark matte glass, same family as every button — not the light,
@@ -402,7 +402,7 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
 .hero-signup { max-width: 420px; }
 .hero-signup .hero-signup-title {
   font-family: var(--font-apple);
-  font-style: normal; font-weight: 800;
+  font-style: normal; font-weight: 700;
   font-size: clamp(30px, 4vw, 44px); letter-spacing: -0.01em; line-height: 1;
   color: var(--ink); margin-bottom: 16px;
 }
@@ -426,6 +426,11 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
 .hero-signup .form-success { text-align: left; padding: 0; }
 .hero-signup .form-success h3 { font-size: 18px; margin-bottom: 8px; }
 .hero-signup .form-success p { font-size: 13px; }
+.hero-demo {
+  margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line);
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+}
+.hero-demo-label { font-size: 13px; color: var(--ink-2); }
 @media (max-width: 480px) { .hero-signup-input { padding: 12px 16px; } }
 
 /* ---- app window mockup ----
