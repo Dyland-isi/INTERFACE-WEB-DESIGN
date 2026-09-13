@@ -78,7 +78,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
-<link rel="stylesheet" href="style.css?v=9bb30f6" />
+<link rel="stylesheet" href="style.css?v=598bd44" />
 </head>
 <body class="loading page-home">
 
@@ -145,22 +145,45 @@
         <div class="app-window-body">
           <div class="app-window-mark"><img src="assets/img/logo.svg" alt="" /></div>
           <nav class="app-window-rail">
-            <span class="on"></span><span></span><span></span><span></span><span></span>
+            <span class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg></span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-4 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg></span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="14" y2="17"/></svg></span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10v4h4l6 4V6l-6 4H3z"/><path d="M17 9a4 4 0 0 1 0 6"/></svg></span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/></svg></span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,12 8,12 10,6 14,18 16,12 21,12"/></svg></span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/></svg></span>
           </nav>
           <div class="app-window-panel">
             <div class="app-window-head">
               <div class="app-window-brand"><b>INTERFACE OS</b><span>AI OPERATING SYSTEM</span></div>
-              <div class="app-window-greet"><strong>Welcome.</strong><span>Your system is online.</span></div>
+              <div class="app-window-greet"><strong>Good evening.</strong><span>1 item needs your attention.</span></div>
+              <div class="app-window-search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                <span>Ask anything…</span>
+              </div>
             </div>
             <div class="app-window-grid">
               <div class="app-window-stats">
-                <div class="app-window-card"><div class="label">ORDERS</div><div class="num">18</div><div class="bar"><i style="width:64%"></i></div></div>
-                <div class="app-window-card"><div class="label">TRAFFIC</div><div class="num">2.4k</div><div class="bar"><i style="width:40%"></i></div></div>
+                <div class="app-window-card"><div class="label">SYSTEM HEALTH</div><div class="num ok">99%</div><div class="sub ok">OPTIMAL</div></div>
+                <div class="app-window-card"><div class="label">MEMORY</div><div class="num">2<small>facts</small></div><div class="bar"><i style="width:20%"></i></div></div>
+                <div class="app-window-card"><div class="label">AGENTS</div><div class="num">0</div><div class="sub dim">ALL IDLE</div></div>
               </div>
-              <div class="app-window-orbcol"><canvas class="orb-canvas"></canvas></div>
-              <div class="app-window-stats">
-                <div class="app-window-card"><div class="label">SYNCED</div><div class="num ok">✓</div><div class="bar"><i style="width:100%"></i></div></div>
-                <div class="app-window-card"><div class="label">WAITLIST</div><div class="num">312</div><div class="bar"><i style="width:80%"></i></div></div>
+              <div class="app-window-brain">
+                <div class="app-window-card-head">
+                  <span>INTERFACE BRAIN</span>
+                  <span class="app-window-synced">Synced<i></i></span>
+                </div>
+                <div class="app-window-orbcol"><canvas class="orb-canvas"></canvas></div>
+                <div class="app-window-brain-foot"><span>Open brain</span></div>
+              </div>
+              <div class="app-window-priorities">
+                <div class="app-window-card-head"><span>PRIORITIES</span></div>
+                <div class="app-window-priorities-list">
+                  <div class="app-window-priority"><i class="red"></i><span>Move Passwords.csv to a password manager</span></div>
+                  <div class="app-window-priority"><i class="green"></i><span>Decide on Interface Archive launch</span></div>
+                  <div class="app-window-priority-more">+13 more</div>
+                </div>
               </div>
             </div>
           </div>
