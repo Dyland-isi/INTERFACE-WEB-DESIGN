@@ -646,22 +646,14 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
 }
 /* bleeds the image to the actual viewport edge regardless of the page's
    own centred max-width, so the hand reads as entering from off-screen
-   rather than stopping at the content column. Capped narrower than the
-   column it sits in — full width made the hero too tall, pushing
-   everything below the fold. */
+   rather than stopping at the content column. */
 .hero-shot-media {
-  flex: 0 1 420px; min-width: 0;
+  flex: 1.15; min-width: 0;
   margin-left: calc(-50vw + 50%);
-  display: flex; align-items: center;
 }
-/* height-capped, not width-capped: the source photo is portrait, so
-   constraining by width alone left a very tall render that pushed
-   everything below it down the page. Width follows from the aspect
-   ratio automatically, and the image still starts flush with the
-   viewport edge either way. */
 .hero-shot-media img {
-  max-height: 320px; width: auto; max-width: 100%; display: block;
-  filter: drop-shadow(0 24px 28px rgba(0,0,0,0.14));
+  width: 100%; height: auto; display: block;
+  filter: drop-shadow(0 30px 36px rgba(0,0,0,0.14));
 }
 .hero-shot-copy { flex: 1; min-width: 0; }
 .hero-shot-copy h1 {
@@ -673,8 +665,7 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
 .hero-shot-copy .hero-cta { margin-top: 0; }
 @media (max-width: 900px) {
   .hero-shot { flex-direction: column; text-align: center; }
-  .hero-shot-media { margin-left: 0; flex: none; width: 100%; max-width: 420px; justify-content: center; }
-  .hero-shot-media img { max-height: 420px; }
+  .hero-shot-media { margin-left: 0; flex: none; width: 100%; max-width: 420px; }
   .hero-shot-copy p { margin-left: auto; margin-right: auto; }
   .hero-shot-copy .hero-cta { justify-content: center; }
 }
