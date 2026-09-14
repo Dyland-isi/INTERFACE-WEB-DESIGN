@@ -78,7 +78,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
-<link rel="stylesheet" href="style.css?v=598bd44" />
+<link rel="stylesheet" href="style.css?v=144c370" />
 </head>
 <body class="loading page-home">
 
@@ -97,6 +97,7 @@
     </a>
   </div>
   <nav>
+    <a id="nav-home" href="home.html">HOME</a>
     <a id="nav-software" href="index.html" class="active">SOFTWARE</a>
     <a id="nav-work" href="design.html">DESIGN</a>
     <a id="nav-about" href="about.html">ABOUT</a>
@@ -108,7 +109,7 @@
 <main class="page-content">
   <section class="intro has-orb">
     <div class="intro-copy">
-      <div class="hero-signup">
+      <div class="hero-signup" id="join">
         <h1 class="hero-signup-title">Interface OS</h1>
         <p class="hero-signup-label">Sign up for a 2 week free trial</p>
         <form id="waitlistForm" action="https://formspree.io/f/mnjwqevo" method="POST" onsubmit="handleWaitlistSubmit(event)">
@@ -191,6 +192,40 @@
         </div>
       </div>
     </div>
+  </section>
+
+  <section class="pricing">
+    <h2>Simple pricing.</h2>
+    <p>A first look at plans — final pricing lands closer to launch.</p>
+
+    <div class="pricing-toggle">
+      <button type="button" class="on" onclick="this.classList.add('on'); this.nextElementSibling.classList.remove('on')">Individual</button>
+      <button type="button" onclick="this.classList.add('on'); this.previousElementSibling.classList.remove('on')">Team</button>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3>Starter</h3>
+        <p>For solo founders finding their footing.</p>
+        <div class="pricing-price">£19<span>/month</span></div>
+        <a href="#join" class="hero-cta-btn secondary">Join waitlist</a>
+      </div>
+      <div class="pricing-card featured">
+        <div class="pricing-tag">Most popular</div>
+        <h3>Pro</h3>
+        <p>For small teams running full brand ops through Interface OS.</p>
+        <div class="pricing-price">£49<span>/month</span></div>
+        <a href="#join" class="hero-cta-btn primary">Join waitlist</a>
+      </div>
+      <div class="pricing-card">
+        <h3>Scale</h3>
+        <p>For growing brands who want everything automated.</p>
+        <div class="pricing-price">£99<span>/month</span></div>
+        <a href="#join" class="hero-cta-btn secondary">Join waitlist</a>
+      </div>
+    </div>
+
+    <p class="pricing-note">Prices are an early first draft and subject to change before launch.</p>
   </section>
 
   <section class="offer">
