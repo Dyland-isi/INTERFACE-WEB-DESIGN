@@ -659,7 +659,7 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
    the still photo — same simulation as everywhere else on the site,
    just placed to match this one photograph's own screen region. */
 .hero-shot-orb {
-  position: absolute; left: 40%; top: 23.5%; width: 19.5%; height: 22%;
+  position: absolute; left: 39.7%; top: 25.3%; width: 20%; height: 20.1%;
   pointer-events: none;
 }
 .hero-shot-orb canvas { width: 100%; height: 100%; display: block; }
