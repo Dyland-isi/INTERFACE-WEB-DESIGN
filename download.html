@@ -3,23 +3,23 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Interface — AI Software Studio, Cardiff</title>
-<meta name="description" content="Cardiff-based AI software studio building Interface OS, an AI operating system for brands — plus, for a small number of clients, the web design and brand work the studio started with." />
-<meta name="keywords" content="AI software studio Cardiff, Interface OS, Cardiff web design, Cardiff marketing, web designer Cardiff, marketing consultant Cardiff, brand identity Cardiff, freelance designer Cardiff, web design Wales, marketing Wales" />
+<title>Download Interface OS</title>
+<meta name="description" content="Interface OS isn't available to download yet — join the waitlist to be first in line for early access and a free two-week trial." />
+<meta name="keywords" content="Interface OS download, AI operating system" />
 <meta name="author" content="Interface" />
 <meta name="robots" content="index, follow" />
-<link rel="canonical" href="https://www.dylandriscoll.design/design.html" />
+<link rel="canonical" href="https://www.dylandriscoll.design/download.html" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Interface — AI Software Studio, Cardiff" />
-<meta property="og:description" content="Cardiff-based AI software studio building Interface OS, an AI operating system for brands — plus, for a small number of clients, the web design and brand work the studio started with." />
+<meta property="og:title" content="Download Interface OS" />
+<meta property="og:description" content="Interface OS isn't available to download yet — join the waitlist to be first in line." />
 <meta property="og:locale" content="en_GB" />
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Interface — AI Software Studio, Cardiff" />
-<meta name="twitter:description" content="Cardiff-based AI software studio building Interface OS, an AI operating system for brands — plus, for a small number of clients, the web design and brand work the studio started with." />
+<meta name="twitter:title" content="Download Interface OS" />
+<meta name="twitter:description" content="Interface OS isn't available to download yet — join the waitlist to be first in line." />
 
 <!-- Geo tags -->
 <meta name="geo.region" content="GB-CRF" />
@@ -80,7 +80,7 @@
 
 <link rel="stylesheet" href="style.css?v=4dbd363" />
 </head>
-<body class="loading page-design">
+<body class="loading page-download">
 
 <div class="wake" id="wake">
   <div class="wake-mark"><img src="assets/img/logo.svg" alt="Interface"></div>
@@ -99,7 +99,7 @@
   <nav>
     <a id="nav-home" href="home.html">HOME</a>
     <a id="nav-software" href="index.html">SOFTWARE</a>
-    <a id="nav-work" href="design.html" class="active">DESIGN</a>
+    <a id="nav-work" href="design.html">DESIGN</a>
     <a id="nav-about" href="about.html">ABOUT</a>
     <a id="nav-quote" href="quote.html">QUOTE</a>
     <a id="nav-contact" href="index.html#contact">CONTACT</a>
@@ -107,33 +107,39 @@
 </header>
 
 <main class="page-content">
-  <section class="intro has-orb">
-    <div class="intro-copy">
-      <h1>Interface.<br><em>Software, mostly.</em></h1>
-      <h2 style="font-family: var(--font-outside); font-size: 13px; font-weight: 500; color: #6a6a70; letter-spacing: 0.04em; text-transform: uppercase; margin-top: 24px; margin-bottom: 6px;">AI software studio — Cardiff, UK</h2>
-      <p>We build Interface OS, an AI operating system for running a brand — plus, for a small number of clients, the web design and brand work we started with.</p>
-      <div class="hero-cta">
-        <a href="index.html" class="hero-cta-btn primary">
-          Explore Interface OS
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </a>
-        <a href="index.html#contact" class="hero-cta-btn secondary">
-          Get in touch
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </a>
-      </div>
-    </div>
-    <div class="orb-wrap"><canvas class="orb-canvas"></canvas></div>
+  <section class="intro">
+    <h1>Not available<br><em>to download yet.</em></h1>
+    <p>Interface OS is still in early access. Join the waitlist and we'll email you the moment it's ready to download, with your free two-week trial code.</p>
   </section>
 
+  <article class="project-card">
+    <div class="hero-signup" style="max-width: none;">
+      <p class="hero-signup-label">Sign up for a 2 week free trial</p>
+      <form id="waitlistForm" action="https://formspree.io/f/mnjwqevo" method="POST" onsubmit="handleWaitlistSubmit(event)">
+        <input type="hidden" name="_subject" value="Interface OS waitlist signup" />
+        <input type="hidden" name="_replyto" id="w-replyto" />
+        <div class="hero-signup-row">
+          <input class="hero-signup-input" id="w-email" name="email" type="email" placeholder="you@company.com" required />
+          <button class="hero-signup-btn form-submit" type="submit" aria-label="Sign up">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </div>
+      </form>
+      <div class="form-success" id="waitlistSuccess">
+        <h3>You're on the list.</h3>
+        <p>We'll be in touch with your free two-week trial as soon as Interface OS launches.</p>
+      </div>
+    </div>
+  </article>
+
   <div class="nav-controls">
-    <a class="nav-btn" href="index.html" aria-label="Back">
+    <a class="nav-btn" href="home.html" aria-label="Back">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
     </a>
   </div>
 
   <section class="contact">
-    <h2>Working on something?<br><em>Send a brief.</em></h2>
+    <h2>Questions before launch?<br><em>Just ask.</em></h2>
     <div class="links">
       <span class="label">QUOTE</span><a href="quote.html">Start a project ↗︎</a>
       <span class="label">EMAIL</span><a href="mailto:info@interfacecardiff.com">info@interfacecardiff.com</a>
@@ -141,7 +147,6 @@
   </section>
 </main>
 
-<script src="assets/orb.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
