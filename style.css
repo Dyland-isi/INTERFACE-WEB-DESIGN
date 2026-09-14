@@ -629,42 +629,57 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
   .app-window-stats, .app-window-greet, .app-window-priorities, .app-window-search { display: none; }
 }
 
-/* ---- home page: hero product shot + integrations ---- */
+/* ---- home page: hero product shot + integrations ----
+   This page's own sections sit noticeably closer together than the rest
+   of the site — the whole point of the layout below is to get
+   "everything it connects to" onto the first screen, not buried under a
+   tall hero. */
+.page-home-screen main.page-content { gap: 16px; }
+
 .hero-eyebrow {
   width: 100%; text-align: center;
   font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--ink-3); padding: 0 8px;
+  color: var(--ink-3); padding: 0 8px; margin-bottom: -4px;
 }
 .hero-shot {
-  width: 100%; display: flex; align-items: center; gap: 36px; padding: 0 8px;
+  width: 100%; display: flex; align-items: center; gap: 32px; padding: 0 8px;
 }
 /* bleeds the image to the actual viewport edge regardless of the page's
    own centred max-width, so the hand reads as entering from off-screen
-   rather than stopping at the content column. */
+   rather than stopping at the content column. Capped narrower than the
+   column it sits in — full width made the hero too tall, pushing
+   everything below the fold. */
 .hero-shot-media {
-  flex: 1.15; min-width: 0;
+  flex: 0 1 420px; min-width: 0;
   margin-left: calc(-50vw + 50%);
+  display: flex; align-items: center;
 }
+/* height-capped, not width-capped: the source photo is portrait, so
+   constraining by width alone left a very tall render that pushed
+   everything below it down the page. Width follows from the aspect
+   ratio automatically, and the image still starts flush with the
+   viewport edge either way. */
 .hero-shot-media img {
-  width: 100%; height: auto; display: block;
-  filter: drop-shadow(0 40px 50px rgba(0,0,0,0.14));
+  max-height: 320px; width: auto; max-width: 100%; display: block;
+  filter: drop-shadow(0 24px 28px rgba(0,0,0,0.14));
 }
 .hero-shot-copy { flex: 1; min-width: 0; }
 .hero-shot-copy h1 {
-  font-family: var(--font-sans); font-weight: 700;
-  font-size: clamp(28px, 3.4vw, 40px); letter-spacing: -0.015em; line-height: 1.15;
-  color: var(--ink); margin-bottom: 16px;
+  font-family: var(--font-display); font-weight: 500;
+  font-size: clamp(24px, 2.8vw, 34px); letter-spacing: -0.01em; line-height: 1.2;
+  color: var(--ink); margin-bottom: 14px;
 }
-.hero-shot-copy p { font-family: var(--font-sans); font-size: 14.5px; line-height: 1.6; color: var(--ink-2); margin-bottom: 24px; max-width: 46ch; }
+.hero-shot-copy p { font-family: var(--font-sans); font-size: 14px; line-height: 1.6; color: var(--ink-2); margin-bottom: 20px; max-width: 42ch; }
 .hero-shot-copy .hero-cta { margin-top: 0; }
 @media (max-width: 900px) {
   .hero-shot { flex-direction: column; text-align: center; }
-  .hero-shot-media { margin-left: 0; flex: none; width: 100%; }
+  .hero-shot-media { margin-left: 0; flex: none; width: 100%; max-width: 420px; justify-content: center; }
+  .hero-shot-media img { max-height: 420px; }
   .hero-shot-copy p { margin-left: auto; margin-right: auto; }
   .hero-shot-copy .hero-cta { justify-content: center; }
 }
 
-.integrations { width: 100%; padding: 48px 8px 0; text-align: center; }
+.integrations { width: 100%; padding: 8px 8px 0; text-align: center; }
 .integrations h2 { font-family: var(--font-display); font-size: clamp(22px, 3vw, 30px); color: var(--ink); font-weight: 500; letter-spacing: -0.01em; margin-bottom: 8px; }
 .integrations > p { font-family: var(--font-sans); font-size: 13.5px; color: var(--ink-2); margin-bottom: 32px; }
 .integrations-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 20px 12px; max-width: 900px; margin: 0 auto; }
