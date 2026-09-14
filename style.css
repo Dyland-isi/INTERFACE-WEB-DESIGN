@@ -642,7 +642,7 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
   color: var(--ink-3); padding: 0 8px; margin-bottom: -4px;
 }
 .hero-shot {
-  width: 100%; display: flex; align-items: center; gap: 32px; padding: 0 8px;
+  width: 100%; display: flex; align-items: flex-start; gap: 32px; padding: 0 8px;
 }
 /* bleeds the image to the actual viewport edge regardless of the page's
    own centred max-width, so the hand reads as entering from off-screen
@@ -668,13 +668,18 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
   .hero-shot-media { margin-left: 0; flex: none; width: 100%; max-width: 420px; }
   .hero-shot-copy p { margin-left: auto; margin-right: auto; }
   .hero-shot-copy .hero-cta { justify-content: center; }
+  .integrations { text-align: center; }
+  .integrations-grid { justify-content: center; }
 }
 
-.integrations { width: 100%; padding: 8px 8px 0; text-align: center; }
-.integrations h2 { font-family: var(--font-display); font-size: clamp(22px, 3vw, 30px); color: var(--ink); font-weight: 500; letter-spacing: -0.01em; margin-bottom: 8px; }
-.integrations > p { font-family: var(--font-sans); font-size: 13.5px; color: var(--ink-2); margin-bottom: 32px; }
-.integrations-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 20px 12px; max-width: 900px; margin: 0 auto; }
-.integration-item { display: flex; flex-direction: column; align-items: center; gap: 9px; }
+/* nested inside .hero-shot-copy now — same right-hand column as the
+   headline, top-aligned with the laptop image beside it — rather than
+   its own full-width centred section below the hero row. */
+.integrations { width: 100%; padding: 32px 0 0; text-align: left; }
+.integrations h2 { font-family: var(--font-display); font-size: clamp(19px, 2vw, 24px); color: var(--ink); font-weight: 500; letter-spacing: -0.01em; margin-bottom: 6px; }
+.integrations > p { font-family: var(--font-sans); font-size: 13px; color: var(--ink-2); margin-bottom: 22px; }
+.integrations-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px 10px; }
+.integration-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
 .integration-icon {
   width: 52px; height: 52px; border-radius: 15px;
   background: var(--card-hi); border: 1px solid var(--line);
