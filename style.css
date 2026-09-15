@@ -663,15 +663,15 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
   pointer-events: none;
 }
 .hero-shot-orb canvas { width: 100%; height: 100%; display: block; }
-.hero-shot-copy { flex: 1; min-width: 0; margin-top: 34px; }
+.hero-shot-copy { flex: 1; min-width: 0; margin-top: 54px; }
 .hero-shot-mark {
-  height: 34px; width: 102px; margin-bottom: 18px;
-  background-color: var(--ink);
+  height: 34px; width: 102px; margin: 0 auto 18px;
+  background-color: var(--ink-2);
   -webkit-mask-image: url('assets/img/logo.svg');
   mask-image: url('assets/img/logo.svg');
   -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
   -webkit-mask-size: contain; mask-size: contain;
-  -webkit-mask-position: left center; mask-position: left center;
+  -webkit-mask-position: center; mask-position: center;
 }
 .hero-shot-copy h1 {
   font-family: var(--font-display); font-weight: 500;
