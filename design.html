@@ -78,7 +78,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
-<link rel="stylesheet" href="style.css?v=a8bf180" />
+<link rel="stylesheet" href="style.css?v=d40a686" />
 </head>
 <body class="loading page-design">
 
@@ -106,42 +106,173 @@
   </nav>
 </header>
 
-<main class="page-content">
-  <section class="intro has-orb">
-    <div class="intro-copy">
-      <h1>Interface.<br><em>Software, mostly.</em></h1>
-      <h2 style="font-family: var(--font-outside); font-size: 13px; font-weight: 500; color: #6a6a70; letter-spacing: 0.04em; text-transform: uppercase; margin-top: 24px; margin-bottom: 6px;">AI software studio — Cardiff, UK</h2>
-      <p>We build Interface OS, an AI operating system for running a brand — plus, for a small number of clients, the web design and brand work we started with.</p>
-      <div class="hero-cta">
-        <a href="index.html" class="hero-cta-btn primary">
-          Explore Interface OS
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </a>
-        <a href="index.html#contact" class="hero-cta-btn secondary">
-          Get in touch
+<main class="page-content page-design-content">
+  <div class="design-stage" id="designStage">
+    <div class="design-stage-pin">
+      <div class="design-orb-wrap" id="designOrbWrap"><canvas class="orb-canvas"></canvas></div>
+      <div class="design-stage-copy" id="designStageCopy">
+        <h1>Interface.<br><em>Software, mostly.</em></h1>
+        <p>We build Interface OS, an AI operating system for running a brand — plus, for a small number of clients, the web design and brand work we started with.</p>
+        <div class="design-scroll-cue">
+          <span>Scroll to start a project</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </a>
+        </div>
       </div>
     </div>
-    <div class="orb-wrap"><canvas class="orb-canvas"></canvas></div>
-  </section>
-
-  <div class="nav-controls">
-    <a class="nav-btn" href="index.html" aria-label="Back">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-    </a>
   </div>
 
-  <section class="contact">
-    <h2>Working on something?<br><em>Send a brief.</em></h2>
-    <div class="links">
-      <span class="label">QUOTE</span><a href="quote.html">Start a project ↗︎</a>
-      <span class="label">EMAIL</span><a href="mailto:info@interfacecardiff.com">info@interfacecardiff.com</a>
+  <section class="design-reveal" id="designReveal">
+    <article class="project-card">
+      <header class="card-head">
+        <div class="proj-title"><div class="name">New Project Brief</div><div class="client">Quote Request</div></div>
+        <div class="meta"><div class="label">Response time</div><div class="value">≤ 2 days</div></div>
+        <div class="meta"><div class="label">Format</div><div class="value">Email reply</div></div>
+        <div class="meta"><div class="label">Cost</div><div class="value">Free, no obligation</div></div>
+      </header>
+
+      <form class="quote-form" id="quoteForm" action="https://formspree.io/f/mnjwqevo" method="POST" onsubmit="handleSubmit(event)">
+
+        <input type="hidden" name="_subject" value="New project brief — Interface" />
+        <input type="hidden" name="_replyto" id="q-replyto" />
+
+        <div class="form-row split">
+          <div>
+            <label class="form-label" for="q-name">Full name *</label>
+            <input class="form-input" id="q-name" name="name" type="text" placeholder="Jane Doe" required />
+          </div>
+          <div>
+            <label class="form-label" for="q-email">Email *</label>
+            <input class="form-input" id="q-email" name="email" type="email" placeholder="jane@company.com" required />
+          </div>
+        </div>
+
+        <div class="form-row split">
+          <div>
+            <label class="form-label" for="q-company">Company / brand</label>
+            <input class="form-input" id="q-company" name="company" type="text" placeholder="Optional" />
+          </div>
+          <div>
+            <label class="form-label" for="q-project-type">Project type *</label>
+            <select class="form-select" id="q-project-type" name="project_type" required>
+              <option value="">Select one…</option>
+              <option value="Website">Website</option>
+              <option value="Brand identity">Brand identity</option>
+              <option value="Graphic design">Graphic design</option>
+              <option value="Garment design">Garment design</option>
+              <option value="Marketing campaign">Marketing campaign</option>
+              <option value="E-commerce">E-commerce</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row split">
+          <div>
+            <label class="form-label" for="q-budget">Budget range *</label>
+            <select class="form-select" id="q-budget" name="budget" required>
+              <option value="">Select one…</option>
+              <option value="Under £2k">Under £2,000</option>
+              <option value="£2k–5k">£2,000 – £5,000</option>
+              <option value="£5k–10k">£5,000 – £10,000</option>
+              <option value="£10k–25k">£10,000 – £25,000</option>
+              <option value="£25k+">£25,000+</option>
+              <option value="Not sure yet">Not sure yet</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label" for="q-timeline">Timeline *</label>
+            <select class="form-select" id="q-timeline" name="timeline" required>
+              <option value="">Select one…</option>
+              <option value="ASAP">ASAP — within 2 weeks</option>
+              <option value="1 month">Within 1 month</option>
+              <option value="2-3 months">2 – 3 months</option>
+              <option value="3+ months">3+ months</option>
+              <option value="Flexible">Flexible</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label class="form-label" for="q-message">Project details *</label>
+          <textarea class="form-textarea" id="q-message" name="message" placeholder="What are you trying to make? Who's it for? Any references, links, or context that would help us understand the brief." required></textarea>
+        </div>
+
+        <div class="form-submit-row">
+          <p class="form-disclaimer">Submitting sends your brief straight to the studio. We read every one personally and reply within two business days.</p>
+          <button class="form-submit" type="submit">
+            Send brief
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </div>
+      </form>
+
+      <div class="form-success" id="quoteSuccess">
+        <h3>Brief received.</h3>
+        <p>Thanks — we'll be in touch within two business days.</p>
+      </div>
+    </article>
+
+    <div class="nav-controls">
+      <a class="nav-btn" href="index.html" aria-label="Back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </a>
     </div>
+
+    <section class="contact">
+      <h2>Prefer email?<br><em>That works too.</em></h2>
+      <div class="links">
+        <span class="label">EMAIL</span><a href="mailto:info@interfacecardiff.com">info@interfacecardiff.com</a>
+        <span class="label">PHONE</span><a href="tel:+447538043294">+44 7538 043294</a>
+        <span class="label">SOCIAL</span><a href="https://www.instagram.com/interface_dev/" target="_blank" rel="noopener">Instagram ↗︎</a><a href="https://www.linkedin.com/in/dylan-driscoll" target="_blank" rel="noopener">LinkedIn ↗︎</a>
+      </div>
+    </section>
   </section>
 </main>
 
 <script src="assets/orb.js"></script>
 <script src="script.js"></script>
+<script>
+(function () {
+  var stage = document.getElementById('designStage');
+  var orbWrap = document.getElementById('designOrbWrap');
+  var copy = document.getElementById('designStageCopy');
+  var reveal = document.getElementById('designReveal');
+  if (!stage || !orbWrap || !copy) return;
+
+  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+
+  function onScroll() {
+    var rect = stage.getBoundingClientRect();
+    var vh = window.innerHeight;
+    var total = stage.offsetHeight - vh;
+    var progress = total > 0 ? clamp(-rect.top / total, 0, 1) : 0;
+
+    orbWrap.style.transform = 'scale(' + (1 - progress * 0.42) + ')';
+    orbWrap.style.opacity = 1 - progress * 0.8;
+
+    var copyProgress = clamp(progress / 0.6, 0, 1);
+    copy.style.opacity = 1 - copyProgress;
+    copy.style.transform = 'translateY(' + (-copyProgress * 40) + 'px)';
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+
+  if (reveal && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { reveal.classList.add('in-view'); io.disconnect(); }
+      });
+    }, { threshold: 0.12 });
+    io.observe(reveal);
+  } else if (reveal) {
+    reveal.classList.add('in-view');
+  }
+})();
+</script>
 </body>
 </html>
