@@ -110,10 +110,7 @@
   <div class="design-stage" id="designStage">
     <div class="design-stage-pin">
       <div class="design-orb-wrap" id="designOrbWrap"><canvas class="orb-canvas"></canvas></div>
-    </div>
-  </div>
-
-  <section class="design-reveal" id="designReveal">
+      <div class="design-form-emerge" id="designFormEmerge">
     <article class="project-card">
       <header class="card-head">
         <div class="proj-title"><div class="name">New Project Brief</div><div class="client">Quote Request</div></div>
@@ -206,21 +203,23 @@
         <p>Thanks — we'll be in touch within two business days.</p>
       </div>
     </article>
-
-    <div class="nav-controls">
-      <a class="nav-btn" href="index.html" aria-label="Back">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-      </a>
-    </div>
-
-    <section class="contact">
-      <h2>Prefer email?<br><em>That works too.</em></h2>
-      <div class="links">
-        <span class="label">EMAIL</span><a href="mailto:info@interfacecardiff.com">info@interfacecardiff.com</a>
-        <span class="label">PHONE</span><a href="tel:+447538043294">+44 7538 043294</a>
-        <span class="label">SOCIAL</span><a href="https://www.instagram.com/interface_dev/" target="_blank" rel="noopener">Instagram ↗︎</a><a href="https://www.linkedin.com/in/dylan-driscoll" target="_blank" rel="noopener">LinkedIn ↗︎</a>
       </div>
-    </section>
+    </div>
+  </div>
+
+  <div class="nav-controls">
+    <a class="nav-btn" href="index.html" aria-label="Back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </a>
+  </div>
+
+  <section class="contact">
+    <h2>Prefer email?<br><em>That works too.</em></h2>
+    <div class="links">
+      <span class="label">EMAIL</span><a href="mailto:info@interfacecardiff.com">info@interfacecardiff.com</a>
+      <span class="label">PHONE</span><a href="tel:+447538043294">+44 7538 043294</a>
+      <span class="label">SOCIAL</span><a href="https://www.instagram.com/interface_dev/" target="_blank" rel="noopener">Instagram ↗︎</a><a href="https://www.linkedin.com/in/dylan-driscoll" target="_blank" rel="noopener">LinkedIn ↗︎</a>
+    </div>
   </section>
 </main>
 
@@ -230,12 +229,13 @@
 (function () {
   var stage = document.getElementById('designStage');
   var orbWrap = document.getElementById('designOrbWrap');
-  var reveal = document.getElementById('designReveal');
-  if (!stage || !orbWrap) return;
+  var formLayer = document.getElementById('designFormEmerge');
+  if (!stage || !orbWrap || !formLayer) return;
 
   function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
   function easeInCubic(t) { return t * t * t; }
   function easeInQuad(t) { return t * t; }
+  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
 
   // cache layout metrics instead of reading getBoundingClientRect every
   // frame — that forces a synchronous reflow and was the source of the
@@ -256,6 +256,11 @@
   // the scroll event rate, giving a full-framerate, buttery result.
   var target = 0, smoothed = 0;
 
+  // the quote form starts emerging while the orb is still zooming out
+  // (from FORM_START onward) so it grows directly out of the orb's last
+  // frame in the same spot, rather than arriving separately afterwards.
+  var FORM_START = 0.55;
+
   function render() {
     var total = stageHeight - vh;
     target = total > 0 ? clamp((window.scrollY - stageTop) / total, 0, 1) : 0;
@@ -263,35 +268,27 @@
     if (Math.abs(target - smoothed) < 0.0005) smoothed = target;
 
     // "quick zoom" — the orb rockets toward the viewer (scale + blur +
-    // fade ramping in fast) rather than gently shrinking away.
+    // fade ramping in fast) rather than gently shrinking away. Stays
+    // centered the whole time — no lateral drift — since the form now
+    // emerges in the same spot instead of sliding in from the side.
     var zoom = easeInCubic(smoothed);
     var fade = easeInQuad(smoothed);
     var scale = 1 + zoom * 2.6;
-    var xShift = -smoothed * smoothed * 260;
-    var yShift = smoothed * -40;
-    var rotate = smoothed * -14;
     var blur = zoom * 18;
 
-    orbWrap.style.transform =
-      'translate3d(' + xShift + 'px,' + yShift + 'px,0) scale(' + scale + ') rotate(' + rotate + 'deg)';
+    orbWrap.style.transform = 'scale(' + scale + ')';
     orbWrap.style.opacity = clamp(1 - fade * 1.15, 0, 1);
     orbWrap.style.filter = blur > 0.05 ? 'blur(' + blur + 'px)' : 'none';
+
+    var formT = easeOutCubic(clamp((smoothed - FORM_START) / (1 - FORM_START), 0, 1));
+    formLayer.style.opacity = formT;
+    formLayer.style.transform = 'scale(' + (0.88 + formT * 0.12) + ') translate3d(0,' + ((1 - formT) * 22) + 'px,0)';
+    formLayer.style.pointerEvents = formT > 0.9 ? 'auto' : 'none';
 
     requestAnimationFrame(render);
   }
 
   requestAnimationFrame(render);
-
-  if (reveal && 'IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) { reveal.classList.add('in-view'); io.disconnect(); }
-      });
-    }, { threshold: 0.12 });
-    io.observe(reveal);
-  } else if (reveal) {
-    reveal.classList.add('in-view');
-  }
 })();
 </script>
 </body>

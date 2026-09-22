@@ -232,7 +232,7 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
      as wide as the page's centred max-width column, so the zoom's blur
      gets hard-clipped well inside the screen on wide viewports instead
      of fading out at the true edge. */
-  position: relative; width: 100vw; height: 180vh;
+  position: relative; width: 100vw; height: 220vh;
   margin-left: calc(-50vw + 50%);
 }
 .design-stage-pin {
@@ -252,16 +252,19 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
   transform-origin: center center;
 }
 .design-orb-wrap canvas { width: 100%; height: 100%; display: block; }
-.design-reveal {
-  position: relative; z-index: 2; width: 100%;
-  display: flex; flex-direction: column; align-items: center; gap: 40px;
-  padding: 48px 8px 0;
-  opacity: 0; transform: translate3d(64px, 0, 0);
-  transition: opacity 0.7s cubic-bezier(.16,.8,.3,1), transform 0.7s cubic-bezier(.16,.8,.3,1);
+/* the quote form overlays the same pinned frame as the orb and crossfades
+   in as it finishes zooming out, so it visibly emerges from that last
+   frame rather than arriving via a separate scroll below. */
+.design-form-emerge {
+  position: absolute; inset: 0; z-index: 2;
+  display: flex; align-items: center; justify-content: center;
+  overflow-y: auto; padding: 110px 16px 40px;
+  will-change: transform, opacity;
 }
-.design-reveal.in-view { opacity: 1; transform: translate3d(0, 0, 0); }
+.design-form-emerge .project-card { width: 100%; max-width: 720px; }
 @media (max-width: 900px) {
-  .design-stage { height: 140vh; }
+  .design-stage { height: 180vh; }
+  .design-form-emerge { padding: 140px 8px 40px; align-items: flex-start; }
 }
 
 .hero-cta { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
