@@ -258,7 +258,10 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
   will-change: transform, opacity, filter;
   transform-origin: center center;
 }
-.design-orb-wrap canvas { width: 100%; height: 100%; display: block; }
+.design-orb-wrap canvas {
+  width: min(56vh, 56vw, 520px); height: min(56vh, 56vw, 520px);
+  display: block;
+}
 /* the quote form overlays the same pinned frame as the orb and crossfades
    in as it finishes zooming out, so it visibly emerges from that last
    frame rather than arriving via a separate scroll below. */
