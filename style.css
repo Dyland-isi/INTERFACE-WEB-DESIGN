@@ -231,9 +231,16 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
   /* bleeds to the actual viewport edge — without this the stage is only
      as wide as the page's centred max-width column, so the zoom's blur
      gets hard-clipped well inside the screen on wide viewports instead
-     of fading out at the true edge. */
+     of fading out at the true edge. align-self: flex-start is required
+     here — main.page-content has align-items:center, and flexbox centers
+     a child's full margin box (including negative margins) on the cross
+     axis, which stacks with this margin trick and lands the whole stage
+     shifted left by half its intended offset instead of flush with the
+     viewport edge. flex-start opts this one item out of that centering
+     so the margin does only what it says. */
   position: relative; width: 100vw; height: 220vh;
   margin-left: calc(-50vw + 50%);
+  align-self: flex-start;
 }
 .design-stage-pin {
   position: sticky; top: 0; height: 100vh; width: 100%;
@@ -264,15 +271,16 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
 /* a smaller, tighter build of the card/form so the whole thing sits as
    one compact block dead-centre on screen instead of a full-size form
    that has to top-align and scroll. */
-.design-form-emerge .project-card { width: 100%; max-width: 460px; padding: 28px; }
-.design-form-emerge .card-head { padding-bottom: 14px; margin-bottom: 16px; }
+.design-form-emerge .project-card { width: 100%; max-width: 640px; padding: 30px 34px; }
+.design-form-emerge .card-head { padding-bottom: 12px; margin-bottom: 14px; }
 .design-form-emerge .card-head .meta { display: none; }
-.design-form-emerge .quote-form { gap: 14px; }
+.design-form-emerge .quote-form { gap: 12px; }
 .design-form-emerge .form-row { gap: 5px; }
-.design-form-emerge .form-row.split { gap: 10px; }
+.design-form-emerge .form-row.split { gap: 14px; }
 .design-form-emerge .form-input,
 .design-form-emerge .form-select,
 .design-form-emerge .form-textarea { padding: 9px 11px; font-size: 12.5px; }
+.design-form-emerge .form-textarea { min-height: 58px; }
 .design-form-emerge .form-textarea { min-height: 72px; }
 .design-form-emerge .form-submit-row { margin-top: 2px; }
 .design-form-emerge .form-disclaimer { display: none; }
