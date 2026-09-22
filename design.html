@@ -78,7 +78,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
-<link rel="stylesheet" href="style.css?v=d40a686" />
+<link rel="stylesheet" href="style.css?v=54754f3" />
 </head>
 <body class="loading page-design">
 
@@ -110,14 +110,6 @@
   <div class="design-stage" id="designStage">
     <div class="design-stage-pin">
       <div class="design-orb-wrap" id="designOrbWrap"><canvas class="orb-canvas"></canvas></div>
-      <div class="design-stage-copy" id="designStageCopy">
-        <h1>Interface.<br><em>Software, mostly.</em></h1>
-        <p>We build Interface OS, an AI operating system for running a brand — plus, for a small number of clients, the web design and brand work we started with.</p>
-        <div class="design-scroll-cue">
-          <span>Scroll to start a project</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -238,29 +230,48 @@
 (function () {
   var stage = document.getElementById('designStage');
   var orbWrap = document.getElementById('designOrbWrap');
-  var copy = document.getElementById('designStageCopy');
   var reveal = document.getElementById('designReveal');
-  if (!stage || !orbWrap || !copy) return;
+  if (!stage || !orbWrap) return;
 
   function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+  function ease(t) { return t * t * (3 - 2 * t); }
+
+  // cache layout metrics instead of reading getBoundingClientRect on every
+  // scroll tick — that forces a synchronous reflow and was the source of
+  // the jank; only recompute on resize.
+  var stageTop = 0, stageHeight = 0, vh = 0;
+  function measure() {
+    stageTop = stage.offsetTop;
+    stageHeight = stage.offsetHeight;
+    vh = window.innerHeight;
+  }
+  measure();
+
+  var ticking = false;
+  function render() {
+    ticking = false;
+    var total = stageHeight - vh;
+    var raw = total > 0 ? clamp((window.scrollY - stageTop) / total, 0, 1) : 0;
+    var progress = ease(raw);
+
+    var scale = 1 - progress * 0.62;
+    var xShift = -progress * progress * 480;
+    var yShift = progress * -60;
+    var rotate = progress * -26;
+    var opacity = 1 - progress * 1.05;
+
+    orbWrap.style.transform =
+      'translate3d(' + xShift + 'px,' + yShift + 'px,0) scale(' + scale + ') rotate(' + rotate + 'deg)';
+    orbWrap.style.opacity = clamp(opacity, 0, 1);
+  }
 
   function onScroll() {
-    var rect = stage.getBoundingClientRect();
-    var vh = window.innerHeight;
-    var total = stage.offsetHeight - vh;
-    var progress = total > 0 ? clamp(-rect.top / total, 0, 1) : 0;
-
-    orbWrap.style.transform = 'scale(' + (1 - progress * 0.42) + ')';
-    orbWrap.style.opacity = 1 - progress * 0.8;
-
-    var copyProgress = clamp(progress / 0.6, 0, 1);
-    copy.style.opacity = 1 - copyProgress;
-    copy.style.transform = 'translateY(' + (-copyProgress * 40) + 'px)';
+    if (!ticking) { ticking = true; requestAnimationFrame(render); }
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
-  onScroll();
+  window.addEventListener('resize', function () { measure(); render(); });
+  render();
 
   if (reveal && 'IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
