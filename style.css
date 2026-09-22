@@ -236,12 +236,17 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
   margin-left: calc(-50vw + 50%);
 }
 .design-stage-pin {
-  position: sticky; top: 0; height: 100vh;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  position: sticky; top: 0; height: 100vh; width: 100%;
   overflow: hidden; z-index: 1;
 }
+/* fills the pinned stage edge-to-edge — a fixed square box here reads as
+   a distinct "plate" with its own visible boundary once the zoom's blur
+   hits it, instead of the sphere just sitting directly on the page. The
+   canvas itself still draws a circle (R = min(w,h) in orb.js), so this
+   only removes the extra square backdrop around it — cropping now only
+   ever happens at the real screen edge. */
 .design-orb-wrap {
-  width: min(94vh, 94vw, 920px); height: min(94vh, 94vw, 920px);
+  position: absolute; inset: 0; width: 100%; height: 100%;
   display: flex; align-items: center; justify-content: center;
   will-change: transform, opacity, filter;
   transform-origin: center center;
@@ -257,7 +262,6 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
 .design-reveal.in-view { opacity: 1; transform: translate3d(0, 0, 0); }
 @media (max-width: 900px) {
   .design-stage { height: 140vh; }
-  .design-orb-wrap { width: min(76vh, 88vw, 620px); height: min(76vh, 88vw, 620px); }
 }
 
 .hero-cta { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
