@@ -268,22 +268,21 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
   overflow-y: auto; padding: 96px 16px 32px;
   will-change: transform, opacity;
 }
-/* a smaller, tighter build of the card/form so the whole thing sits as
-   one compact block dead-centre on screen instead of a full-size form
-   that has to top-align and scroll. */
-.design-form-emerge .project-card { width: 100%; max-width: 640px; padding: 30px 34px; }
-.design-form-emerge .card-head { padding-bottom: 12px; margin-bottom: 14px; }
-.design-form-emerge .card-head .meta { display: none; }
-.design-form-emerge .quote-form { gap: 12px; }
-.design-form-emerge .form-row { gap: 5px; }
-.design-form-emerge .form-row.split { gap: 14px; }
-.design-form-emerge .form-input,
-.design-form-emerge .form-select,
-.design-form-emerge .form-textarea { padding: 9px 11px; font-size: 12.5px; }
-.design-form-emerge .form-textarea { min-height: 58px; }
-.design-form-emerge .form-textarea { min-height: 72px; }
-.design-form-emerge .form-submit-row { margin-top: 2px; }
-.design-form-emerge .form-disclaimer { display: none; }
+.design-form-inner {
+  width: 100%; max-width: 760px;
+  display: flex; flex-direction: column; align-items: center; gap: 32px;
+}
+/* frosted glass over the moving backdrop, rather than the site's usual
+   near-opaque card — this one floats directly on the animated stage, so
+   it reads better letting the fading orb show through it. */
+.design-form-emerge .project-card {
+  width: 100%;
+  background: rgba(255,255,255,0.38);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.45);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 8px 32px rgba(0,0,0,0.10), 0 40px 80px -30px rgba(0,0,0,0.28);
+}
 @media (max-width: 900px) {
   .design-stage { height: 180vh; }
   .design-form-emerge { padding: 120px 8px 32px; align-items: flex-start; }
