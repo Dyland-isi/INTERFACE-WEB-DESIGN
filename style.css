@@ -238,13 +238,22 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
      shifted left by half its intended offset instead of flush with the
      viewport edge. flex-start opts this one item out of that centering
      so the margin does only what it says. */
+  /* pulled up by body's own top padding so the pinned stage starts flush
+     with the true viewport top from the very first frame — without this,
+     .design-stage-pin's un-stuck resting position sits 128px down (body's
+     padding-top), so the orb reads as sitting 128px below center until
+     the user scrolls far enough for position:sticky to actually engage. */
   position: relative; width: 100vw; height: 220vh;
   margin-left: calc(-50vw + 50%);
+  margin-top: -128px;
   align-self: flex-start;
 }
 .design-stage-pin {
   position: sticky; top: 0; height: 100vh; width: 100%;
   overflow: hidden; z-index: 1;
+}
+@media (max-width: 820px) {
+  .design-stage { margin-top: -148px; }
 }
 /* fills the pinned stage edge-to-edge — a fixed square box here reads as
    a distinct "plate" with its own visible boundary once the zoom's blur
