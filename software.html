@@ -2,12 +2,331 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Interface OS — Interface</title>
-<meta http-equiv="refresh" content="0; url=index.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Interface OS — AI Operating System for Brands</title>
+<meta name="description" content="Interface OS is coming soon — an AI operating system for running a brand. Join the waitlist for early access and a free two-week trial." />
+<meta name="keywords" content="Interface OS, Cardiff software, waitlist, early access, Cardiff web design, Cardiff marketing, web design Wales" />
+<meta name="author" content="Interface" />
+<meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://www.dylandriscoll.design/" />
-<meta name="robots" content="noindex, follow" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Interface OS — AI Operating System for Brands" />
+<meta property="og:description" content="Join the waitlist for Interface OS and get a free two-week trial when we launch." />
+<meta property="og:locale" content="en_GB" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Interface OS — AI Operating System for Brands" />
+<meta name="twitter:description" content="Join the waitlist for Interface OS and get a free two-week trial when we launch." />
+
+<!-- Geo tags -->
+<meta name="geo.region" content="GB-CRF" />
+<meta name="geo.placename" content="Cardiff" />
+<meta name="geo.position" content="51.4816;-3.1791" />
+<meta name="ICBM" content="51.4816, -3.1791" />
+
+<!-- JSON-LD structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Interface",
+  "alternateName": "Interface — AI Software Studio",
+  "description": "Cardiff-based AI software studio building Interface OS, an AI operating system for brands — plus, for a small number of clients, the web design and brand work the studio started with.",
+  "url": "https://www.dylandriscoll.design",
+  "image": "https://www.dylandriscoll.design/assets/img/logo.svg",
+  "telephone": "+447538043294",
+  "email": "info@interfacecardiff.com",
+  "priceRange": "££",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Cardiff",
+    "addressRegion": "Wales",
+    "addressCountry": "GB"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 51.4816,
+    "longitude": -3.1791
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Cardiff" },
+    { "@type": "AdministrativeArea", "name": "Wales" },
+    { "@type": "Country", "name": "United Kingdom" }
+  ],
+  "knowsAbout": [
+    "Artificial Intelligence",
+    "Software Development",
+    "AI Agents",
+    "Automation",
+    "Web Design",
+    "Brand Identity",
+    "Marketing Strategy",
+    "E-commerce"
+  ],
+  "sameAs": [
+    "https://www.instagram.com/interface_dev/",
+    "https://www.linkedin.com/in/dylan-driscoll"
+  ]
+}
+</script>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="style.css?v=5f3f588" />
 </head>
-<body>
-<p>Interface OS now lives at <a href="index.html">the homepage</a>.</p>
+<body class="loading page-home">
+
+<div class="wake" id="wake">
+  <div class="wake-mark"><img src="assets/img/logo.svg" alt="Interface"></div>
+  <div class="wake-pct" id="wakePct">0%</div>
+</div>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<header class="site-head">
+  <div class="name">
+    <a href="index.html" class="logo-link" aria-label="Interface — home">
+      <img src="assets/img/logo.svg" alt="Interface" class="site-logo" />
+    </a>
+  </div>
+  <nav>
+    <a id="nav-work" href="index.html#work">WORK</a>
+    <a id="nav-services" href="index.html#services">SERVICES</a>
+    <a id="nav-about" href="about.html">ABOUT</a>
+    <a id="nav-quote" href="contact.html" class="nav-quote">GET A QUOTE&nbsp;&rarr;</a>
+  </nav>
+</header>
+
+<main class="page-content">
+  <section class="intro intro-showcase">
+    <div class="intro-showcase-copy">
+      <h1>Interface OS</h1>
+      <p>An AI operating system for running a brand.</p>
+    </div>
+
+    <div class="app-preview">
+      <div class="app-window">
+        <div class="app-window-bar">
+          <div class="app-window-dots"><span></span><span></span><span></span></div>
+          <div class="app-window-title">Interface OS</div>
+        </div>
+        <div class="app-window-body">
+          <div class="app-window-mark"><img src="assets/img/logo.svg" alt="" /></div>
+          <nav class="app-window-rail">
+            <span class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg></span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-4 4v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg></span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="14" y2="17"/></svg></span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10v4h4l6 4V6l-6 4H3z"/><path d="M17 9a4 4 0 0 1 0 6"/></svg></span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/></svg></span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3,12 8,12 10,6 14,18 16,12 21,12"/></svg></span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/></svg></span>
+          </nav>
+          <div class="app-window-panel">
+            <div class="app-window-head">
+              <div class="app-window-brand"><b>INTERFACE OS</b><span>AI OPERATING SYSTEM</span></div>
+              <div class="app-window-greet"><strong>Good evening.</strong><span>1 item needs your attention.</span></div>
+              <div class="app-window-search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                <span>Ask anything…</span>
+              </div>
+            </div>
+            <div class="app-window-grid">
+              <div class="app-window-stats">
+                <div class="app-window-card"><div class="label">SYSTEM HEALTH</div><div class="num ok">99%</div><div class="sub ok">OPTIMAL</div></div>
+                <div class="app-window-card"><div class="label">MEMORY</div><div class="num">2<small>facts</small></div><div class="bar"><i style="width:20%"></i></div></div>
+                <div class="app-window-card"><div class="label">AGENTS</div><div class="num">0</div><div class="sub dim">ALL IDLE</div></div>
+              </div>
+              <div class="app-window-brain">
+                <div class="app-window-card-head">
+                  <span>INTERFACE BRAIN</span>
+                  <span class="app-window-synced">Synced<i></i></span>
+                </div>
+                <div class="app-window-orbcol"><canvas class="orb-canvas"></canvas></div>
+                <div class="app-window-brain-foot"><span>Open brain</span></div>
+              </div>
+              <div class="app-window-priorities">
+                <div class="app-window-card-head"><span>PRIORITIES</span></div>
+                <div class="app-window-priorities-list">
+                  <div class="app-window-priority"><i class="red"></i><span>Move Passwords.csv to a password manager</span></div>
+                  <div class="app-window-priority"><i class="green"></i><span>Decide on Interface Archive launch</span></div>
+                  <div class="app-window-priority-more">+13 more</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="app-window-command">What would you like me to do?<span class="app-window-voice"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing" id="pricing">
+    <p class="pricing-eyebrow">Interface OS / Early access</p>
+    <h2>Choose your system.</h2>
+    <p class="pricing-intro">Start simple. Scale when you need to. Every plan gives you a way into Interface OS — the difference is how much of your operation you want to automate.</p>
+
+    <div class="pricing-toggle">
+      <span class="pricing-toggle-thumb" aria-hidden="true"></span>
+      <button type="button" class="on" data-toggle="individual">Individual</button>
+      <button type="button" data-toggle="team">Team</button>
+    </div>
+
+    <div class="pricing-grid" id="pricingGrid">
+      <article class="pricing-card" data-plan="starter">
+        <button type="button" class="pricing-card-hit" aria-expanded="false" aria-controls="reveal-starter"
+          data-convert-title="Start with Interface OS?"
+          data-convert-sub="Get the essentials free while you explore the system."
+          data-convert-cta="Join the Starter waitlist"
+          data-subject="Interface OS waitlist signup — Starter">
+          <div class="pricing-card-top">
+            <h3>Starter</h3>
+            <div class="pricing-price">Free</div>
+          </div>
+          <p class="pricing-card-desc">For solo founders finding their footing.</p>
+          <div class="pricing-reveal" id="reveal-starter">
+            <div class="pricing-reveal-inner">
+              <ul class="pricing-specs">
+                <li><span>Core Interface OS</span><b>Included</b></li>
+                <li><span>AI workspace</span><b>Included</b></li>
+                <li><span>Automations</span><b>Limited</b></li>
+              </ul>
+            </div>
+          </div>
+          <span class="pricing-card-cta">Explore Starter
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </span>
+        </button>
+      </article>
+
+      <article class="pricing-card featured is-selected" data-plan="pro">
+        <button type="button" class="pricing-card-hit" aria-expanded="true" aria-controls="reveal-pro"
+          data-convert-title="Ready to enter Interface OS?"
+          data-convert-sub="Join the first cohort and get a 2-week free trial. No card required."
+          data-convert-cta="Join the Pro waitlist"
+          data-subject="Interface OS waitlist signup — Pro">
+          <div class="pricing-tag">Most popular</div>
+          <div class="pricing-card-top">
+            <h3>Pro</h3>
+            <div class="pricing-price">£20<span>/month</span></div>
+          </div>
+          <p class="pricing-card-desc">For small teams running full brand ops through Interface OS.</p>
+          <div class="pricing-reveal" id="reveal-pro">
+            <div class="pricing-reveal-inner">
+              <ul class="pricing-specs">
+                <li><span>Brand memory</span><b>✓</b></li>
+                <li><span>AI agents</span><b>✓</b></li>
+                <li><span>Automated workflows</span><b>✓</b></li>
+                <li><span>Team operations</span><b>✓</b></li>
+              </ul>
+            </div>
+          </div>
+          <span class="pricing-card-cta">Get early access
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </span>
+        </button>
+      </article>
+
+      <article class="pricing-card" data-plan="scale">
+        <button type="button" class="pricing-card-hit" aria-expanded="false" aria-controls="reveal-scale"
+          data-convert-title="Ready to automate more?"
+          data-convert-sub="Tell us what your operation needs and we'll show you the Scale workflow."
+          data-convert-cta="Request Scale access"
+          data-subject="Interface OS waitlist signup — Scale">
+          <div class="pricing-card-top">
+            <h3>Scale</h3>
+            <div class="pricing-price">£90<span>/month</span></div>
+          </div>
+          <p class="pricing-card-desc">For growing brands who want everything automated.</p>
+          <div class="pricing-reveal" id="reveal-scale">
+            <div class="pricing-reveal-inner">
+              <ul class="pricing-specs">
+                <li><span>Advanced agents</span><b>✓</b></li>
+                <li><span>Full automation</span><b>✓</b></li>
+                <li><span>Priority support</span><b>✓</b></li>
+                <li><span>Custom workflows</span><b>✓</b></li>
+              </ul>
+            </div>
+          </div>
+          <span class="pricing-card-cta">Explore Scale
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </span>
+        </button>
+      </article>
+    </div>
+
+    <div class="pricing-convert" id="join">
+      <div class="pricing-convert-head">
+        <h3 id="convertTitle">Ready to enter Interface OS?</h3>
+        <p id="convertSub">Join the first cohort and get a 2-week free trial. No card required.</p>
+      </div>
+
+      <form id="waitlistForm" action="https://formspree.io/f/mnjwqevo" method="POST" onsubmit="handleWaitlistSubmit(event)">
+        <input type="hidden" name="_subject" id="w-subject" value="Interface OS waitlist signup — Pro" />
+        <input type="hidden" name="_replyto" id="w-replyto" />
+        <input type="hidden" name="plan" id="w-plan" value="Pro" />
+        <div class="pricing-convert-row">
+          <input class="hero-signup-input" id="w-email" name="email" type="email" placeholder="you@company.com" required />
+          <button class="pricing-convert-btn form-submit" type="submit">
+            <span id="convertBtnLabel">Join the Pro waitlist</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </div>
+      </form>
+
+      <div class="form-success" id="waitlistSuccess">
+        <h3>You're on the list.</h3>
+        <p>We'll be in touch with your free two-week trial as soon as Interface OS launches.</p>
+      </div>
+
+      <a href="#" class="pricing-demo-link">Not ready to commit? <span>Book a 15 min demo ↗</span></a>
+    </div>
+
+    <p class="pricing-note">Prices are an early first draft and subject to change before launch.</p>
+  </section>
+
+  <section class="offer">
+    <h2>Why join now.</h2>
+    <div class="offer-grid">
+      <div class="offer-item">
+        <h3>FREE 2-WEEK TRIAL</h3>
+        <p>Full access from day one when we launch — no card required.</p>
+      </div>
+      <div class="offer-item">
+        <h3>FOUNDING PRICING</h3>
+        <p>Lock in early-access pricing for as long as you stay subscribed.</p>
+      </div>
+      <div class="offer-item">
+        <h3>DIRECT LINE TO THE TEAM</h3>
+        <p>Early members shape the roadmap — talk straight to the people building it.</p>
+      </div>
+      <div class="offer-item">
+        <h3>PRIORITY ACCESS</h3>
+        <p>First cohort in when we open the doors, ahead of the public waitlist.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>Questions before launch?<br><em>Just ask.</em></h2>
+    <div class="links">
+      <span class="label">EMAIL</span><a href="mailto:info@interfacecardiff.com">info@interfacecardiff.com</a>
+      <span class="label">PHONE</span><a href="tel:+447538043294">+44 7538 043294</a>
+      <span class="label">BASED</span><span style="color:var(--ink-inv)">Cardiff, UK</span>
+      <span class="label">QUOTE</span><a href="contact.html">Start a project ↗︎</a>
+      <span class="label">SOCIAL</span><a href="https://www.instagram.com/interface_dev/" target="_blank" rel="noopener">Instagram ↗︎</a><a href="https://www.linkedin.com/in/dylan-driscoll" target="_blank" rel="noopener">LinkedIn ↗︎</a>
+    </div>
+  </section>
+</main>
+
+<script src="assets/orb.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

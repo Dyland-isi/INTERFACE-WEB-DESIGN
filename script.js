@@ -343,3 +343,53 @@ async function handleWaitlistSubmit(e) {
   }
   requestAnimationFrame(tick);
 })();
+
+
+// ===== STUDIO HOMEPAGE — decision cards, FAQ accordion, hero parallax =====
+// Guarded behind each section actually existing, since every page shares
+// this same script.js.
+(function () {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // "What are you looking to build?" cards — one open at a time.
+  const decisionCards = document.querySelectorAll('.decision-card');
+  if (decisionCards.length) {
+    decisionCards.forEach(card => {
+      const btn = card.querySelector('.decision-card-hit');
+      if (!btn) return;
+      btn.addEventListener('click', () => {
+        const willOpen = !card.classList.contains('is-open');
+        decisionCards.forEach(c => {
+          c.classList.remove('is-open');
+          const b = c.querySelector('.decision-card-hit');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        });
+        if (willOpen) { card.classList.add('is-open'); btn.setAttribute('aria-expanded', 'true'); }
+      });
+    });
+  }
+
+  // FAQ accordion — independent, multiple can be open.
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const open = q.getAttribute('aria-expanded') === 'true';
+      q.setAttribute('aria-expanded', open ? 'false' : 'true');
+    });
+  });
+
+  // Hero visual — a tiny scroll parallax, nothing scroll-jacky.
+  const heroMedia = document.getElementById('studioHeroMedia');
+  if (heroMedia && !reduceMotion) {
+    let ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const shift = Math.min(window.scrollY * 0.06, 24);
+        heroMedia.style.transform = 'translate3d(0,' + shift + 'px,0)';
+        ticking = false;
+      });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+})();
