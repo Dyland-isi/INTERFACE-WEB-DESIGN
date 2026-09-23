@@ -284,17 +284,55 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
   width: 100%; max-width: 760px;
   display: flex; flex-direction: column; align-items: center; gap: 32px;
 }
-/* frosted glass over the moving backdrop, rather than the site's usual
-   near-opaque card — this one floats directly on the animated stage, so
-   it reads better letting the fading orb show through it. */
+/* dark matte glass over the moving backdrop — the exact same material as
+   the header pill and the app-window mockup's own frame (rgba(20,20,22,.6),
+   blur+saturate, hairline border), rather than the site's usual light
+   near-opaque card. Every text/field colour below is flipped to the
+   light (--ink-inv) family to match. */
 .design-form-emerge .project-card {
-  width: 100%;
-  background: rgba(255,255,255,0.38);
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border: 1px solid rgba(255,255,255,0.45);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 8px 32px rgba(0,0,0,0.10), 0 40px 80px -30px rgba(0,0,0,0.28);
+  width: 100%; position: relative;
+  background: rgba(20,20,22,0.62);
+  backdrop-filter: blur(26px) saturate(160%);
+  -webkit-backdrop-filter: blur(26px) saturate(160%);
+  border: 1px solid var(--btn-border);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.25), 0 40px 80px -28px rgba(0,0,0,0.55);
+  color: var(--ink-inv);
 }
+/* macOS traffic-light window controls, purely decorative — same recipe
+   as the software page's app-window mockup titlebar. */
+.design-form-emerge .window-dots { display: flex; gap: 7px; margin-bottom: 22px; }
+.design-form-emerge .window-dots span { width: 11px; height: 11px; border-radius: 50%; display: block; }
+.design-form-emerge .window-dots span:nth-child(1) { background: #ff5f57; }
+.design-form-emerge .window-dots span:nth-child(2) { background: #febc2e; }
+.design-form-emerge .window-dots span:nth-child(3) { background: #28c840; }
+
+.design-form-emerge .card-head { border-bottom-color: rgba(255,255,255,0.1); }
+.design-form-emerge .card-head .proj-title .name { color: var(--ink-inv); }
+.design-form-emerge .card-head .proj-title .client { color: rgba(236,236,236,0.45); }
+.design-form-emerge .card-head .meta .label { color: rgba(236,236,236,0.4); }
+.design-form-emerge .card-head .meta .value { color: rgba(236,236,236,0.75); }
+.design-form-emerge .form-label { color: rgba(236,236,236,0.55); }
+.design-form-emerge .form-input,
+.design-form-emerge .form-select,
+.design-form-emerge .form-textarea {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+  color: var(--ink-inv);
+}
+.design-form-emerge .form-input::placeholder,
+.design-form-emerge .form-textarea::placeholder { color: rgba(236,236,236,0.32); }
+.design-form-emerge .form-input:focus,
+.design-form-emerge .form-textarea:focus,
+.design-form-emerge .form-select:focus {
+  border-color: rgba(255,255,255,0.32); box-shadow: 0 0 0 3px rgba(255,255,255,0.06);
+}
+.design-form-emerge .form-select option { color: #1b1b1b; }
+.design-form-emerge .form-disclaimer { color: rgba(236,236,236,0.4); }
+.design-form-emerge .form-submit {
+  background: rgba(255,255,255,0.14); color: var(--ink-inv); border: 1px solid rgba(255,255,255,0.22);
+}
+.design-form-emerge .form-submit:hover { background: rgba(255,255,255,0.22); }
+.design-form-emerge .form-success h3 { color: var(--ink-inv); }
+.design-form-emerge .form-success p { color: rgba(236,236,236,0.6); }
 @media (max-width: 900px) {
   .design-stage { height: 180vh; }
   .design-form-emerge { padding: 120px 8px 32px; align-items: flex-start; }
