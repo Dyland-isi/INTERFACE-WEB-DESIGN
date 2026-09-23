@@ -1196,3 +1196,49 @@ header.site-head nav a.nav-quote:hover { background: rgba(255,255,255,0.22); }
 .final-cta .hero-cta-btn.secondary:hover { background: rgba(255,255,255,0.2); }
 @media (max-width: 620px) { .final-cta { padding: 48px 24px; border-radius: 24px; } }
 
+/* =====================================================================
+   ABOUT PAGE
+   ===================================================================== */
+.about-hero { width: 100%; padding: 0 8px; text-align: center; }
+.about-hero h1 {
+  font-family: var(--font-display); font-weight: 500;
+  font-size: clamp(30px, 4.4vw, 50px); letter-spacing: -0.02em; line-height: 1.12;
+  color: var(--ink); margin-bottom: 20px;
+}
+.about-hero-sub { font-family: var(--font-sans); font-size: 15px; line-height: 1.7; color: var(--ink-2); max-width: 52ch; margin: 0 auto; }
+
+.approach { width: 100%; padding: 0 8px; text-align: center; }
+.approach h2 { font-family: var(--font-display); font-size: clamp(24px, 3.4vw, 38px); color: var(--ink); font-weight: 500; letter-spacing: -0.015em; margin-bottom: 16px; }
+.approach-intro { font-family: var(--font-sans); font-size: 14px; line-height: 1.7; color: var(--ink-2); max-width: 62ch; margin: 0 auto 56px; }
+.approach-steps { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 780px; margin: 0 auto; }
+.approach-step { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; }
+.approach-num {
+  display: flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 50%; margin-bottom: 14px;
+  background: var(--card-hi); border: 1px solid var(--line);
+  font-family: var(--mono); font-size: 11px; color: var(--ink-2);
+}
+.approach-step h3 { font-family: var(--font-sans); font-size: 16px; font-weight: 700; color: var(--ink); }
+@media (max-width: 620px) { .approach-steps { grid-template-columns: 1fr 1fr; gap: 32px 16px; } .approach-steps .journey-line { display: none; } }
+
+.principles-grid .offer-item { text-align: center; }
+@media (min-width: 481px) { .principles-grid .offer-item h3 { font-size: 13px; letter-spacing: 0.1em; } }
+
+.capabilities-rows .capability-row { cursor: default; }
+.capability-row .service-title { flex: 0 0 auto; width: 220px; }
+.capability-row .service-desc { flex: 1; text-align: right; opacity: 0; transform: translateX(8px); transition: opacity .25s ease, transform .25s ease; }
+.capability-row:hover .service-desc { opacity: 1; transform: translateX(0); }
+.capability-row .service-arrow { opacity: 0.35; }
+@media (max-width: 620px) {
+  .capability-row .service-title { width: auto; }
+  .capability-row .service-desc { opacity: 1; transform: none; text-align: left; order: 2; width: 100%; margin-top: 4px; }
+}
+
+.os-teaser-compact { padding: 56px; }
+.os-teaser-compact .os-teaser-copy { max-width: 640px; margin: 0 auto; text-align: center; }
+.os-teaser-compact .os-teaser-eyebrow { color: rgba(236,236,236,0.7); font-family: var(--font-sans); font-size: 15px; letter-spacing: 0; text-transform: none; line-height: 1.5; margin-bottom: 18px; }
+.os-teaser-compact h2 { margin-bottom: 14px; }
+.os-teaser-compact > .os-teaser-copy > p { margin-left: auto; margin-right: auto; }
+.os-teaser-compact .os-teaser-cta { display: inline-flex; }
+@media (max-width: 620px) { .os-teaser-compact { padding: 40px 24px; } }
+
