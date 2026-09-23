@@ -859,7 +859,7 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
 /* cards — clickable modules, one open at a time. Dark matte glass, the
    same material as the header/app-window/conversion strip, so the whole
    pricing system reads as one continuous piece of the product UI. */
-.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 980px; margin: 0 auto; text-align: left; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 980px; margin: 0 auto; text-align: left; align-items: start; }
 .pricing-card {
   background: rgba(20,20,22,0.55);
   backdrop-filter: blur(20px) saturate(160%);
@@ -880,7 +880,7 @@ header.site-head nav a.active { color: var(--ink-inv); background: var(--btn-bg)
 }
 .pricing-card-hit:focus-visible { outline: 2px solid rgba(255,255,255,0.4); outline-offset: 4px; border-radius: 20px; }
 .pricing-tag {
-  position: absolute; top: -11px; left: 24px;
+  align-self: flex-start; margin-bottom: 14px;
   font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
   background: rgba(255,255,255,0.16); color: var(--ink-inv); border-radius: 999px; padding: 4px 10px;
 }
