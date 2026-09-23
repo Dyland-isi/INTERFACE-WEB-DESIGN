@@ -221,6 +221,153 @@ async function handleWaitlistSubmit(e) {
   }
 }
 
+async function handleProjectSubmit(e) {
+  e.preventDefault();
+  const form = document.getElementById('projectForm');
+  const success = document.getElementById('projectSuccess');
+  const submitBtn = document.getElementById('configSubmit');
+  const emailField = document.getElementById('p-email');
+  const replyto = document.getElementById('p-replyto');
+  if (emailField && replyto) replyto.value = emailField.value;
+
+  const originalLabel = submitBtn.innerHTML;
+  submitBtn.disabled = true;
+  submitBtn.style.opacity = '0.6';
+  submitBtn.innerHTML = 'Sending…';
+
+  const formActionUrl = form.action || '';
+  const isPlaceholder = !formActionUrl.includes('formspree.io');
+
+  if (isPlaceholder) {
+    const data = new FormData(form);
+    const subject = encodeURIComponent('New project enquiry — Interface');
+    const body = encodeURIComponent(
+      `Looking for: ${data.get('looking_for') || ''}\n` +
+      `Business: ${data.get('business') || ''}\n` +
+      `What it does: ${data.get('what_it_does') || ''}\n` +
+      `Trying to improve: ${data.get('improve') || ''}\n` +
+      `Current site: ${data.get('current_url') || '—'}\n` +
+      `Budget: ${data.get('budget') || ''}\n\n` +
+      `Name: ${data.get('name') || ''}\n` +
+      `Email: ${data.get('email') || ''}\n` +
+      `Phone: ${data.get('phone') || '—'}\n\n` +
+      `Notes:\n${data.get('message') || ''}\n`
+    );
+    window.location.href = `mailto:info@interfacecardiff.com?subject=${subject}&body=${body}`;
+    setTimeout(() => {
+      form.style.display = 'none';
+      success.classList.add('shown');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      submitBtn.disabled = false; submitBtn.style.opacity = '1'; submitBtn.innerHTML = originalLabel;
+    }, 800);
+    return;
+  }
+
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST', body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (response.ok) {
+      form.style.display = 'none';
+      success.classList.add('shown');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      const data = await response.json().catch(() => ({}));
+      const msg = (data.errors && data.errors.map(e => e.message).join(', ')) || 'Something went wrong. Please email us directly at info@interfacecardiff.com';
+      alert(msg);
+      submitBtn.disabled = false; submitBtn.style.opacity = '1'; submitBtn.innerHTML = originalLabel;
+    }
+  } catch (err) {
+    alert('Network error. Please email us directly at info@interfacecardiff.com');
+    submitBtn.disabled = false; submitBtn.style.opacity = '1'; submitBtn.innerHTML = originalLabel;
+  }
+}
+
+
+// ===== CONTACT — project configurator (4-step wizard) =====
+(function () {
+  const form = document.getElementById('projectForm');
+  if (!form) return;
+
+  const steps = Array.from(document.querySelectorAll('.config-step'));
+  const panels = Array.from(document.querySelectorAll('.config-panel'));
+  const backBtn = document.getElementById('configBack');
+  const nextBtn = document.getElementById('configNext');
+  const submitBtn = document.getElementById('configSubmit');
+  const TOTAL = panels.length;
+  let current = 1;
+
+  const lookingFor = new Set();
+  let budget = '';
+
+  // step 1 — multi-select chips
+  document.querySelectorAll('.config-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const v = chip.dataset.value;
+      if (lookingFor.has(v)) { lookingFor.delete(v); chip.classList.remove('is-selected'); }
+      else { lookingFor.add(v); chip.classList.add('is-selected'); }
+      document.getElementById('p-looking-for').value = Array.from(lookingFor).join(', ');
+    });
+  });
+
+  // step 3 — single-select budget
+  document.querySelectorAll('.config-budget-opt').forEach(opt => {
+    opt.addEventListener('click', () => {
+      budget = opt.dataset.value;
+      document.querySelectorAll('.config-budget-opt').forEach(o => o.classList.remove('is-selected'));
+      opt.classList.add('is-selected');
+      document.getElementById('p-budget').value = budget;
+    });
+  });
+
+  function validate(n) {
+    if (n === 1) return lookingFor.size > 0;
+    if (n === 3) return !!budget;
+    const panel = panels.find(p => Number(p.dataset.panel) === n);
+    const fields = panel.querySelectorAll('[required]');
+    for (const f of fields) { if (!f.checkValidity()) { f.reportValidity(); return false; } }
+    return true;
+  }
+
+  function render() {
+    panels.forEach(p => p.classList.toggle('is-active', Number(p.dataset.panel) === current));
+    steps.forEach(s => {
+      const n = Number(s.dataset.step);
+      s.classList.toggle('is-active', n === current);
+      s.classList.toggle('is-done', n < current);
+      s.disabled = n > current;
+    });
+    backBtn.classList.toggle('is-visible', current > 1);
+    const isLast = current === TOTAL;
+    nextBtn.style.display = isLast ? 'none' : 'inline-flex';
+    submitBtn.style.display = isLast ? 'inline-flex' : 'none';
+  }
+
+  nextBtn.addEventListener('click', () => {
+    if (!validate(current)) return;
+    if (current < TOTAL) { current++; render(); form.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+  backBtn.addEventListener('click', () => {
+    if (current > 1) { current--; render(); }
+  });
+  steps.forEach(s => {
+    s.addEventListener('click', () => {
+      const n = Number(s.dataset.step);
+      if (n < current) { current = n; render(); }
+    });
+  });
+
+  // Enter key advances instead of submitting early, except on the final step.
+  form.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter') return;
+    if (e.target.tagName === 'TEXTAREA') return;
+    if (current < TOTAL) { e.preventDefault(); nextBtn.click(); }
+  });
+
+  render();
+})();
+
 
 // ===== PRICING — plan selector + Individual/Team toggle =====
 // Software page only; every other page loads this same script.js, so

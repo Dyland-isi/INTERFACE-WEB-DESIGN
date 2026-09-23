@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Get a Quote — Interface, Cardiff Digital Studio</title>
+<meta name="description" content="Tell Interface what you're building — a website, ecommerce store or digital system — and we'll review your project and recommend an approach." />
+<meta name="keywords" content="get a quote, start a project, Cardiff web design quote, ecommerce quote, digital system quote" />
+<meta name="author" content="Interface" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://www.dylandriscoll.design/contact.html" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Get a Quote — Interface, Cardiff Digital Studio" />
+<meta property="og:description" content="Tell Interface what you're building and we'll review your project and recommend an approach." />
+<meta property="og:locale" content="en_GB" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Get a Quote — Interface, Cardiff Digital Studio" />
+<meta name="twitter:description" content="Tell Interface what you're building and we'll review your project and recommend an approach." />
+
+<!-- Geo tags -->
+<meta name="geo.region" content="GB-CRF" />
+<meta name="geo.placename" content="Cardiff" />
+<meta name="geo.position" content="51.4816;-3.1791" />
+<meta name="ICBM" content="51.4816, -3.1791" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="style.css?v=fd18e84" />
+</head>
+<body class="loading page-contact">
+
+<div class="wake" id="wake">
+  <div class="wake-mark"><img src="assets/img/logo.svg" alt="Interface"></div>
+  <div class="wake-pct" id="wakePct">0%</div>
+</div>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<header class="site-head">
+  <div class="name">
+    <a href="index.html" class="logo-link" aria-label="Interface — home">
+      <img src="assets/img/logo.svg" alt="Interface" class="site-logo" />
+    </a>
+  </div>
+  <nav>
+    <a id="nav-work" href="index.html#work">WORK</a>
+    <a id="nav-services" href="index.html#services">SERVICES</a>
+    <a id="nav-about" href="about.html">ABOUT</a>
+    <a id="nav-quote" href="contact.html" class="nav-quote active">GET A QUOTE&nbsp;&rarr;</a>
+  </nav>
+</header>
+
+<main class="page-content">
+
+  <section class="contact-hero">
+    <h1>Let's build something.</h1>
+    <p>Tell us what you're working on. We'll review the project and come back with a recommended approach.</p>
+  </section>
+
+  <div class="configurator" id="configurator">
+
+    <div class="config-steps">
+      <button type="button" class="config-step is-active" data-step="1">
+        <span class="config-step-num">01</span><span class="config-step-label">Project</span>
+      </button>
+      <button type="button" class="config-step" data-step="2" disabled>
+        <span class="config-step-num">02</span><span class="config-step-label">Business</span>
+      </button>
+      <button type="button" class="config-step" data-step="3" disabled>
+        <span class="config-step-num">03</span><span class="config-step-label">Budget</span>
+      </button>
+      <button type="button" class="config-step" data-step="4" disabled>
+        <span class="config-step-num">04</span><span class="config-step-label">Contact</span>
+      </button>
+    </div>
+
+    <form id="projectForm" class="config-form" action="https://formspree.io/f/mnjwqevo" method="POST" onsubmit="handleProjectSubmit(event)">
+      <input type="hidden" name="_subject" value="New project enquiry — Interface" />
+      <input type="hidden" name="_replyto" id="p-replyto" />
+      <input type="hidden" name="looking_for" id="p-looking-for" />
+      <input type="hidden" name="budget" id="p-budget" />
+
+      <div class="config-panel is-active" data-panel="1">
+        <h2>What are you looking for?</h2>
+        <p class="config-panel-sub">Select everything that applies.</p>
+        <div class="config-chips" id="lookingForChips">
+          <button type="button" class="config-chip" data-value="Website">Website</button>
+          <button type="button" class="config-chip" data-value="Ecommerce">Ecommerce</button>
+          <button type="button" class="config-chip" data-value="Web application">Web application</button>
+          <button type="button" class="config-chip" data-value="Automation">Automation</button>
+          <button type="button" class="config-chip" data-value="Custom system">Custom system</button>
+          <button type="button" class="config-chip" data-value="Brand / creative">Brand / creative</button>
+          <button type="button" class="config-chip" data-value="Not sure">Not sure</button>
+        </div>
+      </div>
+
+      <div class="config-panel" data-panel="2">
+        <h2>About the business.</h2>
+        <div class="form-row">
+          <label class="form-label" for="p-business">What's your business? *</label>
+          <input class="form-input" id="p-business" name="business" type="text" placeholder="Business or brand name" required />
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="p-what">What does it do? *</label>
+          <textarea class="form-textarea config-textarea-sm" id="p-what" name="what_it_does" placeholder="A quick summary is fine." required></textarea>
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="p-improve">What are you trying to improve? *</label>
+          <textarea class="form-textarea config-textarea-sm" id="p-improve" name="improve" placeholder="e.g. a new website, more sales, less manual work…" required></textarea>
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="p-url">Current website (optional)</label>
+          <input class="form-input" id="p-url" name="current_url" type="text" placeholder="yoursite.com" />
+        </div>
+      </div>
+
+      <div class="config-panel" data-panel="3">
+        <h2>What's the approximate budget?</h2>
+        <p class="config-panel-sub">A range is fine — this just helps us recommend the right approach.</p>
+        <div class="config-budget" id="budgetOptions">
+          <button type="button" class="config-budget-opt" data-value="Under £2k">Under £2,000</button>
+          <button type="button" class="config-budget-opt" data-value="£2k–5k">£2,000 – £5,000</button>
+          <button type="button" class="config-budget-opt" data-value="£5k–10k">£5,000 – £10,000</button>
+          <button type="button" class="config-budget-opt" data-value="£10k–25k">£10,000 – £25,000</button>
+          <button type="button" class="config-budget-opt" data-value="£25k+">£25,000+</button>
+          <button type="button" class="config-budget-opt" data-value="Not sure yet">Not sure yet</button>
+        </div>
+      </div>
+
+      <div class="config-panel" data-panel="4">
+        <h2>How can we reach you?</h2>
+        <div class="form-row split">
+          <div>
+            <label class="form-label" for="p-name">Full name *</label>
+            <input class="form-input" id="p-name" name="name" type="text" placeholder="Jane Doe" required />
+          </div>
+          <div>
+            <label class="form-label" for="p-email">Email *</label>
+            <input class="form-input" id="p-email" name="email" type="email" placeholder="jane@company.com" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="p-phone">Phone (optional)</label>
+          <input class="form-input" id="p-phone" name="phone" type="tel" placeholder="Optional" />
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="p-notes">Anything else we should know?</label>
+          <textarea class="form-textarea config-textarea-sm" id="p-notes" name="message" placeholder="Optional"></textarea>
+        </div>
+        <p class="config-disclaimer">We'll review your project and get back to you with the next steps.</p>
+      </div>
+
+      <div class="config-nav">
+        <button type="button" class="config-back" id="configBack">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          Back
+        </button>
+        <button type="button" class="config-next hero-cta-btn primary" id="configNext">
+          Continue
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+        <button type="submit" class="form-submit config-submit" id="configSubmit">
+          Send project enquiry
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+      </div>
+    </form>
+
+    <div class="form-success config-success" id="projectSuccess">
+      <h3>Brief received.</h3>
+      <p>We'll review your project and get back to you with the next steps.</p>
+    </div>
+  </div>
+
+  <section class="contact">
+    <h2>Prefer email?<br><em>That works too.</em></h2>
+    <div class="links">
+      <span class="label">EMAIL</span><a href="mailto:info@interfacecardiff.com">info@interfacecardiff.com</a>
+      <span class="label">PHONE</span><a href="tel:+447538043294">+44 7538 043294</a>
+      <span class="label">SOCIAL</span><a href="https://www.instagram.com/interface_dev/" target="_blank" rel="noopener">Instagram ↗︎</a><a href="https://www.linkedin.com/in/dylan-driscoll" target="_blank" rel="noopener">LinkedIn ↗︎</a>
+    </div>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

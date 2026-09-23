@@ -1242,3 +1242,90 @@ header.site-head nav a.nav-quote:hover { background: rgba(255,255,255,0.22); }
 .os-teaser-compact .os-teaser-cta { display: inline-flex; }
 @media (max-width: 620px) { .os-teaser-compact { padding: 40px 24px; } }
 
+/* =====================================================================
+   CONTACT — PROJECT CONFIGURATOR
+   ===================================================================== */
+.contact-hero { width: 100%; padding: 0 8px; text-align: center; }
+.contact-hero h1 {
+  font-family: var(--font-display); font-weight: 500;
+  font-size: clamp(30px, 4.2vw, 46px); letter-spacing: -0.02em; color: var(--ink); margin-bottom: 16px;
+}
+.contact-hero p { font-family: var(--font-sans); font-size: 14.5px; line-height: 1.65; color: var(--ink-2); max-width: 48ch; margin: 0 auto; }
+
+.configurator { width: 100%; max-width: 640px; margin: 0 auto; }
+
+/* step indicator */
+.config-steps { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 10px; }
+.config-step {
+  flex: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 6px;
+  background: none; border: 0; padding: 0 0 14px; text-align: left; cursor: none;
+  border-bottom: 2px solid var(--line); transition: border-color .25s ease;
+}
+.config-step-num { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: var(--ink-3); }
+.config-step-label { font-family: var(--font-sans); font-size: 12.5px; font-weight: 500; color: var(--ink-3); transition: color .25s ease; }
+.config-step.is-active { border-color: var(--ink); }
+.config-step.is-active .config-step-label, .config-step.is-active .config-step-num { color: var(--ink); }
+.config-step.is-done { border-color: var(--ink-4); cursor: none; }
+.config-step.is-done .config-step-label { color: var(--ink-2); }
+.config-step:disabled { cursor: default; }
+
+/* panels */
+.config-form { position: relative; }
+.config-panel {
+  display: none; opacity: 0; transform: translateX(12px);
+  animation: none;
+}
+.config-panel.is-active { display: block; animation: configPanelIn .35s ease forwards; }
+@keyframes configPanelIn { from { opacity: 0; transform: translateX(12px); } to { opacity: 1; transform: translateX(0); } }
+.config-panel h2 {
+  font-family: var(--font-display); font-weight: 500; font-size: clamp(20px, 2.6vw, 26px);
+  letter-spacing: -0.01em; color: var(--ink); margin: 32px 0 8px;
+}
+.config-panel-sub { font-family: var(--font-sans); font-size: 13.5px; color: var(--ink-2); margin-bottom: 26px; }
+.config-panel .form-row { margin-bottom: 20px; }
+.config-textarea-sm { min-height: 90px; }
+.config-disclaimer { font-family: var(--font-sans); font-size: 12px; color: var(--ink-3); margin-top: 8px; }
+
+/* chips (multi-select) */
+.config-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.config-chip {
+  font-family: var(--font-sans); font-size: 13px; font-weight: 500; color: var(--ink-2);
+  background: var(--card-hi); border: 1px solid var(--line); border-radius: 999px;
+  padding: 12px 20px; cursor: none; transition: background .2s ease, border-color .2s ease, color .2s ease;
+}
+.config-chip:hover { border-color: var(--ink-4); }
+.config-chip.is-selected { background: var(--ink); border-color: var(--ink); color: var(--ink-inv); }
+
+/* budget (single-select) */
+.config-budget { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.config-budget-opt {
+  font-family: var(--font-sans); font-size: 13.5px; font-weight: 500; color: var(--ink-2); text-align: left;
+  background: var(--card-hi); border: 1px solid var(--line); border-radius: 14px;
+  padding: 16px 18px; cursor: none; transition: background .2s ease, border-color .2s ease, color .2s ease;
+}
+.config-budget-opt:hover { border-color: var(--ink-4); }
+.config-budget-opt.is-selected { background: var(--ink); border-color: var(--ink); color: var(--ink-inv); }
+@media (max-width: 480px) { .config-budget { grid-template-columns: 1fr; } }
+
+/* nav row */
+.config-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 36px; }
+.config-back {
+  display: inline-flex; align-items: center; gap: 6px; visibility: hidden;
+  font-family: var(--font-sans); font-size: 13px; font-weight: 500; color: var(--ink-2);
+  background: none; border: 0; cursor: none; padding: 12px 4px;
+}
+.config-back svg { width: 15px; height: 15px; }
+.config-back.is-visible { visibility: visible; }
+.config-next, .config-submit { margin-left: auto; }
+.config-submit { display: none; }
+
+.config-success { display: none; text-align: center; padding: 60px 24px; }
+.config-success.shown { display: block; }
+.config-success h3 { font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
+.config-success p { font-size: 13.5px; color: var(--ink-2); }
+
+@media (max-width: 620px) {
+  .config-step-label { display: none; }
+  .config-steps { gap: 6px; }
+}
+
