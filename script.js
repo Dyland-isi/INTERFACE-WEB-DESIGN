@@ -222,6 +222,71 @@ async function handleWaitlistSubmit(e) {
 }
 
 
+// ===== PRICING — plan selector + Individual/Team toggle =====
+// Software page only; every other page loads this same script.js, so
+// everything here is guarded behind the section actually existing.
+(function () {
+  const grid = document.getElementById('pricingGrid');
+  if (!grid) return;
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const cards = Array.from(grid.querySelectorAll('.pricing-card'));
+  const convertTitle = document.getElementById('convertTitle');
+  const convertSub = document.getElementById('convertSub');
+  const convertBtnLabel = document.getElementById('convertBtnLabel');
+  const wSubject = document.getElementById('w-subject');
+  const wPlan = document.getElementById('w-plan');
+
+  function swapText(el, text) {
+    if (!el) return;
+    if (reduceMotion) { el.textContent = text; return; }
+    el.style.opacity = '0';
+    setTimeout(() => { el.textContent = text; el.style.opacity = '1'; }, 150);
+  }
+
+  function selectCard(card) {
+    const btn = card.querySelector('.pricing-card-hit');
+    if (!btn || card.classList.contains('is-selected')) return;
+
+    cards.forEach(c => {
+      c.classList.remove('is-selected');
+      const b = c.querySelector('.pricing-card-hit');
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+    card.classList.add('is-selected');
+    btn.setAttribute('aria-expanded', 'true');
+
+    const plan = card.dataset.plan || '';
+    swapText(convertTitle, btn.dataset.convertTitle || '');
+    swapText(convertSub, btn.dataset.convertSub || '');
+    swapText(convertBtnLabel, btn.dataset.convertCta || '');
+    if (wSubject) wSubject.value = btn.dataset.subject || '';
+    if (wPlan) wPlan.value = plan ? plan.charAt(0).toUpperCase() + plan.slice(1) : '';
+  }
+
+  cards.forEach(card => {
+    const btn = card.querySelector('.pricing-card-hit');
+    if (btn) btn.addEventListener('click', () => selectCard(card));
+  });
+
+  // Individual / Team toggle — sliding pill, no invented Team pricing;
+  // this only tracks UI state for now.
+  const toggle = document.querySelector('.pricing-toggle');
+  if (toggle) {
+    const toggleBtns = Array.from(toggle.querySelectorAll('button'));
+    toggleBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        toggleBtns.forEach(b => { b.classList.remove('on'); b.setAttribute('aria-pressed', 'false'); });
+        btn.classList.add('on');
+        btn.setAttribute('aria-pressed', 'true');
+        toggle.setAttribute('data-active', btn.dataset.toggle || 'individual');
+      });
+    });
+  }
+})();
+
+
 // ===== LOADING SCREEN =====
 // The actual JARVIS app's own loading screen (see
 // intro-screen-export/README.md): a percentage counter, 0% to 100% over

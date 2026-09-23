@@ -78,7 +78,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
-<link rel="stylesheet" href="style.css?v=5aafa8a" />
+<link rel="stylesheet" href="style.css?v=ac86868" />
 </head>
 <body class="loading page-home">
 
@@ -107,34 +107,10 @@
 </header>
 
 <main class="page-content">
-  <section class="intro has-orb">
-    <div class="intro-copy">
-      <div class="hero-signup" id="join">
-        <h1 class="hero-signup-title">Interface OS</h1>
-        <p class="hero-signup-label">Sign up for a 2 week free trial</p>
-        <form id="waitlistForm" action="https://formspree.io/f/mnjwqevo" method="POST" onsubmit="handleWaitlistSubmit(event)">
-          <input type="hidden" name="_subject" value="Interface OS waitlist signup" />
-          <input type="hidden" name="_replyto" id="w-replyto" />
-          <div class="hero-signup-row">
-            <input class="hero-signup-input" id="w-email" name="email" type="email" placeholder="you@company.com" required />
-            <button class="hero-signup-btn form-submit" type="submit" aria-label="Sign up">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </button>
-          </div>
-        </form>
-        <div class="form-success" id="waitlistSuccess">
-          <h3>You're on the list.</h3>
-          <p>We'll be in touch with your free two-week trial as soon as Interface OS launches.</p>
-        </div>
-
-        <div class="hero-demo">
-          <p class="hero-demo-label">Want to see it first?</p>
-          <a href="#" class="hero-cta-btn secondary">
-            Book a demo
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </a>
-        </div>
-      </div>
+  <section class="intro intro-showcase">
+    <div class="intro-showcase-copy">
+      <h1>Interface OS</h1>
+      <p>An AI operating system for running a brand.</p>
     </div>
 
     <div class="app-preview">
@@ -194,35 +170,125 @@
     </div>
   </section>
 
-  <section class="pricing">
-    <h2>Simple pricing.</h2>
-    <p>A first look at plans — final pricing lands closer to launch.</p>
+  <section class="pricing" id="pricing">
+    <p class="pricing-eyebrow">Interface OS / Early access</p>
+    <h2>Choose your system.</h2>
+    <p class="pricing-intro">Start simple. Scale when you need to. Every plan gives you a way into Interface OS — the difference is how much of your operation you want to automate.</p>
 
     <div class="pricing-toggle">
-      <button type="button" class="on" onclick="this.classList.add('on'); this.nextElementSibling.classList.remove('on')">Individual</button>
-      <button type="button" onclick="this.classList.add('on'); this.previousElementSibling.classList.remove('on')">Team</button>
+      <span class="pricing-toggle-thumb" aria-hidden="true"></span>
+      <button type="button" class="on" data-toggle="individual">Individual</button>
+      <button type="button" data-toggle="team">Team</button>
     </div>
 
-    <div class="pricing-grid">
-      <div class="pricing-card">
-        <h3>Starter</h3>
-        <p>For solo founders finding their footing.</p>
-        <div class="pricing-price">Free</div>
-        <a href="#join" class="hero-cta-btn secondary">Join waitlist</a>
+    <div class="pricing-grid" id="pricingGrid">
+      <article class="pricing-card" data-plan="starter">
+        <button type="button" class="pricing-card-hit" aria-expanded="false" aria-controls="reveal-starter"
+          data-convert-title="Start with Interface OS?"
+          data-convert-sub="Get the essentials free while you explore the system."
+          data-convert-cta="Join the Starter waitlist"
+          data-subject="Interface OS waitlist signup — Starter">
+          <div class="pricing-card-top">
+            <h3>Starter</h3>
+            <div class="pricing-price">Free</div>
+          </div>
+          <p class="pricing-card-desc">For solo founders finding their footing.</p>
+          <div class="pricing-reveal" id="reveal-starter">
+            <div class="pricing-reveal-inner">
+              <ul class="pricing-specs">
+                <li><span>Core Interface OS</span><b>Included</b></li>
+                <li><span>AI workspace</span><b>Included</b></li>
+                <li><span>Automations</span><b>Limited</b></li>
+              </ul>
+            </div>
+          </div>
+          <span class="pricing-card-cta">Explore Starter
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </span>
+        </button>
+      </article>
+
+      <article class="pricing-card featured is-selected" data-plan="pro">
+        <button type="button" class="pricing-card-hit" aria-expanded="true" aria-controls="reveal-pro"
+          data-convert-title="Ready to enter Interface OS?"
+          data-convert-sub="Join the first cohort and get a 2-week free trial. No card required."
+          data-convert-cta="Join the Pro waitlist"
+          data-subject="Interface OS waitlist signup — Pro">
+          <div class="pricing-tag">Most popular</div>
+          <div class="pricing-card-top">
+            <h3>Pro</h3>
+            <div class="pricing-price">£20<span>/month</span></div>
+          </div>
+          <p class="pricing-card-desc">For small teams running full brand ops through Interface OS.</p>
+          <div class="pricing-reveal" id="reveal-pro">
+            <div class="pricing-reveal-inner">
+              <ul class="pricing-specs">
+                <li><span>Brand memory</span><b>✓</b></li>
+                <li><span>AI agents</span><b>✓</b></li>
+                <li><span>Automated workflows</span><b>✓</b></li>
+                <li><span>Team operations</span><b>✓</b></li>
+              </ul>
+            </div>
+          </div>
+          <span class="pricing-card-cta">Get early access
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </span>
+        </button>
+      </article>
+
+      <article class="pricing-card" data-plan="scale">
+        <button type="button" class="pricing-card-hit" aria-expanded="false" aria-controls="reveal-scale"
+          data-convert-title="Ready to automate more?"
+          data-convert-sub="Tell us what your operation needs and we'll show you the Scale workflow."
+          data-convert-cta="Request Scale access"
+          data-subject="Interface OS waitlist signup — Scale">
+          <div class="pricing-card-top">
+            <h3>Scale</h3>
+            <div class="pricing-price">£90<span>/month</span></div>
+          </div>
+          <p class="pricing-card-desc">For growing brands who want everything automated.</p>
+          <div class="pricing-reveal" id="reveal-scale">
+            <div class="pricing-reveal-inner">
+              <ul class="pricing-specs">
+                <li><span>Advanced agents</span><b>✓</b></li>
+                <li><span>Full automation</span><b>✓</b></li>
+                <li><span>Priority support</span><b>✓</b></li>
+                <li><span>Custom workflows</span><b>✓</b></li>
+              </ul>
+            </div>
+          </div>
+          <span class="pricing-card-cta">Explore Scale
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </span>
+        </button>
+      </article>
+    </div>
+
+    <div class="pricing-convert" id="join">
+      <div class="pricing-convert-head">
+        <h3 id="convertTitle">Ready to enter Interface OS?</h3>
+        <p id="convertSub">Join the first cohort and get a 2-week free trial. No card required.</p>
       </div>
-      <div class="pricing-card featured">
-        <div class="pricing-tag">Most popular</div>
-        <h3>Pro</h3>
-        <p>For small teams running full brand ops through Interface OS.</p>
-        <div class="pricing-price">£20<span>/month</span></div>
-        <a href="#join" class="hero-cta-btn primary">Join waitlist</a>
+
+      <form id="waitlistForm" action="https://formspree.io/f/mnjwqevo" method="POST" onsubmit="handleWaitlistSubmit(event)">
+        <input type="hidden" name="_subject" id="w-subject" value="Interface OS waitlist signup — Pro" />
+        <input type="hidden" name="_replyto" id="w-replyto" />
+        <input type="hidden" name="plan" id="w-plan" value="Pro" />
+        <div class="pricing-convert-row">
+          <input class="hero-signup-input" id="w-email" name="email" type="email" placeholder="you@company.com" required />
+          <button class="pricing-convert-btn form-submit" type="submit">
+            <span id="convertBtnLabel">Join the Pro waitlist</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </div>
+      </form>
+
+      <div class="form-success" id="waitlistSuccess">
+        <h3>You're on the list.</h3>
+        <p>We'll be in touch with your free two-week trial as soon as Interface OS launches.</p>
       </div>
-      <div class="pricing-card">
-        <h3>Scale</h3>
-        <p>For growing brands who want everything automated.</p>
-        <div class="pricing-price">£90<span>/month</span></div>
-        <a href="#join" class="hero-cta-btn secondary">Join waitlist</a>
-      </div>
+
+      <a href="#" class="pricing-demo-link">Not ready to commit? <span>Book a 15 min demo ↗</span></a>
     </div>
 
     <p class="pricing-note">Prices are an early first draft and subject to change before launch.</p>
