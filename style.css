@@ -1019,10 +1019,20 @@ header.site-head nav a.nav-quote:hover { background: rgba(255,255,255,0.22); }
   display: flex; align-items: center; justify-content: center;
   will-change: transform;
 }
+.studio-hero-media::before {
+  content: ""; position: absolute; inset: -18%; z-index: -1; pointer-events: none;
+  background: radial-gradient(closest-side, rgb(205,205,205) 35%, rgba(205,205,205,0) 100%);
+}
 .studio-hero-media img {
-  width: auto; height: auto; max-width: 100%; max-height: 74vh; display: block;
-  border-radius: 18px;
-  filter: drop-shadow(0 26px 46px rgba(90,80,60,0.14));
+  width: auto; height: auto; max-width: 100%; max-height: 78vh; display: block;
+  /* The photo's backdrop is a flat #cdcdcd. Feather its edges into a glow of
+     the same colour so it dissolves into the page instead of showing a frame. */
+  mask-image: linear-gradient(to right, transparent, #000 14%, #000 86%, transparent),
+              linear-gradient(to bottom, transparent, #000 16%, #000 90%, transparent);
+  mask-composite: intersect;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 14%, #000 86%, transparent),
+              linear-gradient(to bottom, transparent, #000 16%, #000 90%, transparent);
+  -webkit-mask-composite: source-in;
   transition: transform .2s ease-out; will-change: transform;
 }
 @media (max-width: 900px) {
