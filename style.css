@@ -1019,10 +1019,20 @@ header.site-head nav a.nav-quote:hover { background: rgba(255,255,255,0.22); }
   display: flex; align-items: center; justify-content: center;
   will-change: transform;
 }
+/* The video's own studio backdrop is a warm light grey (~#e0ded7) rather
+   than the page's cooler white-to-grey wash. Match that tone in a large
+   soft glow behind the frame so the two surfaces are already close to
+   the same colour by the time you hit the video's hard rectangle edge —
+   more reliable than trying to feather/rotoscope baked-in video pixels. */
+.studio-hero-media::before {
+  content: ""; position: absolute; inset: -14%;
+  background: radial-gradient(closest-side, rgba(224,222,215,0.95), rgba(224,222,215,0) 78%);
+  z-index: -1; pointer-events: none;
+}
 .studio-hero-media video {
   width: auto; height: auto; max-width: 100%; max-height: 74vh; display: block;
-  border-radius: 24px;
-  filter: drop-shadow(0 30px 50px rgba(0,0,0,0.16));
+  border-radius: 18px;
+  filter: drop-shadow(0 26px 46px rgba(90,80,60,0.14));
   transition: transform .2s ease-out; will-change: transform;
 }
 @media (max-width: 900px) {
@@ -1030,7 +1040,10 @@ header.site-head nav a.nav-quote:hover { background: rgba(255,255,255,0.22); }
   .studio-hero-copy { max-width: 100%; }
   .studio-hero-sub { margin-left: auto; margin-right: auto; }
   .studio-capabilities { justify-content: center; }
-  .studio-hero-media { width: 100%; }
+  /* shrink-wrap to the video instead of stretching full-width — the glow
+     behind it (.studio-hero-media::before) is sized off this box, and a
+     full-width container would blow the glow out into a visible rectangle */
+  .studio-hero-media { width: auto; max-width: 100%; align-self: center; }
   .studio-hero-media video { max-height: 56vh; }
   .hero-cta { justify-content: center; }
 }
