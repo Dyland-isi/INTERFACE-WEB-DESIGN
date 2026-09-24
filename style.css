@@ -1387,3 +1387,6 @@ header.site-head nav a.nav-quote:hover { background: rgba(255,255,255,0.22); }
 .cs-btn { font: 600 11px var(--font-sans); letter-spacing: 0.08em; text-transform: uppercase; background: #fff; color: #111; padding: 12px 18px; }
 .cs-copy ul { display: flex; gap: 16px; list-style: none; font: 500 10px var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.7); }
 @media (max-width: 620px) { .cs-sub, .cs-copy ul { display: none; } }
+
+.cs-iframe { aspect-ratio: 16 / 10; }
+.cs-iframe iframe { width: 100%; height: 100%; border: 0; display: block; background: #111; }
