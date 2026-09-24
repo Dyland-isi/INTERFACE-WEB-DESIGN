@@ -78,7 +78,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
-<link rel="stylesheet" href="style.css?v=c63174a" />
+<link rel="stylesheet" href="style.css?v=9e59a1b" />
 </head>
 <body class="loading page-home-screen">
 
@@ -110,8 +110,9 @@
 <main class="page-content">
   <section class="hero-shot">
     <div class="hero-shot-media">
-      <img src="assets/img/hero-laptop.png" alt="Interface OS running on a laptop" />
-      <div class="hero-shot-orb"><canvas class="orb-canvas"></canvas></div>
+      <video id="heroLaptopVideo" autoplay muted loop playsinline preload="auto" poster="assets/img/hero-laptop-poster.jpg" aria-label="Interface OS running on a laptop">
+        <source src="assets/video/hero-laptop.mp4" type="video/mp4" />
+      </video>
     </div>
     <div class="hero-shot-copy">
       <div class="hero-shot-mark" role="img" aria-label="Interface"></div>

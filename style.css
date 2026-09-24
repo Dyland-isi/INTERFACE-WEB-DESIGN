@@ -779,9 +779,14 @@ header.site-head nav a.nav-quote:hover { background: rgba(255,255,255,0.22); }
   flex: 1.15; min-width: 0; position: relative;
   margin-left: calc(-50vw + 50%);
 }
-.hero-shot-media img {
+.hero-shot-media video {
   width: 100%; height: auto; display: block;
-  filter: drop-shadow(0 30px 36px rgba(0,0,0,0.14));
+  mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent),
+              linear-gradient(to bottom, transparent, #000 12%, #000 80%, transparent);
+  mask-composite: intersect;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent),
+              linear-gradient(to bottom, transparent, #000 12%, #000 80%, transparent);
+  -webkit-mask-composite: source-in;
 }
 /* live orb, positioned over the particle-sphere area already visible in
    the still photo — same simulation as everywhere else on the site,

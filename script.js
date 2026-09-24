@@ -573,3 +573,7 @@ async function handleProjectSubmit(e) {
     revealTargets.forEach(el => { el.classList.add('reveal-init'); io.observe(el); });
   }
 })();
+(function () {
+  const v = document.getElementById('heroLaptopVideo');
+  if (v && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { v.removeAttribute('autoplay'); v.pause(); }
+})();
