@@ -542,6 +542,7 @@ async function handleProjectSubmit(e) {
 
 
   // Hero video — a subtle cursor-tracked tilt, desktop pointer only.
+  const heroVideo = document.getElementById('studioHeroImg');
   if (heroVideo && !reduceMotion && window.matchMedia('(hover: hover)').matches) {
     const wrap = document.getElementById('studioHeroMedia');
     wrap.style.perspective = '1000px';
