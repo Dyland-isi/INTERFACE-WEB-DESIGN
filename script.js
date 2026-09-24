@@ -540,13 +540,6 @@ async function handleProjectSubmit(e) {
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
-  // Hero video — don't autoplay motion for reduced-motion users; the
-  // poster frame stands in for it instead.
-  const heroVideo = document.getElementById('studioHeroVideo');
-  if (heroVideo && reduceMotion) {
-    heroVideo.removeAttribute('autoplay');
-    heroVideo.pause();
-  }
 
   // Hero video — a subtle cursor-tracked tilt, desktop pointer only.
   if (heroVideo && !reduceMotion && window.matchMedia('(hover: hover)').matches) {
