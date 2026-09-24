@@ -539,4 +539,43 @@ async function handleProjectSubmit(e) {
     }
     window.addEventListener('scroll', onScroll, { passive: true });
   }
+
+  // Hero video — don't autoplay motion for reduced-motion users; the
+  // poster frame stands in for it instead.
+  const heroVideo = document.getElementById('studioHeroVideo');
+  if (heroVideo && reduceMotion) {
+    heroVideo.removeAttribute('autoplay');
+    heroVideo.pause();
+  }
+
+  // Hero video — a subtle cursor-tracked tilt, desktop pointer only.
+  if (heroVideo && !reduceMotion && window.matchMedia('(hover: hover)').matches) {
+    const wrap = document.getElementById('studioHeroMedia');
+    wrap.style.perspective = '1000px';
+    wrap.addEventListener('mousemove', (e) => {
+      const r = wrap.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - 0.5;
+      const py = (e.clientY - r.top) / r.height - 0.5;
+      heroVideo.style.transform = `rotateY(${px * 6}deg) rotateX(${-py * 6}deg)`;
+    });
+    wrap.addEventListener('mouseleave', () => { heroVideo.style.transform = ''; });
+  }
+
+  // Scroll-reveal — sections fade/translate up into place the first time
+  // they enter view. Skipped entirely for reduced-motion (content is
+  // simply visible from load).
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    const revealTargets = document.querySelectorAll(
+      '.decision, .services, .journey, .work, .compare, .offer, .os-teaser, .faq, .final-cta, .approach'
+    );
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    revealTargets.forEach(el => { el.classList.add('reveal-init'); io.observe(el); });
+  }
 })();
