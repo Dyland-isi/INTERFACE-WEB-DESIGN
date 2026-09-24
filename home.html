@@ -78,7 +78,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
-<link rel="stylesheet" href="style.css?v=988aee8" />
+<link rel="preload" as="image" href="assets/img/hero-laptop-poster.webp" />
+<link rel="preload" as="video" href="assets/video/hero-laptop.mp4" type="video/mp4" />
+<link rel="stylesheet" href="style.css?v=1fee6ec" />
 </head>
 <body class="loading page-home-screen">
 
@@ -110,7 +112,7 @@
 <main class="page-content">
   <section class="hero-shot">
     <div class="hero-shot-media">
-      <video id="heroLaptopVideo" autoplay muted loop playsinline preload="auto" poster="assets/img/hero-laptop-poster.jpg" aria-label="Interface OS running on a laptop">
+      <video id="heroLaptopVideo" autoplay muted loop playsinline preload="auto" poster="assets/img/hero-laptop-poster.webp" aria-label="Interface OS running on a laptop">
         <source src="assets/video/hero-laptop.mp4" type="video/mp4" />
       </video>
     </div>

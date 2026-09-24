@@ -776,7 +776,7 @@ header.site-head nav a.nav-quote:hover { background: rgba(255,255,255,0.22); }
    own centred max-width, so the hand reads as entering from off-screen
    rather than stopping at the content column. */
 .hero-shot-media {
-  flex: 1.15; min-width: 0; position: relative;
+  flex: 1.6; min-width: 0; position: relative;
   margin-left: calc(-50vw + 50%);
 }
 .hero-shot-media video {
@@ -796,7 +796,7 @@ header.site-head nav a.nav-quote:hover { background: rgba(255,255,255,0.22); }
   pointer-events: none;
 }
 .hero-shot-orb canvas { width: 100%; height: 100%; display: block; }
-.hero-shot-copy { flex: 1; min-width: 0; margin-top: 54px; }
+.hero-shot-copy { flex: 0.9; min-width: 0; margin-top: 54px; }
 .hero-shot-mark {
   height: 34px; width: 102px; margin: 0 auto 18px;
   background-color: var(--ink-2);
@@ -815,7 +815,7 @@ header.site-head nav a.nav-quote:hover { background: rgba(255,255,255,0.22); }
 .hero-shot-copy .hero-cta { margin-top: 0; }
 @media (max-width: 900px) {
   .hero-shot { flex-direction: column; text-align: center; }
-  .hero-shot-media { margin-left: 0; flex: none; width: 100%; max-width: 420px; }
+  .hero-shot-media { margin-left: 0; flex: none; width: 100%; margin-right: 0; }
   .hero-shot-copy p { margin-left: auto; margin-right: auto; }
   .hero-shot-copy .hero-cta { justify-content: center; }
   .integrations { text-align: center; }
@@ -1393,5 +1393,5 @@ header.site-head nav a.nav-quote:hover { background: rgba(255,255,255,0.22); }
 .cs-copy ul { display: flex; gap: 16px; list-style: none; font: 500 10px var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.7); }
 @media (max-width: 620px) { .cs-sub, .cs-copy ul { display: none; } }
 
-.cs-iframe { aspect-ratio: 16 / 10; }
+.cs-iframe { aspect-ratio: auto; height: calc(100vh - 150px); min-height: 640px; }
 .cs-iframe iframe { width: 100%; height: 100%; border: 0; display: block; background: #111; }
