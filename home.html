@@ -80,7 +80,7 @@
 
 <link rel="preload" as="image" href="assets/img/hero-laptop-poster.webp" />
 <link rel="preload" as="video" href="assets/video/hero-laptop.mp4" type="video/mp4" />
-<link rel="stylesheet" href="style.css?v=1fee6ec" />
+<link rel="stylesheet" href="style.css?v=9be9e55" />
 </head>
 <body class="loading page-home-screen">
 
@@ -110,6 +110,10 @@
 </header>
 
 <main class="page-content">
+  <div class="design-stage" id="designStage">
+    <div class="design-stage-pin">
+      <div class="design-orb-wrap" id="designOrbWrap"><canvas class="orb-canvas"></canvas></div>
+      <div class="design-form-emerge home-emerge" id="designFormEmerge">
   <section class="hero-shot">
     <div class="hero-shot-media">
       <video id="heroLaptopVideo" autoplay muted loop playsinline preload="auto" poster="assets/img/hero-laptop-poster.webp" aria-label="Interface OS running on a laptop">
@@ -195,6 +199,9 @@
       </div>
     </div>
   </section>
+      </div>
+    </div>
+  </div>
 
   <div class="nav-controls">
     <a class="nav-btn" href="index.html" aria-label="Back">
@@ -213,5 +220,72 @@
 
 <script src="assets/orb.js"></script>
 <script src="script.js"></script>
+<script>
+(function () {
+  var stage = document.getElementById('designStage');
+  var orbWrap = document.getElementById('designOrbWrap');
+  var formLayer = document.getElementById('designFormEmerge');
+  if (!stage || !orbWrap || !formLayer) return;
+
+  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+  function easeInCubic(t) { return t * t * t; }
+  function easeInQuad(t) { return t * t; }
+  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+  // cache layout metrics instead of reading getBoundingClientRect every
+  // frame — that forces a synchronous reflow and was the source of the
+  // original jank; only recompute on resize.
+  var stageTop = 0, stageHeight = 0, vh = 0;
+  function measure() {
+    stageTop = stage.offsetTop;
+    stageHeight = stage.offsetHeight;
+    vh = window.innerHeight;
+  }
+  measure();
+  window.addEventListener('resize', measure);
+
+  // Run a continuous rAF loop rather than one tick per scroll event —
+  // scroll events fire in bursts (especially on trackpads/Safari) which
+  // reads as stepped/glitchy motion. Chasing a lerped value toward the
+  // real scroll target every animation frame decouples the visuals from
+  // the scroll event rate, giving a full-framerate, buttery result.
+  var target = 0, smoothed = 0;
+
+  // the quote form starts emerging while the orb is still zooming out
+  // (from FORM_START onward) so it grows directly out of the orb's last
+  // frame in the same spot, rather than arriving separately afterwards.
+  var FORM_START = 0.55;
+
+  function render() {
+    var total = stageHeight - vh;
+    target = total > 0 ? clamp((window.scrollY - stageTop) / total, 0, 1) : 0;
+    smoothed += (target - smoothed) * 0.22;
+    if (Math.abs(target - smoothed) < 0.0005) smoothed = target;
+
+    // "quick zoom" — the orb rockets toward the viewer (scale + blur +
+    // fade ramping in fast) rather than gently shrinking away. Stays
+    // centered the whole time — no lateral drift — since the form now
+    // emerges in the same spot instead of sliding in from the side.
+    var zoom = easeInCubic(smoothed);
+    var fade = easeInQuad(smoothed);
+    var scale = 1 + zoom * 2.6;
+    var blur = zoom * 18;
+
+    orbWrap.style.transform = 'scale(' + scale + ')';
+    orbWrap.style.opacity = clamp(1 - fade * 1.15, 0, 1);
+    orbWrap.style.filter = blur > 0.05 ? 'blur(' + blur + 'px)' : 'none';
+
+    var formT = easeOutCubic(clamp((smoothed - FORM_START) / (1 - FORM_START), 0, 1));
+    formLayer.style.opacity = formT;
+    formLayer.style.transform = 'scale(' + (0.88 + formT * 0.12) + ') translate3d(0,' + ((1 - formT) * 22) + 'px,0)';
+    formLayer.style.pointerEvents = formT > 0.9 ? 'auto' : 'none';
+
+    requestAnimationFrame(render);
+  }
+
+  requestAnimationFrame(render);
+})();
+</script>
+
 </body>
 </html>
