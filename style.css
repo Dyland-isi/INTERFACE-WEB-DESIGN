@@ -776,17 +776,11 @@ header.site-head nav a.nav-quote:hover { background: rgba(255,255,255,0.22); }
    own centred max-width, so the hand reads as entering from off-screen
    rather than stopping at the content column. */
 .hero-shot-media {
-  flex: 1.6; min-width: 0; position: relative;
+  flex: 2.4; min-width: 0; position: relative;
   margin-left: calc(-50vw + 50%);
 }
 .hero-shot-media video {
   width: 100%; height: auto; display: block;
-  mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent),
-              linear-gradient(to bottom, transparent, #000 12%, #000 80%, transparent);
-  mask-composite: intersect;
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent),
-              linear-gradient(to bottom, transparent, #000 12%, #000 80%, transparent);
-  -webkit-mask-composite: source-in;
 }
 /* live orb, positioned over the particle-sphere area already visible in
    the still photo — same simulation as everywhere else on the site,
