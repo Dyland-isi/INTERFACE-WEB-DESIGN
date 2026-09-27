@@ -1410,8 +1410,14 @@ header.site-head nav a.nav-quote:hover { background: rgba(255,255,255,0.22); }
 }
 .home-emerge .hero-shot-copy { margin-top: 0; align-self: center; }
 @media (max-width: 900px) {
-  .home-emerge .hero-shot-media { order: 0; height: auto; }
+  /* the video sits flush at the very top of the stage on desktop, which
+     is fine there (it's much taller than the header) — but on mobile its
+     whole box is short enough that the fixed header eats into a third of
+     it, reading as a bad crop. Push it below the header here instead. */
+  .home-emerge { padding-top: 132px; }
+  .home-emerge .hero-shot-media { order: 0; height: auto; flex: none; }
   .home-emerge .hero-shot-media video { height: auto; }
+  .home-emerge .hero-shot-copy { padding: 0 20px; }
 }
 
 /* studio homepage: hero sits inside the orb stage the same way */
