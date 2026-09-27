@@ -3,23 +3,23 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Interface — Websites, Ecommerce & Digital Systems, Cardiff</title>
-<meta name="description" content="Interface is a Cardiff-based digital studio building websites, ecommerce stores and digital systems for modern businesses — plus Interface OS, our own operating layer for running a brand." />
-<meta name="keywords" content="Cardiff web design, website design Cardiff, ecommerce development, Shopify development, digital systems, automation, Interface OS, web development Wales" />
+<title>Interface — The AI Operating System for Brands</title>
+<meta name="description" content="Interface OS brings every tool your brand runs on — ChatGPT, Claude, Gemini, Gmail, GitHub, and more — into one AI operating system. Built by Interface, Cardiff." />
+<meta name="keywords" content="Interface OS, AI operating system, AI software studio Cardiff, brand automation, AI agents" />
 <meta name="author" content="Interface" />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://www.dylandriscoll.design/" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Interface — Websites, Ecommerce & Digital Systems, Cardiff" />
-<meta property="og:description" content="A Cardiff-based digital studio building websites, ecommerce stores and digital systems for modern businesses." />
+<meta property="og:title" content="Interface — The AI Operating System for Brands" />
+<meta property="og:description" content="Interface OS brings every tool your brand runs on into one AI operating system." />
 <meta property="og:locale" content="en_GB" />
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Interface — Websites, Ecommerce & Digital Systems, Cardiff" />
-<meta name="twitter:description" content="A Cardiff-based digital studio building websites, ecommerce stores and digital systems for modern businesses." />
+<meta name="twitter:title" content="Interface — The AI Operating System for Brands" />
+<meta name="twitter:description" content="Interface OS brings every tool your brand runs on into one AI operating system." />
 
 <!-- Geo tags -->
 <meta name="geo.region" content="GB-CRF" />
@@ -33,8 +33,8 @@
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "Interface",
-  "alternateName": "Interface — Digital Studio",
-  "description": "Cardiff-based digital studio building websites, ecommerce stores and digital systems for modern businesses — and Interface OS, our own AI operating system for running a brand.",
+  "alternateName": "Interface — AI Software Studio",
+  "description": "Cardiff-based AI software studio building Interface OS, an AI operating system for brands — plus, for a small number of clients, the web design and brand work the studio started with.",
   "url": "https://www.dylandriscoll.design",
   "image": "https://www.dylandriscoll.design/assets/img/logo.svg",
   "telephone": "+447538043294",
@@ -57,14 +57,14 @@
     { "@type": "Country", "name": "United Kingdom" }
   ],
   "knowsAbout": [
-    "Web Design",
-    "Web Development",
-    "Ecommerce",
-    "Shopify",
-    "Digital Systems",
+    "Artificial Intelligence",
+    "Software Development",
+    "AI Agents",
     "Automation",
+    "Web Design",
     "Brand Identity",
-    "Artificial Intelligence"
+    "Marketing Strategy",
+    "E-commerce"
   ],
   "sameAs": [
     "https://www.instagram.com/interface_dev/",
@@ -78,7 +78,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
-<link rel="stylesheet" href="style.css?v=2884f3f" />
+<link rel="preload" as="image" href="assets/img/hero-laptop-poster.webp" />
+<link rel="preload" as="video" href="assets/video/hero-laptop.mp4" type="video/mp4" />
+<link rel="stylesheet" href="style.css?v=68d1116" />
 </head>
 <body class="loading page-home">
 
@@ -99,7 +101,7 @@
   <nav>
     <a id="nav-home" href="index.html" class="active">HOME</a>
     <a id="nav-work" href="work.html">WORK</a>
-    <a id="nav-services" href="index.html#services">SERVICES</a>
+    <a id="nav-services" href="services.html#services">SERVICES</a>
     <a id="nav-software" href="software.html">SOFTWARE</a>
     <a id="nav-design" href="design.html">DESIGN</a>
     <a id="nav-about" href="about.html">ABOUT</a>
@@ -107,321 +109,105 @@
   </nav>
 </header>
 
-<main class="page-content studio-home">
-
-  <!-- ===== HERO — greets on the orb, reveals on scroll ===== -->
+<main class="page-content">
   <div class="design-stage" id="designStage">
     <div class="design-stage-pin">
       <div class="design-orb-wrap" id="designOrbWrap"><canvas class="orb-canvas"></canvas></div>
-      <p class="stage-scroll-cue" id="stageScrollCue">Scroll<span></span></p>
       <div class="design-form-emerge home-emerge" id="designFormEmerge">
-  <section class="studio-hero">
-    <div class="studio-hero-copy">
-      <p class="studio-eyebrow">Digital infrastructure</p>
-      <h1>Websites, ecommerce and digital systems for modern businesses.</h1>
-      <p class="studio-hero-sub">We design and build digital experiences that help businesses attract customers, sell online and operate more efficiently.</p>
+  <section class="hero-shot">
+    <div class="hero-shot-media">
+      <video id="heroLaptopVideo" autoplay muted loop playsinline preload="auto" poster="assets/img/hero-laptop-poster.webp" aria-label="Interface OS running on a laptop">
+        <source src="assets/video/hero-laptop.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="hero-shot-copy">
+      <div class="hero-shot-mark" role="img" aria-label="Interface"></div>
+      <h1>The operating system for running a brand.</h1>
+      <p>Interface OS brings every tool your brand runs on — your inbox, your calendar, your code, your AI models — into one place, so nothing gets lost between tabs.</p>
       <div class="hero-cta">
-        <a href="contact.html" class="hero-cta-btn primary">
-          Tell us what you're building
+        <a href="download.html" class="hero-cta-btn primary">
+          Download
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
-        <a href="#work" class="hero-cta-btn secondary">
-          View our work
+        <a href="software.html" class="hero-cta-btn secondary">
+          Explore Interface OS
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </a>
       </div>
-      <div class="studio-capabilities">
-        <span>Websites</span><span>Ecommerce</span><span>Systems</span><span>Automation</span>
+
+      <div class="integrations">
+        <h2>Everything Interface OS connects to.</h2>
+        <p>One system, talking to the tools you already use.</p>
+        <div class="integrations-grid">
+      <div class="integration-item">
+        <div class="integration-icon"><svg viewBox="0 0 24 24" fill="#10A37F"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.4592a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v3l-2.6069 1.4997-2.602-1.4997z"/></svg></div>
+        <span>ChatGPT</span>
       </div>
-    </div>
-    <div class="studio-hero-media" id="studioHeroMedia">
-      <img id="studioHeroImg" src="assets/img/hero-fold-device.webp" alt="Interface OS running on a foldable device" width="900" height="595" />
+      <div class="integration-item">
+        <div class="integration-icon" style="background:#D97757;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 3.5l1.3 6.2 5.9-2.9-4.4 4.7 6.2 1.3-6.2 1.3 4.4 4.7-5.9-2.9L12 21.5l-1.3-6.2-5.9 2.9 4.4-4.7-6.2-1.3 6.2-1.3-4.4-4.7 5.9 2.9z"/></svg></div>
+        <span>Claude</span>
+      </div>
+      <div class="integration-item">
+        <div class="integration-icon"><svg viewBox="0 0 24 24"><defs><linearGradient id="gemGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#4285F4"/><stop offset="50%" stop-color="#9B72CB"/><stop offset="100%" stop-color="#D96570"/></linearGradient></defs><path fill="url(#gemGrad)" d="M12 2c.6 4.6 3.4 8.4 8 9-4.6.6-7.4 4.4-8 9-.6-4.6-3.4-8.4-8-9 4.6-.6 7.4-4.4 8-9z"/></svg></div>
+        <span>Gemini</span>
+      </div>
+      <div class="integration-item">
+        <div class="integration-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l16 16M20 4L4 20"/></svg></div>
+        <span>Grok</span>
+      </div>
+      <div class="integration-item">
+        <div class="integration-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="#fff" stroke="#dadce0" stroke-width="1"/><path fill="#EA4335" d="M3.5 6.2L12 12.6l8.5-6.4v1.6L12 14.4 3.5 7.8z"/></svg></div>
+        <span>Gmail</span>
+      </div>
+      <div class="integration-item">
+        <div class="integration-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="16" rx="2" fill="#fff" stroke="#dadce0"/><path d="M3 8.5h18" stroke="#4285F4" stroke-width="1.4"/><path d="M8 3v3.4M16 3v3.4" stroke="#5f6368" stroke-width="1.4" stroke-linecap="round"/><text x="12" y="17" text-anchor="middle" font-size="8" fill="#4285F4" font-family="Arial" font-weight="700">31</text></svg></div>
+        <span>Google Calendar</span>
+      </div>
+      <div class="integration-item">
+        <div class="integration-icon" style="background:#000;"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 9l3 3-3 3M13 15h4"/></svg></div>
+        <span>Terminal</span>
+      </div>
+      <div class="integration-item">
+        <div class="integration-icon"><svg viewBox="0 0 24 24" fill="#4D6BFE"><path d="M12.3 3.2c2.7-.6 4.9.4 6 2.1-1.6-.5-3-.3-4.1.5 1.6.1 2.9.7 3.7 2-1.7-.4-3-.1-3.9.7 1.8.2 3.1 1.2 3.6 2.7-1.9-1.3-4-1.5-5.9-.4-2.2 1.3-3 3.9-2.1 6.2-2.4-1-3.9-3.4-3.6-6 .2-1.7 1.1-3.1 2.4-4-1.1-.2-2.1.1-2.9.8.4-1.7 1.8-2.9 3.6-3.3-.9-.5-1.9-.6-2.9-.3C7 2.7 8.9 2 10.9 2.4c.5-.4 1-.7 1.4.8z"/></svg></div>
+        <span>DeepSeek</span>
+      </div>
+      <div class="integration-item">
+        <div class="integration-icon"><svg viewBox="0 0 24 24" fill="#7C3AED"><path d="M12 2l6.5 4-1 7.5-5.5 8.5-5.5-8.5-1-7.5z"/><path d="M12 2l6.5 4-6.5 5.5V2z" fill="#a78bfa"/></svg></div>
+        <span>Obsidian</span>
+      </div>
+      <div class="integration-item">
+        <div class="integration-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.6 2 12.2c0 4.5 2.9 8.3 6.8 9.6.5.1.7-.2.7-.5v-1.9c-2.8.6-3.4-1.3-3.4-1.3-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1.1 1.5 1.1.9 1.5 2.3 1.1 2.9.8.1-.7.4-1.1.6-1.4-2.3-.2-4.6-1.1-4.6-5 0-1.1.4-2 1.1-2.7-.1-.3-.5-1.4.1-2.8 0 0 .9-.3 3 1a10 10 0 015.4 0c2.1-1.3 3-1 3-1 .6 1.4.2 2.5.1 2.8.7.7 1.1 1.6 1.1 2.7 0 3.9-2.3 4.8-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 3.9-1.3 6.8-5.1 6.8-9.6C22 6.6 17.5 2 12 2z"/></svg></div>
+        <span>GitHub</span>
+      </div>
+      <div class="integration-item">
+        <div class="integration-icon"><svg viewBox="0 0 24 24" fill="#007ACC"><path d="M23.15 2.587L18.21.21a1.494 1.494 0 0 0-1.705.29l-9.46 8.63-4.12-3.128a.999.999 0 0 0-1.276.057L.327 7.261A1 1 0 0 0 .326 8.74L3.899 12 .326 15.26a1 1 0 0 0 .001 1.479L1.65 17.94a.999.999 0 0 0 1.276.057l4.12-3.128 9.46 8.63a1.492 1.492 0 0 0 1.704.29l4.942-2.377A1.5 1.5 0 0 0 24 20.06V3.939a1.5 1.5 0 0 0-.85-1.352zM17.706 16.923l-6.244-4.923 6.244-4.923v9.846z"/></svg></div>
+        <span>VS Code</span>
+      </div>
+      <div class="integration-item">
+        <div class="integration-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 1.5c.1 1.1-.3 2.2-1 3-.7.8-1.9 1.5-3 1.4-.1-1.1.4-2.2 1-3 .8-.8 2-1.4 3-1.4zM20.9 17c-.5 1.2-.8 1.7-1.5 2.7-1 1.5-2.4 3.3-4.1 3.3-1.5 0-1.9-1-3.9-1s-2.5 1-4 1c-1.7 0-3-1.6-4-3.1C.9 17 .3 13 1.8 10.4c1-1.7 2.6-2.7 4.1-2.7 1.6 0 2.6 1.1 3.9 1.1 1.3 0 2.1-1.1 3.9-1.1 1.3 0 2.7.7 3.7 2-3.3 1.8-2.8 6.4.5 7.4-.3.7-.6 1.3-1 1.9z"/></svg></div>
+        <span>iOS</span>
+      </div>
+      <div class="integration-item">
+        <div class="integration-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18 14 14 0 010-18z"/></svg></div>
+        <span>Web</span>
+      </div>
+      <div class="integration-item">
+        <div class="integration-icon"><svg viewBox="0 0 24 24"><rect x="2.5" y="2.5" width="8.5" height="8.5" fill="#F25022"/><rect x="13" y="2.5" width="8.5" height="8.5" fill="#7FBA00"/><rect x="2.5" y="13" width="8.5" height="8.5" fill="#00A4EF"/><rect x="13" y="13" width="8.5" height="8.5" fill="#FFB900"/></svg></div>
+        <span>Windows</span>
+      </div>
+        </div>
+      </div>
     </div>
   </section>
       </div>
     </div>
   </div>
 
-  <!-- ===== WHAT ARE YOU LOOKING TO BUILD ===== -->
-  <section class="decision">
-    <h2>What are you looking to build?</h2>
-    <p class="decision-intro">Choose the option that best fits your goals — or tell us what you're working on and we'll guide you.</p>
-
-    <div class="decision-grid">
-      <article class="decision-card">
-        <button type="button" class="decision-card-hit" aria-expanded="false" aria-controls="decision-website">
-          <div class="decision-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg>
-          </div>
-          <h3>A website</h3>
-          <div class="decision-reveal" id="decision-website">
-            <div class="decision-reveal-inner">
-              <p>A high-end digital presence built around your business.</p>
-            </div>
-          </div>
-          <span class="decision-cta">Start a project
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </span>
-        </button>
-      </article>
-
-      <article class="decision-card featured is-open">
-        <button type="button" class="decision-card-hit" aria-expanded="true" aria-controls="decision-system">
-          <div class="decision-tag">For growing businesses</div>
-          <div class="decision-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-          </div>
-          <h3>A business system</h3>
-          <div class="decision-reveal" id="decision-system">
-            <div class="decision-reveal-inner">
-              <p>Websites, ecommerce, automation and infrastructure — built as one connected system around how your business actually operates, not bolted together from disconnected tools.</p>
-            </div>
-          </div>
-          <span class="decision-cta">Explore infrastructure
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </span>
-        </button>
-      </article>
-
-      <article class="decision-card">
-        <button type="button" class="decision-card-hit" aria-expanded="false" aria-controls="decision-unsure">
-          <div class="decision-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          </div>
-          <h3>I'm not sure</h3>
-          <div class="decision-reveal" id="decision-unsure">
-            <div class="decision-reveal-inner">
-              <p>Tell us what you're working on and we'll recommend the best approach.</p>
-            </div>
-          </div>
-          <span class="decision-cta">Get in touch
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </span>
-        </button>
-      </article>
-    </div>
-  </section>
-
-  <!-- ===== WHAT WE BUILD ===== -->
-  <section class="services" id="services">
-    <h2>More than just a website.</h2>
-    <p class="services-intro">We build digital systems that help businesses attract customers, sell and operate more efficiently.</p>
-
-    <div class="service-rows">
-      <a href="contact.html" class="service-row">
-        <span class="service-num">01</span>
-        <span class="service-title">Websites</span>
-        <span class="service-desc">Design &amp; development</span>
-        <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </a>
-      <a href="contact.html" class="service-row">
-        <span class="service-num">02</span>
-        <span class="service-title">Ecommerce</span>
-        <span class="service-desc">Shopify + online stores</span>
-        <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </a>
-      <a href="contact.html" class="service-row">
-        <span class="service-num">03</span>
-        <span class="service-title">Systems</span>
-        <span class="service-desc">Custom web applications</span>
-        <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </a>
-      <a href="contact.html" class="service-row">
-        <span class="service-num">04</span>
-        <span class="service-title">Automation</span>
-        <span class="service-desc">Integrations + workflows</span>
-        <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </a>
-    </div>
-  </section>
-
-  <!-- ===== THE JOURNEY ===== -->
-  <section class="journey">
-    <h2>From idea to impact.</h2>
-    <p class="journey-intro">We keep the process simple. From strategy to launch and beyond, we work with you at every stage to build a system that evolves with your business.</p>
-
-    <div class="journey-steps">
-      <div class="journey-line" aria-hidden="true"></div>
-      <div class="journey-step">
-        <span class="journey-num">1</span>
-        <h3>Discover</h3>
-        <p>We learn about your business and goals.</p>
-      </div>
-      <div class="journey-step">
-        <span class="journey-num">2</span>
-        <h3>Design</h3>
-        <p>We create a tailored strategy and design.</p>
-      </div>
-      <div class="journey-step">
-        <span class="journey-num">3</span>
-        <h3>Build</h3>
-        <p>We develop, integrate and test.</p>
-      </div>
-      <div class="journey-step">
-        <span class="journey-num">4</span>
-        <h3>Launch</h3>
-        <p>We go live and keep it running.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FEATURED WORK ===== -->
-  <section class="work" id="work">
-    <p class="work-eyebrow">Selected work</p>
-    <h2>Real projects.<br>Real digital systems.</h2>
-    <div class="work-empty">
-      <p>We're putting together case studies from recent projects — check back soon, or tell us what you're building and we'll show you examples relevant to it.</p>
-      <a href="contact.html" class="hero-cta-btn secondary">
-        Start a project
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </a>
-    </div>
-  </section>
-
-  <!-- ===== BEFORE / AFTER ===== -->
-  <section class="compare">
-    <h2>A better digital foundation.</h2>
-    <div class="compare-grid">
-      <div class="compare-panel">
-        <p class="compare-label">Before</p>
-        <h3>Traditional website</h3>
-        <ul>
-          <li>Difficult to navigate</li>
-          <li>Disconnected tools</li>
-          <li>Manual processes</li>
-          <li>Poor conversion journey</li>
-        </ul>
-      </div>
-      <div class="compare-divider" aria-hidden="true"></div>
-      <div class="compare-panel is-after">
-        <p class="compare-label">After</p>
-        <h3>Modern digital system</h3>
-        <ul>
-          <li>Clear customer journey</li>
-          <li>Connected systems</li>
-          <li>Automated workflows</li>
-          <li>Built to evolve</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== WHY INTERFACE ===== -->
-  <section class="offer">
-    <h2>More than a website.<br><em>A long-term partner.</em></h2>
-    <p class="offer-intro">We combine design, development and strategy to build digital infrastructure that evolves with your business.</p>
-    <div class="offer-grid">
-      <div class="offer-item">
-        <h3>DESIGN + DEVELOPMENT</h3>
-        <p>One team from first concept to launch.</p>
-      </div>
-      <div class="offer-item">
-        <h3>BUILT AROUND YOUR BUSINESS</h3>
-        <p>No unnecessary templates — no forcing your business into someone else's system.</p>
-      </div>
-      <div class="offer-item">
-        <h3>BEYOND THE WEBSITE</h3>
-        <p>Websites, automation, integrations and digital systems.</p>
-      </div>
-      <div class="offer-item">
-        <h3>DESIGNED TO EVOLVE</h3>
-        <p>Your digital infrastructure should grow with your business.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== INTERFACE OS ===== -->
-  <section class="os-teaser">
-    <div class="os-teaser-copy">
-      <p class="studio-eyebrow os-teaser-eyebrow">Interface OS</p>
-      <h2>Your business,<br>operating system.</h2>
-      <p>A digital operating layer connecting your brand, tools, workflows and information in one place.</p>
-      <a href="software.html" class="hero-cta-btn secondary os-teaser-cta">
-        Explore Interface OS
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </a>
-      <div class="os-teaser-meta">
-        <span>Memory</span><span>Agents</span><span>Automation</span><span>Brand ops</span>
-      </div>
-    </div>
-    <div class="os-teaser-shot">
-      <img src="assets/img/hero-fold-device.webp" alt="Interface OS running on a foldable device" width="900" height="595" loading="lazy" />
-    </div>
-  </section>
-
-  <!-- ===== FAQ ===== -->
-  <section class="faq">
-    <h2>Got questions?</h2>
-    <div class="faq-list">
-      <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a1">
-          How long does a project take?
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </button>
-        <div class="faq-a" id="faq-a1"><div class="faq-a-inner"><p>It depends on scope — a focused website moves faster than a multi-system build. We'll give you a realistic timeline once we understand the project.</p></div></div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a2">
-          Do you offer ongoing support?
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </button>
-        <div class="faq-a" id="faq-a2"><div class="faq-a-inner"><p>Yes — most clients keep working with us after launch, whether that's changes, new features or keeping systems running smoothly.</p></div></div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a3">
-          Can you work with our existing systems?
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </button>
-        <div class="faq-a" id="faq-a3"><div class="faq-a-inner"><p>Usually, yes. We'll look at what you already use and connect to it or migrate away from it where that makes sense.</p></div></div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a4">
-          What's the typical cost?
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </button>
-        <div class="faq-a" id="faq-a4"><div class="faq-a-inner"><p>It depends on the project — tell us what you're building via the quote form and we'll come back with an approach and a budget range that fits.</p></div></div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a5">
-          Do you work with businesses outside Cardiff?
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </button>
-        <div class="faq-a" id="faq-a5"><div class="faq-a-inner"><p>Yes — we're based in Cardiff but work with businesses across the UK remotely.</p></div></div>
-      </div>
-      <div class="faq-item">
-        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a6">
-          Can you build Shopify stores?
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </button>
-        <div class="faq-a" id="faq-a6"><div class="faq-a-inner"><p>Yes — Shopify is one of our core ecommerce platforms, alongside custom-built stores where that's the better fit.</p></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FINAL CTA ===== -->
-  <section class="final-cta">
-    <h2>Build something better.</h2>
-    <p>Have a website that needs replacing? A business that needs a better digital system? Or an idea you don't know how to build yet?<br>Tell us what you're working on.</p>
-    <div class="hero-cta final-cta-buttons">
-      <a href="contact.html" class="hero-cta-btn primary">
-        Tell us what you're building
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </a>
-      <a href="#work" class="hero-cta-btn secondary">
-        View our work
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-      </a>
-    </div>
-  </section>
-
-  <section class="contact" id="contact">
-    <h2>Questions before launch?<br><em>Just ask.</em></h2>
+  <section class="contact">
+    <h2>Working on something?<br><em>Send a brief.</em></h2>
     <div class="links">
-      <span class="label">EMAIL</span><a href="mailto:info@interfacecardiff.com">info@interfacecardiff.com</a>
-      <span class="label">PHONE</span><a href="tel:+447538043294">+44 7538 043294</a>
-      <span class="label">BASED</span><span style="color:var(--ink-inv)">Cardiff, UK</span>
       <span class="label">QUOTE</span><a href="contact.html">Start a project ↗︎</a>
-      <span class="label">SOCIAL</span><a href="https://www.instagram.com/interface_dev/" target="_blank" rel="noopener">Instagram ↗︎</a><a href="https://www.linkedin.com/in/dylan-driscoll" target="_blank" rel="noopener">LinkedIn ↗︎</a>
+      <span class="label">EMAIL</span><a href="mailto:info@interfacecardiff.com">info@interfacecardiff.com</a>
     </div>
   </section>
 </main>
@@ -433,7 +219,6 @@
   var stage = document.getElementById('designStage');
   var orbWrap = document.getElementById('designOrbWrap');
   var formLayer = document.getElementById('designFormEmerge');
-  var cue = document.getElementById('stageScrollCue');
   if (!stage || !orbWrap || !formLayer) return;
 
   function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
@@ -441,6 +226,9 @@
   function easeInQuad(t) { return t * t; }
   function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
 
+  // cache layout metrics instead of reading getBoundingClientRect every
+  // frame — that forces a synchronous reflow and was the source of the
+  // original jank; only recompute on resize.
   var stageTop = 0, stageHeight = 0, vh = 0;
   function measure() {
     stageTop = stage.offsetTop;
@@ -450,7 +238,16 @@
   measure();
   window.addEventListener('resize', measure);
 
+  // Run a continuous rAF loop rather than one tick per scroll event —
+  // scroll events fire in bursts (especially on trackpads/Safari) which
+  // reads as stepped/glitchy motion. Chasing a lerped value toward the
+  // real scroll target every animation frame decouples the visuals from
+  // the scroll event rate, giving a full-framerate, buttery result.
   var target = 0, smoothed = 0;
+
+  // the quote form starts emerging while the orb is still zooming out
+  // (from FORM_START onward) so it grows directly out of the orb's last
+  // frame in the same spot, rather than arriving separately afterwards.
   var FORM_START = 0.55;
 
   function render() {
@@ -459,6 +256,10 @@
     smoothed += (target - smoothed) * 0.22;
     if (Math.abs(target - smoothed) < 0.0005) smoothed = target;
 
+    // "quick zoom" — the orb rockets toward the viewer (scale + blur +
+    // fade ramping in fast) rather than gently shrinking away. Stays
+    // centered the whole time — no lateral drift — since the form now
+    // emerges in the same spot instead of sliding in from the side.
     var zoom = easeInCubic(smoothed);
     var fade = easeInQuad(smoothed);
     var scale = 1 + zoom * 2.6;
@@ -467,8 +268,6 @@
     orbWrap.style.transform = 'scale(' + scale + ')';
     orbWrap.style.opacity = clamp(1 - fade * 1.15, 0, 1);
     orbWrap.style.filter = blur > 0.05 ? 'blur(' + blur + 'px)' : 'none';
-
-    if (cue) cue.style.opacity = clamp(1 - smoothed * 9, 0, 1);
 
     var formT = easeOutCubic(clamp((smoothed - FORM_START) / (1 - FORM_START), 0, 1));
     formLayer.style.opacity = formT;
@@ -481,5 +280,6 @@
   requestAnimationFrame(render);
 })();
 </script>
+
 </body>
 </html>
