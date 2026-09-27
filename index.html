@@ -78,7 +78,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
-<link rel="stylesheet" href="style.css?v=9be9e55" />
+<link rel="stylesheet" href="style.css?v=11370df" />
 </head>
 <body class="loading page-home">
 
@@ -109,7 +109,12 @@
 
 <main class="page-content studio-home">
 
-  <!-- ===== HERO ===== -->
+  <!-- ===== HERO — greets on the orb, reveals on scroll ===== -->
+  <div class="design-stage" id="designStage">
+    <div class="design-stage-pin">
+      <div class="design-orb-wrap" id="designOrbWrap"><canvas class="orb-canvas"></canvas></div>
+      <p class="stage-scroll-cue" id="stageScrollCue">Scroll<span></span></p>
+      <div class="design-form-emerge home-emerge" id="designFormEmerge">
   <section class="studio-hero">
     <div class="studio-hero-copy">
       <p class="studio-eyebrow">Digital infrastructure</p>
@@ -133,6 +138,9 @@
       <img id="studioHeroImg" src="assets/img/hero-os-tablet.jpg" alt="Interface OS running on a tablet" width="1457" height="2000" />
     </div>
   </section>
+      </div>
+    </div>
+  </div>
 
   <!-- ===== WHAT ARE YOU LOOKING TO BUILD ===== -->
   <section class="decision">
@@ -336,7 +344,9 @@
         <span>Memory</span><span>Agents</span><span>Automation</span><span>Brand ops</span>
       </div>
     </div>
-    <div class="os-teaser-orb"><canvas class="orb-canvas" data-ink="light"></canvas></div>
+    <div class="os-teaser-shot">
+      <img src="assets/img/hero-fold-device.webp" alt="Interface OS running on a foldable device" width="900" height="595" loading="lazy" />
+    </div>
   </section>
 
   <!-- ===== FAQ ===== -->
@@ -418,5 +428,58 @@
 
 <script src="assets/orb.js"></script>
 <script src="script.js"></script>
+<script>
+(function () {
+  var stage = document.getElementById('designStage');
+  var orbWrap = document.getElementById('designOrbWrap');
+  var formLayer = document.getElementById('designFormEmerge');
+  var cue = document.getElementById('stageScrollCue');
+  if (!stage || !orbWrap || !formLayer) return;
+
+  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+  function easeInCubic(t) { return t * t * t; }
+  function easeInQuad(t) { return t * t; }
+  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+  var stageTop = 0, stageHeight = 0, vh = 0;
+  function measure() {
+    stageTop = stage.offsetTop;
+    stageHeight = stage.offsetHeight;
+    vh = window.innerHeight;
+  }
+  measure();
+  window.addEventListener('resize', measure);
+
+  var target = 0, smoothed = 0;
+  var FORM_START = 0.55;
+
+  function render() {
+    var total = stageHeight - vh;
+    target = total > 0 ? clamp((window.scrollY - stageTop) / total, 0, 1) : 0;
+    smoothed += (target - smoothed) * 0.22;
+    if (Math.abs(target - smoothed) < 0.0005) smoothed = target;
+
+    var zoom = easeInCubic(smoothed);
+    var fade = easeInQuad(smoothed);
+    var scale = 1 + zoom * 2.6;
+    var blur = zoom * 18;
+
+    orbWrap.style.transform = 'scale(' + scale + ')';
+    orbWrap.style.opacity = clamp(1 - fade * 1.15, 0, 1);
+    orbWrap.style.filter = blur > 0.05 ? 'blur(' + blur + 'px)' : 'none';
+
+    if (cue) cue.style.opacity = clamp(1 - smoothed * 9, 0, 1);
+
+    var formT = easeOutCubic(clamp((smoothed - FORM_START) / (1 - FORM_START), 0, 1));
+    formLayer.style.opacity = formT;
+    formLayer.style.transform = 'scale(' + (0.88 + formT * 0.12) + ') translate3d(0,' + ((1 - formT) * 22) + 'px,0)';
+    formLayer.style.pointerEvents = formT > 0.9 ? 'auto' : 'none';
+
+    requestAnimationFrame(render);
+  }
+
+  requestAnimationFrame(render);
+})();
+</script>
 </body>
 </html>

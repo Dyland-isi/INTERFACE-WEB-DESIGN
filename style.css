@@ -1181,13 +1181,15 @@ header.site-head nav a.nav-quote:hover { background: rgba(255,255,255,0.22); }
 .os-teaser-cta.secondary:hover { background: rgba(255,255,255,0.2); }
 .os-teaser-meta { display: flex; flex-wrap: wrap; gap: 10px 20px; margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); }
 .os-teaser-meta span { font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(236,236,236,0.4); }
-.os-teaser-orb { flex-shrink: 0; width: 260px; height: 260px; }
-.os-teaser-orb canvas { width: 100%; height: 100%; display: block; }
+/* real product photo, background already keyed transparent, so it floats
+   directly on the dark glass instead of sitting in a light-backed frame */
+.os-teaser-shot { flex-shrink: 0; width: 340px; }
+.os-teaser-shot img { width: 100%; height: auto; display: block; }
 @media (max-width: 900px) {
   .os-teaser { flex-direction: column; text-align: center; padding: 48px 28px; border-radius: 24px; }
   .os-teaser-copy > p { margin-left: auto; margin-right: auto; }
   .os-teaser-meta { justify-content: center; }
-  .os-teaser-orb { width: 180px; height: 180px; }
+  .os-teaser-shot { width: 100%; max-width: 340px; }
 }
 
 /* ---- FAQ ---- */
@@ -1400,3 +1402,28 @@ header.site-head nav a.nav-quote:hover { background: rgba(255,255,255,0.22); }
 .home-emerge { align-items: center; }
 .home-emerge .hero-shot { max-width: 1240px; margin: 0 auto; }
 .home-emerge .hero-shot-media { margin-left: 0; }
+
+/* studio homepage: hero sits inside the orb stage the same way */
+.design-form-emerge .studio-hero { max-width: 1240px; margin: 0 auto; padding: 0 8px; }
+
+/* subtle nudge to scroll, centered under the orb — fades out the moment
+   the user starts scrolling (driven from the same rAF loop as the orb) */
+.stage-scroll-cue {
+  position: absolute; left: 50%; bottom: 64px; transform: translateX(-50%);
+  z-index: 3; margin: 0; text-align: center; pointer-events: none;
+  font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-3);
+  transition: opacity 0.2s ease;
+}
+.stage-scroll-cue span {
+  display: block; width: 1px; height: 22px; margin: 10px auto 0;
+  background: linear-gradient(to bottom, var(--ink-3), transparent);
+  animation: scrollCueDrop 1.6s ease-in-out infinite;
+}
+@keyframes scrollCueDrop {
+  0%, 100% { transform: translateY(0); opacity: 0.4; }
+  50% { transform: translateY(6px); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stage-scroll-cue span { animation: none; }
+}
