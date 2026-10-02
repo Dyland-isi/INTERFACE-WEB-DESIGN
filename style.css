@@ -67,7 +67,7 @@ html, body {
      a flat single colour reads as plain opaque paint no matter how much
      backdrop-filter you throw at it — so this carries a soft white-to-grey
      wash plus a faint accent glow rather than one flat tone. */
-  background: #cdcdcd; /* flat — matches the hero photo's own backdrop exactly */
+  background: #c9c9c9; /* flat — matches the laptop hero video's own backdrop (rgb 201) */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
