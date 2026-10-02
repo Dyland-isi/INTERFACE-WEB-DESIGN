@@ -560,7 +560,7 @@ async function handleProjectSubmit(e) {
   // simply visible from load).
   if (!reduceMotion && 'IntersectionObserver' in window) {
     const revealTargets = document.querySelectorAll(
-      '.decision, .services, .journey, .work, .compare, .offer, .os-teaser, .faq, .final-cta, .approach'
+      '.decision, .services, .journey, .work, .compare, .offer, .os-teaser, .faq, .final-cta, .approach, .sx'
     );
     const io = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -576,4 +576,27 @@ async function handleProjectSubmit(e) {
 (function () {
   const v = document.getElementById('heroLaptopVideo');
   if (v && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { v.removeAttribute('autoplay'); v.pause(); }
+})();
+
+// ===== NAV — Systems / Solutions dropdowns =====
+(function () {
+  const items = Array.from(document.querySelectorAll('header.site-head .nav-item'));
+  if (!items.length) return;
+  const closeAll = (except) => items.forEach(i => {
+    if (i === except) return;
+    i.classList.remove('open');
+    const t = i.querySelector('.nav-trigger'); if (t) t.setAttribute('aria-expanded', 'false');
+  });
+  items.forEach(item => {
+    const trigger = item.querySelector('.nav-trigger');
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = !item.classList.contains('open');
+      closeAll(item);
+      item.classList.toggle('open', open);
+      trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+  document.addEventListener('click', () => closeAll());
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeAll(); });
 })();
