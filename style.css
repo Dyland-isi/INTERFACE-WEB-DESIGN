@@ -1444,3 +1444,12 @@ header.site-head nav a.nav-quote:hover { background: rgba(255,255,255,0.22); }
 @media (prefers-reduced-motion: reduce) {
   .stage-scroll-cue span { animation: none; }
 }
+
+/* continuation of the video's backdrop gradient beside it (see index.html) */
+.hero-backdrop-strip { position: absolute; right: 0; width: auto; z-index: 0; pointer-events: none; }
+.home-emerge .hero-shot-copy { position: relative; z-index: 1; }
+.hero-backdrop-floor {
+  position: absolute; height: 160px; z-index: 0; pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, #000, transparent);
+  mask-image: linear-gradient(to bottom, #000, transparent);
+}

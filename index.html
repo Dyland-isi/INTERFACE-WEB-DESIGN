@@ -80,7 +80,7 @@
 
 <link rel="preload" as="image" href="assets/img/hero-laptop-poster.webp" />
 <link rel="preload" as="video" href="assets/video/hero-laptop.mp4" type="video/mp4" />
-<link rel="stylesheet" href="style.css?v=59ca9ae" />
+<link rel="stylesheet" href="style.css?v=bb3ec11" />
 </head>
 <body class="loading page-home">
 
@@ -115,6 +115,8 @@
       <div class="design-orb-wrap" id="designOrbWrap"><canvas class="orb-canvas"></canvas></div>
       <div class="design-form-emerge home-emerge" id="designFormEmerge">
   <section class="hero-shot">
+    <canvas class="hero-backdrop-strip" id="heroBackdropStrip" aria-hidden="true"></canvas>
+    <canvas class="hero-backdrop-floor" id="heroBackdropFloor" aria-hidden="true"></canvas>
     <div class="hero-shot-media">
       <video id="heroLaptopVideo" autoplay muted loop playsinline preload="auto" poster="assets/img/hero-laptop-poster.webp" aria-label="Interface OS running on a laptop">
         <source src="assets/video/hero-laptop.mp4" type="video/mp4" />
@@ -281,5 +283,50 @@
 })();
 </script>
 
+<script>
+(function () {
+  // Continue the laptop video's own backdrop gradient (including its slow
+  // lighting change over the loop) past the video's right edge, by
+  // stretching the video's clean left-edge pixel column across the area
+  // beside it, redrawn every frame so it stays perfectly in sync.
+  var v = document.getElementById('heroLaptopVideo');
+  var c = document.getElementById('heroBackdropStrip');
+  var media = v && v.parentElement;
+  var hero = c && c.parentElement;
+  if (!v || !c || !media || !hero) return;
+  var ctx = c.getContext('2d');
+  c.width = 4; c.height = 256;
+  var fl = document.getElementById('heroBackdropFloor');
+  var fctx = fl.getContext('2d');
+  fl.width = 2; fl.height = 2;
+
+  function place() {
+    var left = media.offsetLeft + media.offsetWidth - 1;
+    c.style.left = left + 'px';
+    c.style.width = Math.max(0, hero.offsetWidth - left) + 'px';
+    c.style.top = media.offsetTop + 'px';
+    c.style.height = media.offsetHeight + 'px';
+    fl.style.left = media.offsetLeft + 'px';
+    fl.style.top = (media.offsetTop + media.offsetHeight - 1) + 'px';
+    fl.style.width = hero.offsetWidth - media.offsetLeft + 'px';
+  }
+  function draw() {
+    var vw = v.videoWidth, vh = v.videoHeight;
+    if (vw && v.readyState >= 2) {
+      var bw = v.clientWidth, bh = v.clientHeight;
+      var scale = Math.max(bw / vw, bh / vh);
+      var visW = bw / scale, visH = bh / scale;
+      var sx = (vw - visW) / 2 + 3, sy = (vh - visH) / 2;
+      ctx.drawImage(v, sx, sy, 2, visH, 0, 0, c.width, c.height);
+      fctx.drawImage(v, sx, sy + visH - 3, 2, 2, 0, 0, fl.width, fl.height);
+    }
+    requestAnimationFrame(draw);
+  }
+  place();
+  window.addEventListener('resize', place);
+  v.addEventListener('loadedmetadata', place);
+  requestAnimationFrame(draw);
+})();
+</script>
 </body>
 </html>
