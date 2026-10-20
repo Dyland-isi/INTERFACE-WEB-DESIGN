@@ -82,7 +82,7 @@
 
 <link rel="preload" as="image" href="assets/img/hero-laptop-poster.webp" />
 <link rel="preload" as="video" href="assets/video/hero-laptop.mp4" type="video/mp4" />
-<link rel="stylesheet" href="style.css?v=f3f071c" />
+<link rel="stylesheet" href="style.css?v=ddbefbb" />
 </head>
 <body class="loading page-home">
 
@@ -391,8 +391,8 @@
 </main>
 
 <script src="assets/orb.js"></script>
-<script src="script.js?v=f3f071c"></script>
-<script src="assets/systems.js?v=f3f071c"></script>
+<script src="script.js?v=ddbefbb"></script>
+<script src="assets/systems.js?v=ddbefbb"></script>
 <script>
 (function () {
   var stage = document.getElementById('designStage');
@@ -457,6 +457,55 @@
   }
 
   requestAnimationFrame(render);
+})();
+</script>
+<script>
+(function () {
+  // Scroll lock: once the orb has fully revealed the hero, hold there. The
+  // next, separate scroll gesture carries on down the page (so momentum from
+  // the orb scroll doesn't just roll straight through the hero).
+  var stage = document.getElementById('designStage');
+  if (!stage) return;
+  var html = document.documentElement;
+  var lockY = 0, armed = true, gated = false, gateStart = 0, lastInput = 0, prevY = window.scrollY;
+  function measure() { lockY = stage.offsetTop + stage.offsetHeight - window.innerHeight; }
+  measure();
+  window.addEventListener('resize', measure);
+  if (window.scrollY >= lockY - 50) armed = false;
+
+  function release() { gated = false; armed = false; html.style.overflow = ''; }
+  function tick() {
+    if (!gated) return;
+    var now = performance.now();
+    if (now - gateStart > 450 && now - lastInput > 220) release(); else setTimeout(tick, 60);
+  }
+  function engage() {
+    gated = true; gateStart = lastInput = performance.now();
+    html.style.overflow = 'hidden';
+    window.scrollTo(0, lockY);
+    tick();
+  }
+  window.addEventListener('scroll', function () {
+    var y = window.scrollY;
+    if (gated) { if (Math.abs(y - lockY) > 1) window.scrollTo(0, lockY); return; }
+    // only a normal scroll step engages the lock; a big jump (refresh restoring
+    // a mid-page position, programmatic scroll) must not drag the visitor back
+    if (armed && y >= lockY - 1 && y > prevY && (y - prevY) < window.innerHeight * 0.8) engage();
+    else if (armed && y > lockY + 1 && (y - prevY) >= window.innerHeight * 0.8) armed = false;
+    if (y < lockY - 300) armed = true;
+    prevY = y;
+  }, { passive: true });
+  ['wheel', 'touchmove', 'keydown'].forEach(function (ev) {
+    window.addEventListener(ev, function (e) {
+      if (!gated) return;
+      lastInput = performance.now();
+      if (ev !== 'keydown' && e.cancelable) e.preventDefault();
+    }, { passive: false });
+  });
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (a) armed = false;
+  });
 })();
 </script>
 

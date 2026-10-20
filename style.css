@@ -1829,6 +1829,7 @@ header.site-head nav > a, header.site-head nav .nav-trigger { text-transform: up
    frame. Its backdrop is the page colour, so the box itself is invisible. */
 .home-emerge .hero-shot-media { flex: 1.15; display: flex; align-items: center; justify-content: center; }
 .home-emerge .hero-shot-media video { width: 100%; max-width: 520px; height: auto; object-fit: contain; }
+html { scrollbar-gutter: stable; }
 
 /* app UI screen recording as dimmed decor behind the closing CTAs */
 .sx-cta { position: relative; overflow: hidden; isolation: isolate; }
