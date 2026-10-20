@@ -1825,15 +1825,10 @@ header.site-head nav > a, header.site-head nav .nav-trigger { text-transform: up
 .about-three p { font-size: 13.5px; line-height: 1.65; color: var(--ink-2); }
 @media (max-width: 800px) { .about-three { grid-template-columns: 1fr; } .about-three > div, .about-three > div + div { padding: 24px 0; border-left: 0; border-bottom: 1px solid rgba(27,27,27,0.16); } }
 
-/* laptop video: show the whole frame (no horizontal crop). Its backdrop is the
-   page colour, so the box is invisible; the close-up pose runs off the top and
-   bottom of the source frame, so those two edges are softened slightly. */
-.home-emerge .hero-shot-media { flex: 1.7; display: flex; align-items: center; }
-.home-emerge .hero-shot-media video {
-  width: 100%; height: auto; object-fit: contain;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 9%, #000 91%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0, #000 9%, #000 91%, transparent 100%);
-}
+/* laptop video: a short, seamless open/close loop with the whole laptop in
+   frame. Its backdrop is the page colour, so the box itself is invisible. */
+.home-emerge .hero-shot-media { flex: 1.15; display: flex; align-items: center; justify-content: center; }
+.home-emerge .hero-shot-media video { width: 100%; max-width: 520px; height: auto; object-fit: contain; }
 
 /* app UI screen recording as dimmed decor behind the closing CTAs */
 .sx-cta { position: relative; overflow: hidden; isolation: isolate; }
