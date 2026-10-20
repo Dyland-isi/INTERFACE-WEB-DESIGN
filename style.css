@@ -1837,3 +1837,11 @@ html { scrollbar-gutter: stable; }
 .sx-cta-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: .34; pointer-events: none; }
 .sx-cta::after { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: linear-gradient(90deg, rgba(14,14,16,0.88) 0%, rgba(14,14,16,0.55) 55%, rgba(14,14,16,0.25) 100%); }
 @media (prefers-reduced-motion: reduce) { .sx-cta-video { display: none; } }
+
+/* mobile/tablet: the desktop right-hand padding (for the side-by-side layout)
+   left the stacked hero off-centre — centre everything symmetrically */
+@media (max-width: 900px) {
+  .home-emerge .hero-shot { padding: 0 20px; }
+  .home-emerge .hero-shot-media { align-self: center; justify-content: center; }
+}
+@media (max-width: 900px) { .home-emerge .hero-shot-copy { padding: 0; } }
